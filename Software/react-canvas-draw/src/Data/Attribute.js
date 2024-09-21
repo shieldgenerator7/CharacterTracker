@@ -65,6 +65,10 @@ class Attribute {
                 return `${name}`;
         }
     }
+
+    get IsSpacer(){
+        return this.name.startsWith("---") && this.name.endsWith("---");
+    }
 }
 export default Attribute;
 
