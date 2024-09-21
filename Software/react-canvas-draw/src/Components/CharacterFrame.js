@@ -36,10 +36,6 @@ function CharacterFrame({ character, updateCharacter }) {
             }
                 </div>
             <div className="buttonPanel">
-            <button onClick={() => {
-                        character.dieRollLog = [];
-                        updateCharacter(character);
-                    }}>Clear Die Roll Log</button>
              <button onClick={(e) => {
                 let attr = new Attribute("attr");
                 character.editAttributes = !character.editAttributes;
@@ -54,6 +50,12 @@ function CharacterFrame({ character, updateCharacter }) {
                     updateCharacter(character);
                 }}>New Attribute</button>
             }
+            {!character.editAttributes && character.dieRollLog?.length > 0 &&
+                <button onClick={() => {
+                    character.dieRollLog = [];
+                    updateCharacter(character);
+                }}>Clear Die Roll Log</button>
+            }{}
                 </div>
         </div>
     );
