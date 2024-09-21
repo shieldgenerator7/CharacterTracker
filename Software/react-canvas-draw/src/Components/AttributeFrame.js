@@ -11,9 +11,9 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
         <div className="attributeFrame">
             <input type="text" onChange={(e) => {
                 let value = e.target.value;
-                attribute.dieroll = value;
+                attribute.dieRoll = value;
                 updateCharacter(character);
-            }}></input>
+            }} value={ attribute.dieRoll}></input>
             <button onClick={
                     () => {
                         let values = [];
