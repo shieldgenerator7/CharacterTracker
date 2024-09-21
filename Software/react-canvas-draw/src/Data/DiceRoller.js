@@ -8,7 +8,7 @@ class DiceRoller{
 
     rollDice(dieRollString) {
         
-        if (dieRollString.contains("d")) {
+        if (!dieRollString.includes("d")) {
             console.error("Input must be in die roll form, ex: 1d20.", dieRollString);
             return 0;
         }
@@ -28,12 +28,12 @@ export default DiceRoller;
 
 export function rollDice(dieRollString) {
         
-    if (dieRollString.contains("d")) {
+    if (!dieRollString.includes("d")) {
         console.error("Input must be in die roll form, ex: 1d20.", dieRollString);
         return 0;
     }
     let split = dieRollString.split("d").map(v => (v.trim() || 1) * 1);
-    _rollDice(split[0], split[1]);
+    return _rollDice(split[0], split[1]);
 }
 function _rollDice(count, die) {
     let sum = 0;
