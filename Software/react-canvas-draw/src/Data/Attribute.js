@@ -1,5 +1,6 @@
 "use strict";
 
+import { clamp } from "../Utility/Utility";
 import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "./Constants";
 
 class Attribute {
@@ -20,24 +21,26 @@ class Attribute {
         if (this.dieRoll) {
             return ONCLICK_DIE_ROLL;
         }
-        return ONCLICK_TOGGLE;//?? not sure what the default should be
+        return ONCLICK_ADJUST_VALUE;
     }
 
     getDisplayText() {
         //type: limited resource
-        if (this.max > 0) {
-            return `${this.name} - ${this.value}/${this.max}`;
+        switch (this.OnClickType) {
+            case ONCLICK_ADJUST_VALUE:
+                if (this.max > 0) {
+                    return `${this.name} - ${this.value}/${this.max}`;
+                }
+                else {
+                    return `${this.name} - ${this.value}`;
+                }
+                break;
+            case ONCLICK_DIE_ROLL:
+                return `${this.name} - ${this.dieRoll}`;
+                break;
+            default:
+                return `${this.name}`;
         }
-        //type: die roll
-        if (this.dieRoll) {
-            return `${this.name} - ${this.dieRoll}`;
-        }
-        if (this.value > 0) {
-            return `${this.name} - ${this.value}`;
-        }
-
-        
-        return `${this.name}`;
     }
 }
 export default Attribute;

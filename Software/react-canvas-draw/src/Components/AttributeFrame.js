@@ -3,12 +3,13 @@
 "use strict";
 
 import Attribute from "../Data/Character";
-import { ONCLICK_TOGGLE } from "../Data/Constants";
+import { ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
 import { clamp } from "../Utility/Utility";
 import Counter from "./Counter";
 
 function AttributeFrame({ attribute, character, updateCharacter }) {
+    let onClickType = attribute.OnClickType;
     return (
         <div className="attributeFrame">
             {character.editAttributes &&
@@ -38,7 +39,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
             {
                 !character.editAttributes &&
                 <span>
-                    {attribute.max > 0 &&
+                    {onClickType == ONCLICK_ADJUST_VALUE &&
                         <span>
                             <Counter
                                 value={attribute.value}
@@ -54,7 +55,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                             ></Counter>
                         </span>
                     }
-                    {!(attribute.max > 0) && attribute.dieRoll &&
+                    {onClickType == ONCLICK_DIE_ROLL &&
                         <span>
                             <button className={"plusMinus"}
                                 onClick={
@@ -75,12 +76,6 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                                 }
                             >{`${attribute.getDisplayText()}`}</button>
                         </span>
-                    }
-                    {
-                            attribute.value > 0 &&
-                            <span>
-                                    {attribute.getDisplayText()}
-                            </span>
                     }
                     {
                         attribute.OnClickType == ONCLICK_TOGGLE &&
