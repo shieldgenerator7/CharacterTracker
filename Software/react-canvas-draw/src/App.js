@@ -9,8 +9,8 @@ import { VERSION } from './Version';
 import { arrayRemove, isImage } from './Utility/Utility';
 import AbilityPanel from './Components/AbilityPanel';
 import { rollDice } from './Data/DiceRoller';
-import CharacterFrame, { inflateCharacter } from './Components/CharacterFrame';
-import Character from './Data/Character';
+import CharacterFrame from './Components/CharacterFrame';
+import Character, { inflateCharacter } from './Data/Character';
 
 function App() {
     //Storage
