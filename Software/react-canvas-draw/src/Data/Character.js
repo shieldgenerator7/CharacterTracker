@@ -11,6 +11,8 @@ class Character{
         this.equipmentList = [];
         //TODO: implement consumables
         this.consumableList = [];
+
+        this.restList = [];//TOOD: implement rests
     }
 
 
