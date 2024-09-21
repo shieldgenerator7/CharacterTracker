@@ -47,7 +47,12 @@ function CharacterFrame({ character, updateCharacter }) {
                     <span className="diceRollLog">
 
                         {character.dieRollLog.map((roll, i) =>
-                            <span className={"rollResult"} key={`character_die_roll_log_${i}`}>{roll}</span>
+                            <span className={"rollResult"} key={`character_die_roll_log_${i}`}
+                                onClick={() => {
+                                    character.dieRollLog.splice(i, 1);
+                                    updateCharacter(character);
+                                }}
+                            >{roll}</span>
                         )}
 
                     </span>
