@@ -1,11 +1,6 @@
 "use strict";
 
-const ONCLICK_ADJUST_VALUE = 0;
-const ONCLICK_DIE_ROLL = 1;
-
-const LIMIT_POSITIVE_ONLY = 0;
-const LIMIT_POSITIVE_AND_NEGATIVE = 1;
-const LIMIT_NEGATIVE_ONLY = 2;
+import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE } from "./Constants";
 
 class Attribute{
     constructor(name) {
