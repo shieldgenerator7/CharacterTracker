@@ -21,7 +21,23 @@ function CharacterFrame({ character, updateCharacter }) {
                     ))
                 }
             </div>
-            <button onClick={(e) => {
+           
+            {
+                !character.editAttributes && character.dieRollLog?.length > 0 &&
+                <span>
+                    
+                    {character.dieRollLog.map((roll, i) =>
+                        <span className={"rollResult"} key={`character_die_roll_log_${i}`}>{roll}</span>
+                    )}
+
+                </span>
+
+            }
+            <button onClick={() => {
+                        character.dieRollLog = [];
+                        updateCharacter(character);
+                    }}>Clear Die Roll Log</button>
+             <button onClick={(e) => {
                 let attr = new Attribute("attr");
                 character.editAttributes = !character.editAttributes;
                 updateCharacter(character);
@@ -34,20 +50,6 @@ function CharacterFrame({ character, updateCharacter }) {
                     character.editAttributes = true;
                     updateCharacter(character);
                 }}>New Attribute</button>
-            }
-            {
-                !character.editAttributes && character.dieRollLog?.length > 0 &&
-                <span>
-                    <button onClick={() => {
-                        character.dieRollLog = [];
-                        updateCharacter(character);
-                    }}>Clear Die Roll Log</button>
-                    {character.dieRollLog.map((roll, i) =>
-                        <span className={"rollResult"} key={`character_die_roll_log_${i}`}>{roll}</span>
-                    )}
-
-                </span>
-
             }
         </div>
     );
