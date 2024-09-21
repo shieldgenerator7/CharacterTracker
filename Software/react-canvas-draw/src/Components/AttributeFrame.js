@@ -3,6 +3,7 @@
 "use strict";
 
 import Attribute from "../Data/Character";
+import { ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
 import { clamp } from "../Utility/Utility";
 import Counter from "./Counter";
@@ -66,6 +67,12 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                     {attribute.dievalue}
                             </span>
                         }
+                    {
+                        attribute.OnClickType == ONCLICK_TOGGLE &&
+                        <span>
+                            {attribute.getDisplayText()}
+                        </span>
+                    }
                 </span>
             }
         </div>
