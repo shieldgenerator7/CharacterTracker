@@ -66,6 +66,9 @@ class Storage {
     get characterList() {
         return this.storage.characterList;
     }
+    set characterList(value) {
+        this.storage.characterList = value;
+    }
     get cardList() {
         return this.storage.cardList;
     }

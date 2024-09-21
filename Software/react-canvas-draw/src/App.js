@@ -9,7 +9,7 @@ import { VERSION } from './Version';
 import { arrayRemove, isImage } from './Utility/Utility';
 import AbilityPanel from './Components/AbilityPanel';
 import { rollDice } from './Data/DiceRoller';
-import CharacterFrame from './Components/CharacterFrame';
+import CharacterFrame, { inflateCharacter } from './Components/CharacterFrame';
 import Character from './Data/Character';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         if (isImage(oldcharacter.imgPortrait)) {
             newcharacter.imgPortrait = oldcharacter.imgPortrait;
         }
-        inflateCreature(
+        inflateCharacter(
             newcharacter,
             (c) => { if (c == character) { updateCharacter(c); } }
         );
@@ -112,7 +112,7 @@ function App() {
             <header className="App-header">
                 <CharacterFrame
                     character={character}
-                    setCharacter={setCharacter}
+                    updateCharacter={updateCharacter}
                 ></CharacterFrame>
             </header>
         </div>
