@@ -40,7 +40,7 @@ function CharacterFrame({ character, updateCharacter }) {
                     let attr = new Attribute("attr");
                     character.editAttributes = !character.editAttributes;
                     updateCharacter(character);
-                }}>Edit Attributes</button>
+                }}>{(character.editAttributes)?"OK":"EDIT"}</button>
                 {character.editAttributes
                     &&
                     <button onClick={(e) => {
@@ -48,13 +48,13 @@ function CharacterFrame({ character, updateCharacter }) {
                         character.attributeList.push(attr);
                         character.editAttributes = true;
                         updateCharacter(character);
-                    }}>New Attribute</button>
+                    }}>NEW ATTRIBUTE</button>
                 }
                 {!character.editAttributes && character.dieRollLog?.length > 0 &&
                     <button onClick={() => {
                         character.dieRollLog = [];
                         updateCharacter(character);
-                    }}>Clear Die Roll Log</button>
+                    }}>CLEAR DIE ROLL LOG</button>
                 }{ }
             </div>
         </div>
