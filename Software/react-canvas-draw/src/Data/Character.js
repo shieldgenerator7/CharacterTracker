@@ -21,6 +21,7 @@ class Character {
 
 }
 export default Character;
+window.Character = Character;
 
 //2024-09-20: copied from Creature.inflateCreature()
 export function inflateCharacter(character, updateCharacter = (c) => { }) {
