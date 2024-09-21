@@ -36,9 +36,17 @@ function CharacterFrame({ character, updateCharacter }) {
             }
             {
                 character.dieRollLog?.length > 0 &&
-                character.dieRollLog.map((roll,i) => 
+                <span>
+                        <button onClick={() => { 
+                            character.dieRollLog = [];
+                            updateCharacter(character);
+                        }}>Clear Die Roll Log</button>
+                {character.dieRollLog.map((roll, i) =>
                     <span className={"rollResult"} key={`character_die_roll_log_${i}`}>{roll}</span>
-                )
+                )}
+                        
+                </span>
+                
             }
         </div>
     );
