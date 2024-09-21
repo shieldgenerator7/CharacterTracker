@@ -358,3 +358,7 @@
     color: black;
     background-color: white;
 }
+
+.characterFrame{
+    left: 0px;
+}

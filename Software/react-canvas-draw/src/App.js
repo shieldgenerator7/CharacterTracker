@@ -11,6 +11,7 @@ import { VERSION } from './Version';
 import { arrayRemove, isImage } from './Utility/Utility';
 import AbilityPanel from './Components/AbilityPanel';
 import { rollDice } from './Data/DiceRoller';
+import CharacterFrame from './Components/CharacterFrame';
 
 function App() {
     //Storage
@@ -110,14 +111,14 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <CardListPanel
+                {/* <CardListPanel
                     cardList={cardList}
                     setCardList={setCardList}
                     currentCard={card}
                     setCard={setCard}
                     updateCard={updateCard}
                     setPasteString={setPasteString}
-                ></CardListPanel>
+                ></CardListPanel> */}
                 <button onClick={
                     () => {
                         let values = [];
@@ -129,10 +130,9 @@ function App() {
                         console.log("die roll", values);
                     }
                 }>Roll die</button>
-                <Canvas
-                    card={card}
-                    autoDownload={autoDownload}
-                ></Canvas>
+                <CharacterFrame
+                    character={"Tak Redwind"}
+                ></CharacterFrame>
                 <EditPanel
                     card={card}
                     cardList={cardList}
