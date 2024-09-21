@@ -1,6 +1,6 @@
 "use strict";
 
-import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE } from "./Constants";
+import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "./Constants";
 
 class Attribute {
     constructor(name) {
@@ -11,6 +11,16 @@ class Attribute {
         this.limit = LIMIT_POSITIVE_ONLY;
         this.dieRoll = "1d20";//"d20", "2d8"
         this.visible = true;
+    }
+
+    get OnClickType(){
+        if (this.max > 0) {
+            return ONCLICK_ADJUST_VALUE;
+        }
+        if (this.dieRoll) {
+            return ONCLICK_DIE_ROLL;
+        }
+        return ONCLICK_TOGGLE;//?? not sure what the default should be
     }
 
     getDisplayText() {
