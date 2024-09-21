@@ -19,12 +19,12 @@ function App() {
     const defaultStorage = () => new Storage();
     [storage, setStorage] = useState(defaultStorage);
     //Character
-    let character = new Character();
+    let character = new Character("Tak Redwind");
     let setCharacter = (c) => {
         character = c;
         storage.characterList = characterList;
     };
-    const defaultCharacter = () => storage.characterList[0] ?? new Character();
+    const defaultCharacter = () => storage.characterList[0] ?? new Character("Tak Redwind");
     [character, setCharacter] = useState(defaultCharacter);
     window.character = character;
     let updateCharacter = (oldcharacter) => {
@@ -110,19 +110,9 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <button onClick={
-                    () => {
-                        let values = [];
-                        for (let i = 0; i < 50; i++) {
-                            let value = rollDice("2d8");
-                            values.push(value);
-                        }
-                        values = values.sort((a,b)=>a-b);
-                        console.log("die roll", values);
-                    }
-                }>Roll die</button>
                 <CharacterFrame
-                    character={"Tak Redwind"}
+                    character={character}
+                    setCharacter={setCharacter}
                 ></CharacterFrame>
             </header>
         </div>
