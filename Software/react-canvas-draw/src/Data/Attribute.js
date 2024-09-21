@@ -2,7 +2,7 @@
 
 import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE } from "./Constants";
 
-class Attribute{
+class Attribute {
     constructor(name) {
         this.name = name;
         this.value = 0;

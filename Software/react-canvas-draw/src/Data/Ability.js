@@ -2,7 +2,7 @@
 
 import { ACTION_PREV_ROLL_MODIFY, ONCLICK_TOGGLE } from "./Constants";
 
-class Ability{
+class Ability {
     constructor(name) {
         this.name = name;
         this.description = "";

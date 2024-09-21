@@ -6,7 +6,7 @@ import Attribute from "../Data/Character";
 import { rollDice } from "../Data/DiceRoller";
 
 function AttributeFrame({ attribute, character, updateCharacter }) {
-    console.log("attribute.dievalue", attribute.dievalue );
+    console.log("attribute.dievalue", attribute.dievalue);
     return (
         <div className="attributeFrame">
             {character.editAttributes &&
@@ -26,24 +26,24 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         attribute.max = value;
                         updateCharacter(character);
                     }} value={attribute.max}></input>
-                <input type="text" onChange={(e) => {
-                    let value = e.target.value;
-                    attribute.dieRoll = value;
-                    updateCharacter(character);
-                }} value={attribute.dieRoll}></input>
+                    <input type="text" onChange={(e) => {
+                        let value = e.target.value;
+                        attribute.dieRoll = value;
+                        updateCharacter(character);
+                    }} value={attribute.dieRoll}></input>
                 </span>
             }
             {
                 !character.editAttributes &&
                 <span>
-            <button onClick={
-                    () => {
-                        let value = rollDice(attribute.dieRoll || "1d20");
-                        attribute.dievalue = value;
-                        updateCharacter(character);
-                    }
-                }>{`${attribute.getDisplayText()}`}</button>
-            {attribute.dievalue}
+                    <button onClick={
+                        () => {
+                            let value = rollDice(attribute.dieRoll || "1d20");
+                            attribute.dievalue = value;
+                            updateCharacter(character);
+                        }
+                    }>{`${attribute.getDisplayText()}`}</button>
+                    {attribute.dievalue}
                 </span>
             }
         </div>

@@ -1,13 +1,13 @@
 "use strict";
 
-class DiceRoller{
+class DiceRoller {
     constructor() {
-        
+
     }
 
 
     rollDice(dieRollString) {
-        
+
         if (!dieRollString.includes("d")) {
             console.error("Input must be in die roll form, ex: 1d20.", dieRollString);
             return 0;
@@ -17,7 +17,7 @@ class DiceRoller{
     }
     _rollDice(count, die) {
         let sum = 0;
-        for (let i = 0; i < count; i++){
+        for (let i = 0; i < count; i++) {
             let roll = Math.ceil(Math.random() * die);
             sum += roll;
         }
@@ -27,7 +27,7 @@ class DiceRoller{
 export default DiceRoller;
 
 export function rollDice(dieRollString) {
-        
+
     if (!dieRollString.includes("d")) {
         console.error("Input must be in die roll form, ex: 1d20.", dieRollString);
         return 0;
@@ -37,7 +37,7 @@ export function rollDice(dieRollString) {
 }
 function _rollDice(count, die) {
     let sum = 0;
-    for (let i = 0; i < count; i++){
+    for (let i = 0; i < count; i++) {
         let roll = Math.ceil(Math.random() * die);
         sum += roll;
     }

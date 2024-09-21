@@ -1,6 +1,6 @@
 "use strict";
 
-class Game{
+class Game {
     constructor() {
         this.characterList = [];
         this.log = undefined;

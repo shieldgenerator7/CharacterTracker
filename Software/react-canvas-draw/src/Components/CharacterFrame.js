@@ -6,12 +6,12 @@ import { rollDice } from "../Data/DiceRoller";
 import AttributeFrame from "./AttributeFrame";
 
 function CharacterFrame({ character, updateCharacter }) {
-    console.log("character.dievalue", character.dievalue );
+    console.log("character.dievalue", character.dievalue);
     return (
         <div className="characterFrame">
             {character.name}
             {
-                character.attributeList.map((attr,i) => (
+                character.attributeList.map((attr, i) => (
                     <AttributeFrame
                         attribute={attr}
                         character={character}

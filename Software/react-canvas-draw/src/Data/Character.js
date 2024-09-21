@@ -2,7 +2,7 @@
 
 import { inflateAttribute } from "./Attribute";
 
-class Character{
+class Character {
     constructor(name) {
         this.name = name;
         this.portrait = undefined;//TODO: implement portrait

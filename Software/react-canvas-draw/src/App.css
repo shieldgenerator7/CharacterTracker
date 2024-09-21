@@ -359,13 +359,13 @@
     background-color: white;
 }
 
-.characterFrame{
+.characterFrame {
     display: block;
     border: 1px solid black;
     background: rgb(71, 71, 71);
 }
 
-.attributeFrame{
+.attributeFrame {
     display: block;
     border: 1px solid black;
     background: rgb(71, 71, 71);
