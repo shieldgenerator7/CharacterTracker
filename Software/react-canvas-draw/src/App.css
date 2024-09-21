@@ -381,6 +381,8 @@
 
 .characterContent {
     padding: 15px;
+    overflow-x:hidden;
+    overflow-wrap:anywhere;
     overflow-y: auto;
     height: 90%;
 }
