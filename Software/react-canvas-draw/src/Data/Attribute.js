@@ -39,22 +39,23 @@ class Attribute {
 
     getDisplayText() {
         const name = this.displayName || this.name;
+        const value = (this.value || 0) * 1;
         //type: limited resource
         switch (this.OnClickType) {
             case ONCLICK_ADJUST_VALUE:
                 if (this.max > 0) {
-                    return `${name}: ${this.value}/${this.max}`;
+                    return `${name}: ${value}/${this.max}`;
                 }
                 else {
-                    return `${name}: ${this.value}`;
+                    return `${name}: ${value}`;
                 }
                 break;
             case ONCLICK_DIE_ROLL:
-                let valueModStr = ((this.value > 0) ? "+" : "") + this.value;
+                let valueModStr = ((value > 0) ? "+" : "") + value;
                 if (this.dieRoll == "1d20" || this.dieRoll == "d20") {
                     return `${name}: ${valueModStr}`;
                 }
-                if (this.value != 0) {
+                if (value != 0) {
                     return `${name}: ${this.dieRoll} ${valueModStr}`;
                 }
                 else {
