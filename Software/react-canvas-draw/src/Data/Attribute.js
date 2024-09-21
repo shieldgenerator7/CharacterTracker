@@ -26,7 +26,7 @@ class Attribute {
         }
     }
 
-    get OnClickType(){
+    get OnClickType() {
         if (this.max > 0) {
             return ONCLICK_ADJUST_VALUE;
         }
@@ -48,14 +48,14 @@ class Attribute {
                 }
                 break;
             case ONCLICK_DIE_ROLL:
-                let valueModStr = ((this.value > 0) ? "+" : "")+this.value;
+                let valueModStr = ((this.value > 0) ? "+" : "") + this.value;
                 if (this.dieRoll == "1d20" || this.dieRoll == "d20") {
                     return `${this.name}: ${valueModStr}`;
                 }
                 if (this.value != 0) {
                     return `${this.name}: ${this.dieRoll} ${valueModStr}`;
                 }
-                else {                    
+                else {
                     return `${this.name}: ${this.dieRoll}`;
                 }
                 break;
