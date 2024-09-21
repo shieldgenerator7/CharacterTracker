@@ -75,6 +75,13 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         updateCharacter(character);
                     }
                 }}>/\</button>
+                <button onClick={() => {
+                    let index = character.attributeList.indexOf(attribute);
+                    if (index > 0) {
+                        character.attributeList.splice(index, 1);
+                        updateCharacter(character);
+                    }
+                }}>X</button>
             </div>
         );
     }
