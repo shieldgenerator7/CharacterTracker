@@ -9,7 +9,6 @@ import { clamp } from "../Utility/Utility";
 import Counter from "./Counter";
 
 function AttributeFrame({ attribute, character, updateCharacter }) {
-    console.log("attribute.dievalue", attribute.dievalue);
     return (
         <div className="attributeFrame">
             {character.editAttributes &&

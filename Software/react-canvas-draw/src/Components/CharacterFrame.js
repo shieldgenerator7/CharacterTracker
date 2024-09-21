@@ -6,7 +6,6 @@ import { rollDice } from "../Data/DiceRoller";
 import AttributeFrame from "./AttributeFrame";
 
 function CharacterFrame({ character, updateCharacter }) {
-    console.log("character.dievalue", character.dievalue);
     return (
         <div className="characterFrame">
             {character.name}
