@@ -362,7 +362,6 @@
     color: black;
     background: #ffeec1;
     border-radius: 7px;
-    border-bottom: none;
 }
 
 .characterFrame {
@@ -444,6 +443,7 @@
 }
 
 .buttonPanel button {
+    margin-left: 10px;
     border: none;
     background: #a89b76;
     padding: 10px;
@@ -454,5 +454,5 @@
     background: #a89b76;
     color: white;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 12px;
 }
