@@ -30,7 +30,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                     () => {
                         let values = [];
                         for (let i = 0; i < 5; i++) {
-                            let value = rollDice(attribute.dieroll || "1d20");
+                            let value = rollDice(attribute.dieRoll || "1d20");
                             values.push(value);
                         }
                         // values = values.sort((a, b) => a - b);
