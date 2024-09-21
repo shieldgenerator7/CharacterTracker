@@ -14,6 +14,18 @@ class Attribute {
         this.visible = true;
     }
 
+    get Value() {
+        return this.value;
+    }
+    set Value(value) {
+        if (this.max > 0) {
+            this.value = clamp(value, 0, this.max);
+        }
+        else {
+            this.value = value;
+        }
+    }
+
     get OnClickType(){
         if (this.max > 0) {
             return ONCLICK_ADJUST_VALUE;

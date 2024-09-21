@@ -44,7 +44,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                             <Counter
                                 value={attribute.value}
                                 setValue={(v) => {
-                                    attribute.value = clamp(v, 0, attribute.max);
+                                    attribute.value = v;
                                     updateCharacter(character);
                                 }}
                                 allowNegative={false}
