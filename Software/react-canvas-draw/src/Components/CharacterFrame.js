@@ -20,6 +20,11 @@ function CharacterFrame({ character, updateCharacter }) {
                     ></AttributeFrame>
                 ))
             }
+            <button onClick={(e) => {
+                let attr = new Attribute("attr");
+                character.editAttributes = !character.editAttributes;
+                updateCharacter(character);
+            }}>Edit Attributes</button>
             {character.editAttributes
                 &&
             <button onClick={(e) => {
@@ -29,11 +34,6 @@ function CharacterFrame({ character, updateCharacter }) {
                 updateCharacter(character);
             }}>New Attribute</button>
             }
-            <button onClick={(e) => {
-                let attr = new Attribute("attr");
-                character.editAttributes = !character.editAttributes;
-                updateCharacter(character);
-            }}>Edit Attributes</button>
         </div>
     );
 }
