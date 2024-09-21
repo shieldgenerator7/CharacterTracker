@@ -425,9 +425,15 @@
 }
 
 .rollResult {
-    display: inline;
-    margin: 5px;
-    margin-left: 10px;
+    display:inline-flex;
+    margin:5px;
+    width: 30px;
+    text-align: center;
+    justify-content: center;
+    background: #fffbed;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .field {
@@ -464,4 +470,8 @@
     color: white;
     border: 1px solid white;
     border-radius: 12px;
+}
+
+.diceRollLog{
+    line-height: 50px;
 }

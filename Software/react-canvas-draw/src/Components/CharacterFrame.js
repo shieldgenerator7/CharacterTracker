@@ -42,9 +42,9 @@ function CharacterFrame({ character, updateCharacter }) {
 
                 {
                     !character.editAttributes && character.dieRollLog?.length > 0 &&
-                    <span>
                     <>
                         <h2>Dice Rolls</h2>
+                    <span className="diceRollLog">
 
                         {character.dieRollLog.map((roll, i) =>
                             <span className={"rollResult"} key={`character_die_roll_log_${i}`}>{roll}</span>
