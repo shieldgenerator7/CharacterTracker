@@ -25,6 +25,11 @@ function CharacterFrame({ character, updateCharacter }) {
                 character.attributeList.push(attr);
                 updateCharacter(character);
             }}>New Attribute</button>
+            <button onClick={(e) => {
+                let attr = new Attribute("attr");
+                character.editAttributes = !character.editAttributes;
+                updateCharacter(character);
+            }}>Edit Attributes</button>
         </div>
     );
 }

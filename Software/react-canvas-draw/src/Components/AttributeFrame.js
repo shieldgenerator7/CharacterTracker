@@ -9,11 +9,13 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
     console.log("attribute.dievalue", attribute.dievalue );
     return (
         <div className="attributeFrame">
-            <input type="text" onChange={(e) => {
-                let value = e.target.value;
-                attribute.dieRoll = value;
-                updateCharacter(character);
-            }} value={ attribute.dieRoll}></input>
+            {character.editAttributes &&
+                <input type="text" onChange={(e) => {
+                    let value = e.target.value;
+                    attribute.dieRoll = value;
+                    updateCharacter(character);
+                }} value={attribute.dieRoll}></input>
+            }
             <button onClick={
                     () => {
                         let values = [];
