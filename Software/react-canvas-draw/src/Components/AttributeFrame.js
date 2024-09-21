@@ -28,15 +28,9 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                 <span>
             <button onClick={
                     () => {
-                        let values = [];
-                        for (let i = 0; i < 5; i++) {
-                            let value = rollDice(attribute.dieRoll || "1d20");
-                            values.push(value);
-                        }
-                        // values = values.sort((a, b) => a - b);
-                        attribute.dievalue = values[0];
+                        let value = rollDice(attribute.dieRoll || "1d20");
+                        attribute.dievalue = value;
                         updateCharacter(character);
-                        console.log("die roll", values, attribute.dievalue );
                     }
                 }>{`${attribute.name} - ${attribute.dieRoll}`}</button>
             {attribute.dievalue}
