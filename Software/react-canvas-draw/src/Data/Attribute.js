@@ -9,7 +9,7 @@ class Attribute {
         this.max = 0;
         this.onclick = ONCLICK_ADJUST_VALUE;
         this.limit = LIMIT_POSITIVE_ONLY;
-        this.dieRoll = undefined;//"d20", "2d8"
+        this.dieRoll = "1d20";//"d20", "2d8"
         this.visible = true;
     }
 
