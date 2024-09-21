@@ -19,6 +19,9 @@ class Ability {
         this.dieRollBonus = 0;
         this.dieRollAttributeFilter = undefined;//"Attack" or other attribute
 
+        //runtime vars
+        this.active = false;
+
     }
 }
 export default Ability;
