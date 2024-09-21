@@ -8,6 +8,7 @@ import AttributeFrame from "./AttributeFrame";
 function CharacterFrame({ character, updateCharacter }) {
     return (
         <div className="characterFrame">
+            <div className="characterContent">
             {character.name}
             <div className={"attributeContainer"}>
                 {
@@ -33,6 +34,8 @@ function CharacterFrame({ character, updateCharacter }) {
                 </span>
 
             }
+                </div>
+            <div className="buttonPanel">
             <button onClick={() => {
                         character.dieRollLog = [];
                         updateCharacter(character);
@@ -51,6 +54,7 @@ function CharacterFrame({ character, updateCharacter }) {
                     updateCharacter(character);
                 }}>New Attribute</button>
             }
+                </div>
         </div>
     );
 }
