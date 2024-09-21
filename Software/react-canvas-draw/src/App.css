@@ -350,14 +350,16 @@
 
 .plusMinus {
     color: white;
-    background-color: rgb(39, 39, 39);
+    background: rgb(71, 71, 71);
     font-size: large;
     border-radius: 10px;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    margin: 5px;
+    /* margin: 5px;
     margin-right: 10px;
+    margin-left: 0px; */
+    border:none;
 }
 
 .plusMinus:hover {
@@ -366,15 +368,39 @@
 }
 
 .characterFrame {
-    display: block;
+    display: inline;
     border: 1px solid black;
     background: rgb(71, 71, 71);
+    width: 400px;
+    height: 700px;
+    border: 3px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.attributeContainer{
+    display:block;
 }
 
 .attributeFrame {
-    display: block;
-    border: 1px solid black;
+    display: inline;
     background: rgb(71, 71, 71);
+    margin-left: 0px;
+}
+
+.attributeFrameEdit {
+    display: block;
+}
+
+.editText{
+    width: 100px;
+}
+.editTextShort{
+    width: 50px;
+}
+.editNumber {
+    width: 20px;
 }
 
 .rollResult {

@@ -9,6 +9,7 @@ function CharacterFrame({ character, updateCharacter }) {
     return (
         <div className="characterFrame">
             {character.name}
+            <div className={"attributeContainer"}>
             {
                 character.attributeList.map((attr, i) => (
                     <AttributeFrame
@@ -19,6 +20,7 @@ function CharacterFrame({ character, updateCharacter }) {
                     ></AttributeFrame>
                 ))
             }
+                </div>
             <button onClick={(e) => {
                 let attr = new Attribute("attr");
                 character.editAttributes = !character.editAttributes;

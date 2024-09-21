@@ -10,34 +10,38 @@ import Counter from "./Counter";
 
 function AttributeFrame({ attribute, character, updateCharacter }) {
     let onClickType = attribute.OnClickType;
-    return (
-        <div className="attributeFrame">
-            {character.editAttributes &&
+    if (character.editAttributes) {
+        return (
+            <div className="attributeFrameEdit">
                 <span>
-                    <input type="text" onChange={(e) => {
+                    <input type="text" className="editText" onChange={(e) => {
                         let value = e.target.value;
                         attribute.name = value;
                         updateCharacter(character);
                     }} value={attribute.name}></input>
-                    <input type="text" onChange={(e) => {
+                    <input type="text" className="editNumber" onChange={(e) => {
                         let value = e.target.value;
                         attribute.value = value;
                         updateCharacter(character);
                     }} value={attribute.value}></input>
-                    <input type="text" onChange={(e) => {
+                    <input type="text" className="editNumber" onChange={(e) => {
                         let value = e.target.value;
                         attribute.max = value;
                         updateCharacter(character);
                     }} value={attribute.max}></input>
-                    <input type="text" onChange={(e) => {
+                    <input type="text" className="editTextShort" onChange={(e) => {
                         let value = e.target.value;
                         attribute.dieRoll = value;
                         updateCharacter(character);
                     }} value={attribute.dieRoll}></input>
                 </span>
+            </div>
+        );
             }
+    else
             {
-                !character.editAttributes &&
+        return (
+            <div className="attributeFrame">
                 <span>
                     {onClickType == ONCLICK_ADJUST_VALUE &&
                         <span>
@@ -85,8 +89,8 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         </span>
                     }
                 </span>
-            }
         </div>
     );
+    }
 }
 export default AttributeFrame;

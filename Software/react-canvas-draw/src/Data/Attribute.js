@@ -6,6 +6,7 @@ import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TO
 class Attribute {
     constructor(name) {
         this.name = name;
+        this.displayName = "";
         this.value = 0;
         this.max = 0;
         this.onclick = ONCLICK_ADJUST_VALUE;
@@ -37,30 +38,31 @@ class Attribute {
     }
 
     getDisplayText() {
+        const name = this.displayName || this.name;
         //type: limited resource
         switch (this.OnClickType) {
             case ONCLICK_ADJUST_VALUE:
                 if (this.max > 0) {
-                    return `${this.name}: ${this.value}/${this.max}`;
+                    return `${name}: ${this.value}/${this.max}`;
                 }
                 else {
-                    return `${this.name}: ${this.value}`;
+                    return `${name}: ${this.value}`;
                 }
                 break;
             case ONCLICK_DIE_ROLL:
                 let valueModStr = ((this.value > 0) ? "+" : "") + this.value;
                 if (this.dieRoll == "1d20" || this.dieRoll == "d20") {
-                    return `${this.name}: ${valueModStr}`;
+                    return `${name}: ${valueModStr}`;
                 }
                 if (this.value != 0) {
-                    return `${this.name}: ${this.dieRoll} ${valueModStr}`;
+                    return `${name}: ${this.dieRoll} ${valueModStr}`;
                 }
                 else {
-                    return `${this.name}: ${this.dieRoll}`;
+                    return `${name}: ${this.dieRoll}`;
                 }
                 break;
             default:
-                return `${this.name}`;
+                return `${name}`;
         }
     }
 }
