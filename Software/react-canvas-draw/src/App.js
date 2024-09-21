@@ -5,7 +5,7 @@ import Canvas from './Components/Canvas';
 import Creature, { inflateCreature } from './Data/Creature';
 import EditPanel from './Components/EditPanel';
 import { parsePasteFromExcel } from './Utility/Parser';
-import CardListPanel from './Components/CardListPanel';
+import CharacterListPanel from './Components/CharacterListPanel';
 import Storage from './Utility/Storage';
 import { VERSION } from './Version';
 import { arrayRemove, isImage } from './Utility/Utility';
@@ -19,32 +19,32 @@ function App() {
     let setStorage = (s) => { storage = s; };
     const defaultStorage = () => new Storage();
     [storage, setStorage] = useState(defaultStorage);
-    //Card
-    let card = new Creature();
-    let setCard = (c) => {
-        card = c;
-        storage.cardList = cardList;
+    //Character
+    let character = new Character();
+    let setCharacter = (c) => {
+        character = c;
+        storage.characterList = characterList;
     };
-    const defaultCard = () => storage.cardList[0] ?? new Creature();
-    [card, setCard] = useState(defaultCard);
-    window.card = card;
-    let updateCard = (oldcard) => {
-        let newcard = JSON.parse(JSON.stringify(oldcard));
-        if (isImage(oldcard.imgPortrait)) {
-            newcard.imgPortrait = oldcard.imgPortrait;
+    const defaultCharacter = () => storage.characterList[0] ?? new Creature();
+    [character, setCharacter] = useState(defaultCharacter);
+    window.character = character;
+    let updateCharacter = (oldcharacter) => {
+        let newcharacter = JSON.parse(JSON.stringify(oldcharacter));
+        if (isImage(oldcharacter.imgPortrait)) {
+            newcharacter.imgPortrait = oldcharacter.imgPortrait;
         }
         inflateCreature(
-            newcard,
-            (c) => { if (c == card) { updateCard(c); } }
+            newcharacter,
+            (c) => { if (c == character) { updateCharacter(c); } }
         );
         //
-        if (cardList.includes(oldcard)) {
-            let index = cardList.indexOf(oldcard);
-            cardList.splice(index, 1, newcard);
+        if (characterList.includes(oldcharacter)) {
+            let index = characterList.indexOf(oldcharacter);
+            characterList.splice(index, 1, newcharacter);
         }
         //
-        setCard(newcard);
-        storage.cardList = cardList;
+        setCharacter(newcharacter);
+        storage.characterList = characterList;
     };
     //Paste String
     let pasteString = "";
@@ -58,32 +58,32 @@ function App() {
     const defaultAutoDownload = () => false;
     [autoDownload, setAutoDownload] = useState(defaultAutoDownload);
     let lastDownloadedIndex = -1;
-    //Card List
-    let cardList = [];
-    let setCardList = (list) => {
-        cardList = list;
-        storage.cardList = cardList;
-        window.cardList = cardList;
+    //Character List
+    let characterList = [];
+    let setCharacterList = (list) => {
+        characterList = list;
+        storage.characterList = characterList;
+        window.characterList = characterList;
     };
-    const defaultCardList = () => (storage.cardList.length > 0) ? storage.cardList : [card];
-    [cardList, setCardList] = useState(defaultCardList);
-    window.cardList = cardList;
+    const defaultCharacterList = () => (storage.characterList.length > 0) ? storage.characterList : [character];
+    [characterList, setCharacterList] = useState(defaultCharacterList);
+    window.characterList = characterList;
     //
     if (pasteString) {
-        let oldList = cardList;
-        cardList = parsePasteFromExcel(pasteString);
-        cardList.splice(0, 0, ...oldList);
-        if (cardList.length < 1) {
-            cardList.push(new Creature());
+        let oldList = characterList;
+        characterList = parsePasteFromExcel(pasteString);
+        characterList.splice(0, 0, ...oldList);
+        if (characterList.length < 1) {
+            characterList.push(new Creature());
         }
-        window.cardList = cardList;
+        window.characterList = characterList;
         //
         setAutoDownload(true);
         autoDownload = true;
-        for (let i = 0; i < cardList.length; i++) {
-            setCard(cardList[i]);
+        for (let i = 0; i < characterList.length; i++) {
+            setCharacter(characterList[i]);
         }
-        setCardList([...cardList]);
+        setCharacterList([...characterList]);
         setAutoDownload(false);
         setPasteString("");
     }
@@ -104,21 +104,21 @@ function App() {
     };
 
     useEffect(() => {
-        let cardName = card?.getNameText(true, false);
-        document.title = ((cardName) ? `${cardName} - ` : "") + `Creature Combat v${VERSION}`;
-    }, [card, cardList]);
+        let characterName = character?.getNameText(true, false);
+        document.title = ((characterName) ? `${characterName} - ` : "") + `Creature Combat v${VERSION}`;
+    }, [character, characterList]);
 
     return (
         <div className="App">
             <header className="App-header">
-                {/* <CardListPanel
-                    cardList={cardList}
-                    setCardList={setCardList}
-                    currentCard={card}
-                    setCard={setCard}
-                    updateCard={updateCard}
+                {/* <CharacterListPanel
+                    characterList={characterList}
+                    setCharacterList={setCharacterList}
+                    currentCharacter={character}
+                    setCharacter={setCharacter}
+                    updateCharacter={updateCharacter}
                     setPasteString={setPasteString}
-                ></CardListPanel> */}
+                ></CharacterListPanel> */}
                 <button onClick={
                     () => {
                         let values = [];
@@ -134,10 +134,10 @@ function App() {
                     character={"Tak Redwind"}
                 ></CharacterFrame>
                 <EditPanel
-                    card={card}
-                    cardList={cardList}
-                    setCard={setCard}
-                    updateCard={updateCard}
+                    character={character}
+                    characterList={characterList}
+                    setCharacter={setCharacter}
+                    updateCharacter={updateCharacter}
                     openPanel={openPanel}
                 ></EditPanel>
 
@@ -145,23 +145,23 @@ function App() {
                 {panelList.includes("ability") &&
                     <div className='editPanel overPanel'>
                         <button className='action' onClick={(e) => openPanel("ability", false)}>{"<- Back"}</button>
-                        {card.abilities.map((ability, i) => (
+                        {character.abilities.map((ability, i) => (
                             <AbilityPanel
                                 key={`_ability_${i}`}
                                 ability={ability}
                                 updateAbility={(a) => {
-                                    card.abilities[i] = a;
-                                    card.abilities = card.abilities.filter(a => a);
-                                    updateCard(card);
+                                    character.abilities[i] = a;
+                                    character.abilities = character.abilities.filter(a => a);
+                                    updateCharacter(character);
                                 }}
                             ></AbilityPanel>
                         ))}
 
                         {/* Add Button */}
-                        {card.abilities.length < 5 && (
+                        {character.abilities.length < 5 && (
                             <button className='action' onClick={() => {
-                                card.addAbility();
-                                updateCard(card);
+                                character.addAbility();
+                                updateCharacter(character);
                             }}>Add Ability</button>
                         )}
                     </div>
