@@ -385,6 +385,15 @@
     overflow-y: auto;
     height: 90%;
 }
+.characterContent h1{
+    font-size:xx-large;
+    padding: 0px;
+    margin:0px;
+}
+.characterContent h2{
+    font-size: large;
+    margin-bottom:5px;
+}
 
 .attributeContainer {
     display: block;
