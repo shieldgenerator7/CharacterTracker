@@ -376,3 +376,10 @@
     border: 1px solid black;
     background: rgb(71, 71, 71);
 }
+
+.rollResult {
+    display: inline;
+    background: rgb(71, 71, 71);
+    margin: 5px;
+    margin-left: 10px;
+}

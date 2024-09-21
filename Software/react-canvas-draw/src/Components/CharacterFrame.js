@@ -34,6 +34,12 @@ function CharacterFrame({ character, updateCharacter }) {
                     updateCharacter(character);
                 }}>New Attribute</button>
             }
+            {
+                character.dieRollLog?.length > 0 &&
+                character.dieRollLog.map(roll => 
+                    <span class="rollResult">{roll}</span>
+                )
+            }
         </div>
     );
 }

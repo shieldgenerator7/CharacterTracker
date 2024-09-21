@@ -15,6 +15,7 @@ class Character {
         this.consumableList = [];
 
         this.restList = [];//TOOD: implement rests
+        this.dieRollLog = [];
     }
 
 
@@ -45,4 +46,7 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     //         updateCharacter(character);
     //     }
     // }
+}
+export function backwardsCompatifyCharacter(character) {
+    character.dieRollLog ??= [];
 }

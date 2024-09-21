@@ -61,12 +61,20 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                                 onClick={
                                     () => {
                                         let value = rollDice(attribute.dieRoll || "1d20");
-                                        attribute.dievalue = value;
+                                        character.dieRollLog ??= [];
+                                        character.dieRollLog.push(value);
                                         updateCharacter(character);
                                     }
                                 }
+                                onContextMenu={
+                                    (e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        updateCharacter(character);
+                                        return false;
+                                    }
+                                }
                             >{`${attribute.getDisplayText()}`}</button>
-                            {attribute.dievalue}
                         </span>
                     }
                     {
