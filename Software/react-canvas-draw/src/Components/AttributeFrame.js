@@ -24,7 +24,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         className={"editText"}
                     ></Field>
                     <Field
-                        name={"Display Name"}
+                        name={"Display"}
                         value={attribute.displayName}
                         setValue={(value) => {
                         attribute.displayName = value;
@@ -33,7 +33,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         className={"editTextShort"}
                     ></Field>
                     <Field
-                        name={"Value"}
+                        name={"Val"}
                         value={attribute.value}
                         setValue={(value) => {
                         attribute.value = value;
@@ -57,7 +57,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         attribute.dieRoll = value;
                         updateCharacter(character);
                         }}
-                        className={"editNumber"}
+                        className={"editTextShort"}
                     ></Field>
             </div>
         );
