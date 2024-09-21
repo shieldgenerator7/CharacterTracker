@@ -4,6 +4,8 @@
 
 import Attribute from "../Data/Character";
 import { rollDice } from "../Data/DiceRoller";
+import { clamp } from "../Utility/Utility";
+import Counter from "./Counter";
 
 function AttributeFrame({ attribute, character, updateCharacter }) {
     console.log("attribute.dievalue", attribute.dievalue);
@@ -36,6 +38,24 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
             {
                 !character.editAttributes &&
                 <span>
+                    {attribute.max > 0 &&
+                        <span>
+                            {attribute.getDisplayText()}
+                            <Counter
+                                value={attribute.value}
+                                setValue={(v) => {
+                                    attribute.value = clamp(v, 0, attribute.max);
+                                    updateCharacter(character);
+                                }}
+                                allowNegative={false}
+                                inline={true}
+                                min={0}
+                                max={attribute.max}
+                            ></Counter>
+                        </span>
+                    }
+                        {!(attribute.max > 0) && attribute.dieRoll &&
+                            <span>
                     <button onClick={
                         () => {
                             let value = rollDice(attribute.dieRoll || "1d20");
@@ -44,6 +64,8 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         }
                     }>{`${attribute.getDisplayText()}`}</button>
                     {attribute.dievalue}
+                            </span>
+                        }
                 </span>
             }
         </div>
