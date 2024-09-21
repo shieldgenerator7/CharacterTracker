@@ -55,18 +55,20 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                             ></Counter>
                         </span>
                     }
-                        {!(attribute.max > 0) && attribute.dieRoll &&
-                            <span>
-                    <button className={ "plusMinus"} onClick={
-                        () => {
-                            let value = rollDice(attribute.dieRoll || "1d20");
-                            attribute.dievalue = value;
-                            updateCharacter(character);
-                        }
-                    }>{`${attribute.getDisplayText()}`}</button>
-                    {attribute.dievalue}
-                            </span>
-                        }
+                    {!(attribute.max > 0) && attribute.dieRoll &&
+                        <span>
+                            <button className={"plusMinus"}
+                                onClick={
+                                    () => {
+                                        let value = rollDice(attribute.dieRoll || "1d20");
+                                        attribute.dievalue = value;
+                                        updateCharacter(character);
+                                    }
+                                }
+                            >{`${attribute.getDisplayText()}`}</button>
+                            {attribute.dievalue}
+                        </span>
+                    }
                     {
                         attribute.OnClickType == ONCLICK_TOGGLE &&
                         <span>

@@ -17,7 +17,7 @@ function Counter({ value, setValue, allowNegative = false, inline = false, max =
         //
         const regex = /[0-9]*/;
         return [...v].map(c => {
-            return regex.test(c)
+            return regex.test(c);
         }).every(c => c);
     }
     //
@@ -35,12 +35,12 @@ function Counter({ value, setValue, allowNegative = false, inline = false, max =
     return (
         <div className={`counter ${(inline) ? "inline" : ""}`}>
             {!label &&
-            <input type="text" inputMode="numeric" onChange={(e) => {
-                let v = e.target.value * 1;
-                if (!valueAcceptable(v)) { return; }
-                set(v);
-            }}
-                value={`${value}`}></input>
+                <input type="text" inputMode="numeric" onChange={(e) => {
+                    let v = e.target.value * 1;
+                    if (!valueAcceptable(v)) { return; }
+                    set(v);
+                }}
+                    value={`${value}`}></input>
             }
             <button className="plusMinus"
                 onClick={(e) => {
@@ -52,7 +52,7 @@ function Counter({ value, setValue, allowNegative = false, inline = false, max =
                     set((value * 1) - increment);
                 }}
             >
-                {label||"+ -"}
+                {label || "+ -"}
             </button>
         </div>
     );
