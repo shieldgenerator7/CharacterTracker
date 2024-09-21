@@ -352,13 +352,8 @@
     color: white;
     background: rgb(71, 71, 71);
     font-size: large;
-    border-radius: 10px;
+    border-radius: 7px;
     padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    /* margin: 5px;
-    margin-right: 10px;
-    margin-left: 0px; */
     border: none;
 }
 
