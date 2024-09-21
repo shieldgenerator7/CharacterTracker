@@ -120,8 +120,13 @@ function App() {
                 ></CardListPanel>
                 <button onClick={
                     () => {
-                        let value = rollDice("2d8");
-                        console.log("die roll", value);
+                        let values = [];
+                        for (let i = 0; i < 50; i++) {
+                            let value = rollDice("2d8");
+                            values.push(value);
+                        }
+                        values = values.sort((a,b)=>a-b);
+                        console.log("die roll", values);
                     }
                 }>Roll die</button>
                 <Canvas
