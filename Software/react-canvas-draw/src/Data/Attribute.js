@@ -41,14 +41,18 @@ class Attribute {
         switch (this.OnClickType) {
             case ONCLICK_ADJUST_VALUE:
                 if (this.max > 0) {
-                    return `${this.name} - ${this.value}/${this.max}`;
+                    return `${this.name}: ${this.value}/${this.max}`;
                 }
                 else {
-                    return `${this.name} - ${this.value}`;
+                    return `${this.name}: ${this.value}`;
                 }
                 break;
             case ONCLICK_DIE_ROLL:
-                return `${this.name} - ${this.dieRoll}`;
+                let valueModStr = ((this.value > 0) ? "+" : "")+this.value;
+                if (this.dieRoll == "1d20" || this.dieRoll == "d20") {
+                    return `${this.name}: ${valueModStr}`;
+                }
+                return `${this.name}: ${this.dieRoll} ${valueModStr}`;
                 break;
             default:
                 return `${this.name}`;
