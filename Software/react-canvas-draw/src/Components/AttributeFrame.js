@@ -61,6 +61,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                                 onClick={
                                     () => {
                                         let value = rollDice(attribute.dieRoll || "1d20");
+                                        value += attribute.value * 1;
                                         character.dieRollLog ??= [];
                                         character.dieRollLog.push(value);
                                         updateCharacter(character);
