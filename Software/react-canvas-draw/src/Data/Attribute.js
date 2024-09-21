@@ -22,6 +22,7 @@ class Attribute {
         if (this.dieRoll) {
             return `${this.name} - ${this.dieRoll}`;
         }
+        return `${this.name}`;
     }
 }
 export default Attribute;
