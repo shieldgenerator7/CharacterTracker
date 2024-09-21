@@ -14,14 +14,14 @@
 }
 
 .App-header {
-    background-color: #282c34;
+    background-color: #5f5e53;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: top;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: black;
 }
 
 .App-link {
@@ -349,31 +349,34 @@
 }
 
 .plusMinus {
-    color: white;
-    background: rgb(71, 71, 71);
-    font-size:medium;
+    /* color: black; */
+    font-size:large;
     padding: 5px;
     border: none;
-    border-bottom: 1px solid rgb(155, 155, 155);
+    border-bottom: 1px solid rgb(37, 37, 37);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: #cebd90;
 }
 
 .plusMinus:hover {
     color: black;
-    background-color: white;
+    background: #ffeec1;
     border-radius: 7px;
     border-bottom: none;
 }
 
 .characterFrame {
     display: inline;
-    border: 1px solid black;
-    background: rgb(71, 71, 71);
+    border: 5px solid #38362f;
+    /* background: #f5eac9; */
+    background: #cebd90;
     width: 425px;
     height: 700px;
-    border: 3px solid black;
     border-radius: 25px;
     padding: 15px;
     overflow-y: auto;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-shadow: 10px 25px 15px rgb(66, 66, 66);
 }
 
 .attributeContainer {
@@ -407,7 +410,6 @@
 
 .rollResult {
     display: inline;
-    background: rgb(71, 71, 71);
     margin: 5px;
     margin-left: 10px;
 }
