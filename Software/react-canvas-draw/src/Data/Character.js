@@ -1,5 +1,7 @@
 "use strict";
 
+import { inflateAttribute } from "./Attribute";
+
 class Character{
     constructor(name) {
         this.name = name;
@@ -25,6 +27,10 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     // character.biomeModifiers.forEach(bm => {
     //     Object.setPrototypeOf(bm, BiomeModifier.prototype);
     // });
+    character.attributeList = character.attributeList.filter(a => a);
+    character.attributeList.forEach(attribute => {
+        inflateAttribute(attribute);
+    });
     character.abilityList = character.abilityList.filter(a => a);
     character.abilityList.forEach(ability => {
         // inflateAbility(ability);

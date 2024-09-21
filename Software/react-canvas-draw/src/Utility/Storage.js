@@ -1,5 +1,6 @@
 "use strict";
 
+import { inflateCharacter } from "../Data/Character";
 import { backwardsCompatifyCreature, inflateCreature } from "../Data/Creature";
 import { backwardsCompatifyDeck, inflateDeck } from "../Data/Deck";
 
@@ -46,6 +47,10 @@ class Storage {
         //
         this.backwardsCompatifyStorage(this.storage);
         //
+        this.storage.characterList.forEach(character => {
+            inflateCharacter(character);
+            // backwardsCompatifyCharacter(character);
+        });
         this.storage.cardList.forEach(card => {
             inflateCreature(card);
             backwardsCompatifyCreature(card);

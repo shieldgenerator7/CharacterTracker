@@ -25,3 +25,7 @@ class Attribute{
     }
 }
 export default Attribute;
+
+export function inflateAttribute(attribute) {
+    Object.setPrototypeOf(attribute, Attribute.prototype);
+}
