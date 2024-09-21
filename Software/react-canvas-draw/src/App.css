@@ -351,15 +351,17 @@
 .plusMinus {
     color: white;
     background: rgb(71, 71, 71);
-    font-size: large;
-    border-radius: 7px;
+    font-size:medium;
     padding: 5px;
     border: none;
+    border-bottom: 1px solid rgb(155, 155, 155);
 }
 
 .plusMinus:hover {
     color: black;
     background-color: white;
+    border-radius: 7px;
+    border-bottom: none;
 }
 
 .characterFrame {
@@ -380,8 +382,8 @@
 
 .attributeFrame {
     display: inline;
-    background: rgb(71, 71, 71);
     margin-left: 0px;
+    padding: 3px;
 }
 
 .attributeFrameEdit {
