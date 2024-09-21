@@ -19,6 +19,11 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         attribute.name = value;
                         updateCharacter(character);
                     }} value={attribute.name}></input>
+                    <input type="text" className="editTextShort" onChange={(e) => {
+                        let value = e.target.value;
+                        attribute.displayName = value;
+                        updateCharacter(character);
+                    }} value={attribute.displayName}></input>
                     <input type="text" className="editNumber" onChange={(e) => {
                         let value = e.target.value;
                         attribute.value = value;
