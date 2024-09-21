@@ -409,3 +409,21 @@
     margin: 5px;
     margin-left: 10px;
 }
+
+.field{
+    display: inline;
+    line-height: 0px;
+    overflow: hidden;
+}
+.field label{
+    display:block;
+    font-size: small;
+    margin-bottom: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.field input{
+    margin-top: 0px;
+    margin: 0px;
+    padding: 0px;
+}/**/
