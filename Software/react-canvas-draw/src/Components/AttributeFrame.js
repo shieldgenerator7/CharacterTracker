@@ -14,56 +14,55 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
     if (character.editAttributes) {
         return (
             <div className="attributeFrameEdit">
-                    <Field
-                        name={"Attribute"}
-                        value={attribute.name}
-                        setValue={(value) => {
+                <Field
+                    name={"Attribute"}
+                    value={attribute.name}
+                    setValue={(value) => {
                         attribute.name = value;
                         updateCharacter(character);
-                        }}
-                        className={"editText"}
-                    ></Field>
-                    <Field
-                        name={"Display"}
-                        value={attribute.displayName}
-                        setValue={(value) => {
+                    }}
+                    className={"editText"}
+                ></Field>
+                <Field
+                    name={"Display"}
+                    value={attribute.displayName}
+                    setValue={(value) => {
                         attribute.displayName = value;
                         updateCharacter(character);
-                        }}
-                        className={"editTextShort"}
-                    ></Field>
-                    <Field
-                        name={"Val"}
-                        value={attribute.value}
-                        setValue={(value) => {
+                    }}
+                    className={"editTextShort"}
+                ></Field>
+                <Field
+                    name={"Val"}
+                    value={attribute.value}
+                    setValue={(value) => {
                         attribute.value = value;
                         updateCharacter(character);
-                        }}
-                        className={"editNumber"}
-                    ></Field>
-                    <Field
-                        name={"Max"}
-                        value={attribute.max}
-                        setValue={(value) => {
+                    }}
+                    className={"editNumber"}
+                ></Field>
+                <Field
+                    name={"Max"}
+                    value={attribute.max}
+                    setValue={(value) => {
                         attribute.max = value;
                         updateCharacter(character);
-                        }}
-                        className={"editNumber"}
-                    ></Field>
-                    <Field
-                        name={"Die Roll"}
-                        value={attribute.dieRoll}
-                        setValue={(value) => {
+                    }}
+                    className={"editNumber"}
+                ></Field>
+                <Field
+                    name={"Die Roll"}
+                    value={attribute.dieRoll}
+                    setValue={(value) => {
                         attribute.dieRoll = value;
                         updateCharacter(character);
-                        }}
-                        className={"editTextShort"}
-                    ></Field>
+                    }}
+                    className={"editTextShort"}
+                ></Field>
             </div>
         );
-            }
-    else
-            {
+    }
+    else {
         return (
             <div className="attributeFrame">
                 <span>
@@ -113,8 +112,8 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         </span>
                     }
                 </span>
-        </div>
-    );
+            </div>
+        );
     }
 }
 export default AttributeFrame;

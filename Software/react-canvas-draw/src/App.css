@@ -359,7 +359,7 @@
     /* margin: 5px;
     margin-right: 10px;
     margin-left: 0px; */
-    border:none;
+    border: none;
 }
 
 .plusMinus:hover {
@@ -379,8 +379,8 @@
     overflow-y: auto;
 }
 
-.attributeContainer{
-    display:block;
+.attributeContainer {
+    display: block;
 }
 
 .attributeFrame {
@@ -395,12 +395,14 @@
     margin-top: 10px;
 }
 
-.editText{
+.editText {
     width: 100px;
 }
-.editTextShort{
+
+.editTextShort {
     width: 50px;
 }
+
 .editNumber {
     width: 30px;
     text-align: right;
@@ -413,14 +415,16 @@
     margin-left: 10px;
 }
 
-.field{
+.field {
     display: flex;
     flex-direction: column;
     margin-right: 5px;
 }
-.field label{
+
+.field label {
     font-size: small;
 }
-.field input{
+
+.field input {
     font-size: medium;
 }

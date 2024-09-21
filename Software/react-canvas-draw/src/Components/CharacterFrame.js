@@ -10,17 +10,17 @@ function CharacterFrame({ character, updateCharacter }) {
         <div className="characterFrame">
             {character.name}
             <div className={"attributeContainer"}>
-            {
-                character.attributeList.map((attr, i) => (
-                    <AttributeFrame
-                        attribute={attr}
-                        character={character}
-                        updateCharacter={updateCharacter}
-                        key={`character_attribute_${i}`}
-                    ></AttributeFrame>
-                ))
-            }
-                </div>
+                {
+                    character.attributeList.map((attr, i) => (
+                        <AttributeFrame
+                            attribute={attr}
+                            character={character}
+                            updateCharacter={updateCharacter}
+                            key={`character_attribute_${i}`}
+                        ></AttributeFrame>
+                    ))
+                }
+            </div>
             <button onClick={(e) => {
                 let attr = new Attribute("attr");
                 character.editAttributes = !character.editAttributes;
