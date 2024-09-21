@@ -41,7 +41,6 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                 <span>
                     {attribute.max > 0 &&
                         <span>
-                            {attribute.getDisplayText()}
                             <Counter
                                 value={attribute.value}
                                 setValue={(v) => {
@@ -52,6 +51,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                                 inline={true}
                                 min={0}
                                 max={attribute.max}
+                                label={attribute.getDisplayText()}
                             ></Counter>
                         </span>
                     }
