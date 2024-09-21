@@ -45,18 +45,18 @@ function App() {
         setCharacter(newcharacter);
         storage.characterList = characterList;
     };
-    //Paste String
-    let pasteString = "";
-    let setPasteString = (s) => { pasteString = s; };
-    const defaultPasteString = () => "";
-    [pasteString, setPasteString] = useState(defaultPasteString);
-    window.pasteString = pasteString;
-    //Autodownload
-    let autoDownload = false;
-    let setAutoDownload = (b) => { autoDownload = b; };
-    const defaultAutoDownload = () => false;
-    [autoDownload, setAutoDownload] = useState(defaultAutoDownload);
-    let lastDownloadedIndex = -1;
+    // //Paste String
+    // let pasteString = "";
+    // let setPasteString = (s) => { pasteString = s; };
+    // const defaultPasteString = () => "";
+    // [pasteString, setPasteString] = useState(defaultPasteString);
+    // window.pasteString = pasteString;
+    // //Autodownload
+    // let autoDownload = false;
+    // let setAutoDownload = (b) => { autoDownload = b; };
+    // const defaultAutoDownload = () => false;
+    // [autoDownload, setAutoDownload] = useState(defaultAutoDownload);
+    // let lastDownloadedIndex = -1;
     //Character List
     let characterList = [];
     let setCharacterList = (list) => {
@@ -67,40 +67,40 @@ function App() {
     const defaultCharacterList = () => (storage.characterList.length > 0) ? storage.characterList : [character];
     [characterList, setCharacterList] = useState(defaultCharacterList);
     window.characterList = characterList;
-    //
-    if (pasteString) {
-        let oldList = characterList;
-        characterList = parsePasteFromExcel(pasteString);
-        characterList.splice(0, 0, ...oldList);
-        if (characterList.length < 1) {
-            characterList.push(new Creature());
-        }
-        window.characterList = characterList;
-        //
-        setAutoDownload(true);
-        autoDownload = true;
-        for (let i = 0; i < characterList.length; i++) {
-            setCharacter(characterList[i]);
-        }
-        setCharacterList([...characterList]);
-        setAutoDownload(false);
-        setPasteString("");
-    }
-    //Panel List
-    let panelList = [];
-    let setPanelList = (list) => { panelList = list; };
-    [panelList, setPanelList] = useState([]);
-    const openPanel = (panel, open) => {
-        if (open) {
-            if (!panelList.includes(panel)) {
-                panelList.push(panel);
-            }
-        }
-        else {
-            arrayRemove(panelList, panel);
-        }
-        setPanelList([...panelList]);
-    };
+    // //
+    // if (pasteString) {
+    //     let oldList = characterList;
+    //     characterList = parsePasteFromExcel(pasteString);
+    //     characterList.splice(0, 0, ...oldList);
+    //     if (characterList.length < 1) {
+    //         characterList.push(new Creature());
+    //     }
+    //     window.characterList = characterList;
+    //     //
+    //     setAutoDownload(true);
+    //     autoDownload = true;
+    //     for (let i = 0; i < characterList.length; i++) {
+    //         setCharacter(characterList[i]);
+    //     }
+    //     setCharacterList([...characterList]);
+    //     setAutoDownload(false);
+    //     setPasteString("");
+    // }
+    // //Panel List
+    // let panelList = [];
+    // let setPanelList = (list) => { panelList = list; };
+    // [panelList, setPanelList] = useState([]);
+    // const openPanel = (panel, open) => {
+    //     if (open) {
+    //         if (!panelList.includes(panel)) {
+    //             panelList.push(panel);
+    //         }
+    //     }
+    //     else {
+    //         arrayRemove(panelList, panel);
+    //     }
+    //     setPanelList([...panelList]);
+    // };
 
     // useEffect(() => {
     //     let characterName = character?.getNameText(true, false);
