@@ -11,6 +11,8 @@ class Storage {
     constructor() {
         this.storageName = "CreatureCombat_CardList";
         this.storage = {
+            //list of all characters
+            characterList: [],//TODO: just store the game
             //list of all cards this player has
             cardList: [],
             //list of decks this player has
@@ -61,6 +63,9 @@ class Storage {
         }
     }
 
+    get characterList() {
+        return this.storage.characterList;
+    }
     get cardList() {
         return this.storage.cardList;
     }

@@ -1,17 +1,16 @@
 import logo from './logo.png';
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import Canvas from './Components/Canvas';
 import Creature, { inflateCreature } from './Data/Creature';
 import EditPanel from './Components/EditPanel';
 import { parsePasteFromExcel } from './Utility/Parser';
-import CharacterListPanel from './Components/CharacterListPanel';
 import Storage from './Utility/Storage';
 import { VERSION } from './Version';
 import { arrayRemove, isImage } from './Utility/Utility';
 import AbilityPanel from './Components/AbilityPanel';
 import { rollDice } from './Data/DiceRoller';
 import CharacterFrame from './Components/CharacterFrame';
+import Character from './Data/Character';
 
 function App() {
     //Storage
@@ -25,7 +24,7 @@ function App() {
         character = c;
         storage.characterList = characterList;
     };
-    const defaultCharacter = () => storage.characterList[0] ?? new Creature();
+    const defaultCharacter = () => storage.characterList[0] ?? new Character();
     [character, setCharacter] = useState(defaultCharacter);
     window.character = character;
     let updateCharacter = (oldcharacter) => {
@@ -103,22 +102,14 @@ function App() {
         setPanelList([...panelList]);
     };
 
-    useEffect(() => {
-        let characterName = character?.getNameText(true, false);
-        document.title = ((characterName) ? `${characterName} - ` : "") + `Creature Combat v${VERSION}`;
-    }, [character, characterList]);
+    // useEffect(() => {
+    //     let characterName = character?.getNameText(true, false);
+    //     document.title = ((characterName) ? `${characterName} - ` : "") + `Creature Combat v${VERSION}`;
+    // }, [character, characterList]);
 
     return (
         <div className="App">
             <header className="App-header">
-                {/* <CharacterListPanel
-                    characterList={characterList}
-                    setCharacterList={setCharacterList}
-                    currentCharacter={character}
-                    setCharacter={setCharacter}
-                    updateCharacter={updateCharacter}
-                    setPasteString={setPasteString}
-                ></CharacterListPanel> */}
                 <button onClick={
                     () => {
                         let values = [];
@@ -133,39 +124,6 @@ function App() {
                 <CharacterFrame
                     character={"Tak Redwind"}
                 ></CharacterFrame>
-                <EditPanel
-                    character={character}
-                    characterList={characterList}
-                    setCharacter={setCharacter}
-                    updateCharacter={updateCharacter}
-                    openPanel={openPanel}
-                ></EditPanel>
-
-                {/* Ability Panel */}
-                {panelList.includes("ability") &&
-                    <div className='editPanel overPanel'>
-                        <button className='action' onClick={(e) => openPanel("ability", false)}>{"<- Back"}</button>
-                        {character.abilities.map((ability, i) => (
-                            <AbilityPanel
-                                key={`_ability_${i}`}
-                                ability={ability}
-                                updateAbility={(a) => {
-                                    character.abilities[i] = a;
-                                    character.abilities = character.abilities.filter(a => a);
-                                    updateCharacter(character);
-                                }}
-                            ></AbilityPanel>
-                        ))}
-
-                        {/* Add Button */}
-                        {character.abilities.length < 5 && (
-                            <button className='action' onClick={() => {
-                                character.addAbility();
-                                updateCharacter(character);
-                            }}>Add Ability</button>
-                        )}
-                    </div>
-                }
             </header>
         </div>
     );
