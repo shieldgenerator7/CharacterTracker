@@ -1,0 +1,69 @@
+Creature Combat FAQ
+
+-   Does Ward stop triggered abilities?
+    -   Ward X cancels the targeted ability unless the targeter pays Exhaust X
+    -   Triggered abilities don’t target when using the “triggering” option
+    -   No, Ward does not stop triggered abilities that use the “triggering" option
+-   Does Move trigger Ambush, Greeting, Battlecry?
+    -   Ambush, Greeting, Battlecry trigger when a creature is played
+    -   Moving a creature isn’t playing it
+    -   No, Move does not trigger Ambush, Greeting, Battlecry
+-   My ability doesn’t have a cost or trigger, and doesn’t have Once. How many times can I use it?
+    -   As many times as you want
+    -   However, each creature can only have 1 ability in the stack
+    -   Once you use a creature’s ability, you have to wait for the stack to fully resolve before you can use one of their abilities again
+-   My creature has more than 1 ability. Can I use them both?
+    -   Yes, you can use them both
+    -   However, each creature can only have 1 ability in the stack
+    -   If your creature used an ability this stack (moment?), you must wait for the moment to pass before activating or triggering any of their abilities
+-   My creature has a triggered ability. When does that trigger?
+    -   It triggers whenever the conditions are met and you mention the trigger.
+    -   If you do not mention the trigger, and the opportunity passes, the ability does not trigger. This is ok, and not a breach of the rules
+    -   You can choose to ignore a trigger, and not mention it, even when relevant
+    -   However, if another player mentions a trigger on one of your creatures, that creature must trigger its ability
+    -   However, that creature can only do so if they haven’t used an ability yet during this moment.
+-   My creature’s ability has an Exhaust cost, and has positive base power, but its base power is lower than the Exhaust cost. Can I still activate it?
+    -   You must pay the Exhaust cost exactly
+    -   If your base power is lower than your Exhaust cost, you can not activate the ability
+    -   However, You may activate it if your base power exactly matches your Exhaust cost
+-   Does “all creatures” include the creatures in my hand and at other lands?
+    -   “All creatures” means everything in play at the current land
+    -   Creatures at another land do not count
+    -   Creatures in your hand do not count
+    -   Creatures also don’t count if theyre in your deploy zone, ready pile, returning pile, resting pile
+-   Whats the hand size limit?
+    -   There is no hand size limit
+-   Is the ready pile part of my hand?
+    -   No, only the cards you assigned to this land in the deploy zone become your hand
+-   Does 0 damage trigger Channel?
+    -   An ability with Channel gets canceled when the creature takes damage before they can do its effect
+    -   Taking 0 damage is effectively the same as not taking damage
+    -   No, 0 damage does not cancel Channeled abilities
+-   Does Exhaust trigger Channeled?
+    -   Exhaust counts as damage for the purpose of Channeled
+    -   You pay costs before adding the ability to the moment
+    -   Channeled comes into effect once the ability is in the moment
+    -   No, under normal circumstances, Exhaust does not cancel Channeled ability
+-   Does Ward trigger Channeled?
+    -   Paying the Exhaust cost of Ward counts as damage
+    -   Ward is a triggered keyword
+    -   When triggered, the triggerer must pay the Exhaust cost
+    -   If they do, and the ability has channel, if the Exhaust cost is greater than 0, then that damage cancels the Channeled ability
+    -   Yes, Ward cancels the Channeled ability
+-   My creature already has an ability in the moment. Can it still trigger Ward?
+    -   Ward is a passive trigger
+    -   Yes, you can still trigger Ward if your creature already has an ability in the moment
+    -   Yes, you can still activate/trigger an ability if your creature already triggered Ward in the current moment
+-   Does Block reduce damage from Exhaust?
+    -   Block X reduces incoming damage by X
+    -   Exhaust X reduces base power by X, and is technically damage
+    -   Exhaust is a cost, not an external source of damage
+    -   No, Block does not reduce damage from paying Exhaust costs
+    -   No, Block does not reduce damage from paying for Ward Exhaust costs
+-   Can I activate abilities of creatures in my hand?
+    -   Only creatures at the current land can activate abilities
+    -   No, you cannot activate abilities of creatures in your hand
+    -   However, you can play the creature, and once it is at the land, you can activate its abilities
+-   My creature has 0 base power. Can I still use its abilities?
+    -   A creature with 0 base power has 0 total power, Irregardless of its biome modifiers
+    -   Yes, you can still use the abilities of a creature, even if it has 0 base power
