@@ -380,20 +380,22 @@
 
 .characterContent {
     padding: 10px;
-    padding-top:15px;
-    overflow-x:hidden;
-    overflow-wrap:anywhere;
+    padding-top: 15px;
+    overflow-x: hidden;
+    overflow-wrap: anywhere;
     overflow-y: auto;
     height: 90%;
 }
-.characterContent h1{
-    font-size:xx-large;
+
+.characterContent h1 {
+    font-size: xx-large;
     padding: 0px;
-    margin:0px;
+    margin: 0px;
 }
-.characterContent h2{
+
+.characterContent h2 {
     font-size: large;
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
 .attributeContainer {
@@ -426,8 +428,8 @@
 }
 
 .rollResult {
-    display:inline-flex;
-    margin:5px;
+    display: inline-flex;
+    margin: 5px;
     width: 30px;
     text-align: center;
     justify-content: center;
@@ -473,6 +475,6 @@
     border-radius: 12px;
 }
 
-.diceRollLog{
+.diceRollLog {
     line-height: 50px;
 }
