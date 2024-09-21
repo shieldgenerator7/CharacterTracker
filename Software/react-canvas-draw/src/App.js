@@ -110,10 +110,15 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
+                {
+                    characterList.map(char => (
                 <CharacterFrame
-                    character={character}
-                    updateCharacter={updateCharacter}
+                    character={char}
+                    updateCharacter={(c)=>updateCharacter(c)}
                 ></CharacterFrame>
+                    ))
+                }
+                
             </header>
         </div>
     );
