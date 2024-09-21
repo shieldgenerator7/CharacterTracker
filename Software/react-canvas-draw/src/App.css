@@ -360,5 +360,13 @@
 }
 
 .characterFrame{
-    left: 0px;
+    display: block;
+    border: 1px solid black;
+    background: rgb(71, 71, 71);
+}
+
+.attributeFrame{
+    display: block;
+    border: 1px solid black;
+    background: rgb(71, 71, 71);
 }

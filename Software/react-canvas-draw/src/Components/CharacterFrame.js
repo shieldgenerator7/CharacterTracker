@@ -1,32 +1,30 @@
 "use strict";
 
+import Attribute from "../Data/Attribute";
 import Character from "../Data/Character";
 import { rollDice } from "../Data/DiceRoller";
+import AttributeFrame from "./AttributeFrame";
 
 function CharacterFrame({ character, updateCharacter }) {
     console.log("character.dievalue", character.dievalue );
     return (
         <div className="characterFrame">
             {character.name}
-            <input type="text" onChange={(e) => {
-                let value = e.target.value;
-                character.dieroll = value;
+            {
+                character.attributeList.map((attr,i) => (
+                    <AttributeFrame
+                        attribute={attr}
+                        character={character}
+                        updateCharacter={updateCharacter}
+                        key={`character_attribute_${i}`}
+                    ></AttributeFrame>
+                ))
+            }
+            <button onClick={(e) => {
+                let attr = new Attribute("attr");
+                character.attributeList.push(attr);
                 updateCharacter(character);
-            }}></input>
-            <button onClick={
-                    () => {
-                        let values = [];
-                        for (let i = 0; i < 5; i++) {
-                            let value = rollDice(character.dieroll || "1d20");
-                            values.push(value);
-                        }
-                        // values = values.sort((a, b) => a - b);
-                        character.dievalue = values[0];
-                        updateCharacter(character);
-                        console.log("die roll", values, character.dievalue );
-                    }
-                }>Roll die</button>
-            {character.dievalue}
+            }}>New Attribute</button>
         </div>
     );
 }
