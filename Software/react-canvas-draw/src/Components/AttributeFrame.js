@@ -10,12 +10,22 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
     return (
         <div className="attributeFrame">
             {character.editAttributes &&
+                <span>
+                    <input type="text" onChange={(e) => {
+                        let value = e.target.value;
+                        attribute.name = value;
+                        updateCharacter(character);
+                    }} value={attribute.name}></input>
                 <input type="text" onChange={(e) => {
                     let value = e.target.value;
                     attribute.dieRoll = value;
                     updateCharacter(character);
                 }} value={attribute.dieRoll}></input>
+                </span>
             }
+            {
+                !character.editAttributes &&
+                <span>
             <button onClick={
                     () => {
                         let values = [];
@@ -28,8 +38,10 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         updateCharacter(character);
                         console.log("die roll", values, attribute.dievalue );
                     }
-                }>Roll die</button>
+                }>{`${attribute.name} - ${attribute.dieRoll}`}</button>
             {attribute.dievalue}
+                </span>
+            }
         </div>
     );
 }
