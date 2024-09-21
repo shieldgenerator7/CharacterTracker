@@ -7,39 +7,58 @@ import { ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/
 import { rollDice } from "../Data/DiceRoller";
 import { clamp } from "../Utility/Utility";
 import Counter from "./Counter";
+import Field from "./Field";
 
 function AttributeFrame({ attribute, character, updateCharacter }) {
     let onClickType = attribute.OnClickType;
     if (character.editAttributes) {
         return (
             <div className="attributeFrameEdit">
-                <span>
-                    <input type="text" className="editText" onChange={(e) => {
-                        let value = e.target.value;
+                    <Field
+                        name={"Attribute"}
+                        value={attribute.name}
+                        setValue={(value) => {
                         attribute.name = value;
                         updateCharacter(character);
-                    }} value={attribute.name}></input>
-                    <input type="text" className="editTextShort" onChange={(e) => {
-                        let value = e.target.value;
+                        }}
+                        className={"editText"}
+                    ></Field>
+                    <Field
+                        name={"Display Name"}
+                        value={attribute.displayName}
+                        setValue={(value) => {
                         attribute.displayName = value;
                         updateCharacter(character);
-                    }} value={attribute.displayName}></input>
-                    <input type="text" className="editNumber" onChange={(e) => {
-                        let value = e.target.value;
+                        }}
+                        className={"editTextShort"}
+                    ></Field>
+                    <Field
+                        name={"Value"}
+                        value={attribute.value}
+                        setValue={(value) => {
                         attribute.value = value;
                         updateCharacter(character);
-                    }} value={attribute.value}></input>
-                    <input type="text" className="editNumber" onChange={(e) => {
-                        let value = e.target.value;
+                        }}
+                        className={"editNumber"}
+                    ></Field>
+                    <Field
+                        name={"Max"}
+                        value={attribute.max}
+                        setValue={(value) => {
                         attribute.max = value;
                         updateCharacter(character);
-                    }} value={attribute.max}></input>
-                    <input type="text" className="editTextShort" onChange={(e) => {
-                        let value = e.target.value;
+                        }}
+                        className={"editNumber"}
+                    ></Field>
+                    <Field
+                        name={"Die Roll"}
+                        value={attribute.dieRoll}
+                        setValue={(value) => {
                         attribute.dieRoll = value;
                         updateCharacter(character);
-                    }} value={attribute.dieRoll}></input>
-                </span>
+                        }}
+                        className={"editNumber"}
+                    ></Field>
             </div>
         );
             }
