@@ -1,5 +1,8 @@
 "use strict";
 
+export const VERSION = "0.001";
+
+
 export const ONCLICK_ADJUST_VALUE = 0;
 export const ONCLICK_DIE_ROLL = 1;
 export const ONCLICK_TOGGLE = 2;
