@@ -34,7 +34,7 @@ function CharacterFrame({ character, updateCharacter }) {
                 }}>New Attribute</button>
             }
             {
-                character.dieRollLog?.length > 0 &&
+                !character.editAttributes && character.dieRollLog?.length > 0 &&
                 <span>
                         <button onClick={() => { 
                             character.dieRollLog = [];
