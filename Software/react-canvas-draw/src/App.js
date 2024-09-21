@@ -10,6 +10,7 @@ import Storage from './Utility/Storage';
 import { VERSION } from './Version';
 import { arrayRemove, isImage } from './Utility/Utility';
 import AbilityPanel from './Components/AbilityPanel';
+import { rollDice } from './Data/DiceRoller';
 
 function App() {
     //Storage
@@ -117,6 +118,12 @@ function App() {
                     updateCard={updateCard}
                     setPasteString={setPasteString}
                 ></CardListPanel>
+                <button onClick={
+                    () => {
+                        let value = rollDice("2d8");
+                        console.log("die roll", value);
+                    }
+                }>Roll die</button>
                 <Canvas
                     card={card}
                     autoDownload={autoDownload}
