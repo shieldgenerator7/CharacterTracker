@@ -12,5 +12,16 @@ class Attribute{
         this.dieRoll = undefined;//"d20", "2d8"
         this.visible = true;
     }
+
+    getDisplayText() {
+        //type: limited resource
+        if (this.max > 0) {
+            return `${this.name} - ${this.value}/${this.max}`;
+        }
+        //type: die roll
+        if (this.dieRoll) {
+            return `${this.name} - ${this.dieRoll}`;
+        }
+    }
 }
 export default Attribute;

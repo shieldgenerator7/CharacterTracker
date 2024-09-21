@@ -16,6 +16,16 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         attribute.name = value;
                         updateCharacter(character);
                     }} value={attribute.name}></input>
+                    <input type="text" onChange={(e) => {
+                        let value = e.target.value;
+                        attribute.value = value;
+                        updateCharacter(character);
+                    }} value={attribute.value}></input>
+                    <input type="text" onChange={(e) => {
+                        let value = e.target.value;
+                        attribute.max = value;
+                        updateCharacter(character);
+                    }} value={attribute.max}></input>
                 <input type="text" onChange={(e) => {
                     let value = e.target.value;
                     attribute.dieRoll = value;
@@ -32,7 +42,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         attribute.dievalue = value;
                         updateCharacter(character);
                     }
-                }>{`${attribute.name} - ${attribute.dieRoll}`}</button>
+                }>{`${attribute.getDisplayText()}`}</button>
             {attribute.dievalue}
                 </span>
             }
