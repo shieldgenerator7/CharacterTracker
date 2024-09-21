@@ -390,7 +390,9 @@
 }
 
 .attributeFrameEdit {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
 }
 
 .editText{
@@ -411,19 +413,12 @@
 }
 
 .field{
-    display: inline;
-    line-height: 0px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
 }
 .field label{
-    display:block;
     font-size: small;
-    margin-bottom: 0px;
-    margin: 0px;
-    padding: 0px;
 }
 .field input{
-    margin-top: 0px;
-    margin: 0px;
-    padding: 0px;
-}/**/
+}
