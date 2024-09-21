@@ -32,6 +32,11 @@ class Attribute {
         if (this.dieRoll) {
             return `${this.name} - ${this.dieRoll}`;
         }
+        if (this.value > 0) {
+            return `${this.name} - ${this.value}`;
+        }
+
+        
         return `${this.name}`;
     }
 }

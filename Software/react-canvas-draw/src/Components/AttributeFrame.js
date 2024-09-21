@@ -77,6 +77,12 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         </span>
                     }
                     {
+                            attribute.value > 0 &&
+                            <span>
+                                    {attribute.getDisplayText()}
+                            </span>
+                    }
+                    {
                         attribute.OnClickType == ONCLICK_TOGGLE &&
                         <span>
                             {attribute.getDisplayText()}
