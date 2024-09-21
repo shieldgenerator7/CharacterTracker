@@ -379,7 +379,8 @@
 }
 
 .characterContent {
-    padding: 15px;
+    padding: 10px;
+    padding-top:15px;
     overflow-x:hidden;
     overflow-wrap:anywhere;
     overflow-y: auto;
