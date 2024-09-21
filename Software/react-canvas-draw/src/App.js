@@ -111,10 +111,11 @@ function App() {
         <div className="App">
             <header className="App-header">
                 {
-                    characterList.map(char => (
+                    characterList.map((char,i) => (
                 <CharacterFrame
                     character={char}
                     updateCharacter={(c)=>updateCharacter(c)}
+                    key={`character_${i}`}
                 ></CharacterFrame>
                     ))
                 }

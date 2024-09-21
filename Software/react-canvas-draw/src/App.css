@@ -17,11 +17,11 @@
     background-color: #5f5e53;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: left;
     justify-content: top;
     font-size: calc(10px + 2vmin);
     color: black;
+    overflow-x: auto;
 }
 
 .App-link {
@@ -365,7 +365,7 @@
 }
 
 .characterFrame {
-    display: inline;
+    display: inline-block;
     border: 5px solid #38362f;
     /* background: #f5eac9; */
     background: #cebd90;
@@ -376,11 +376,13 @@
     box-shadow: 10px 25px 15px rgb(66, 66, 66);
     position: relative;
     overflow-y: hidden;
+    min-width: 400px;
 }
 
 .characterContent {
     padding: 10px;
     padding-top: 15px;
+    padding-right: 0px;
     overflow-x: hidden;
     overflow-wrap: anywhere;
     overflow-y: auto;
@@ -405,7 +407,7 @@
 .attributeFrame {
     display: inline;
     margin-left: 0px;
-    padding: 3px;
+    padding: 2px;
 }
 
 .attributeFrameEdit {
@@ -458,6 +460,8 @@
     height: 10%;
     z-index: 1;
     background: #a89b76;
+    text-align: left;
+    justify-items: center;
 }
 
 .buttonPanel button {
