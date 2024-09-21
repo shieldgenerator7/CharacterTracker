@@ -57,7 +57,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                     }
                         {!(attribute.max > 0) && attribute.dieRoll &&
                             <span>
-                    <button onClick={
+                    <button className={ "plusMinus"} onClick={
                         () => {
                             let value = rollDice(attribute.dieRoll || "1d20");
                             attribute.dievalue = value;
