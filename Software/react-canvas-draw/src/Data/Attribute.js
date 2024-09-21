@@ -52,7 +52,12 @@ class Attribute {
                 if (this.dieRoll == "1d20" || this.dieRoll == "d20") {
                     return `${this.name}: ${valueModStr}`;
                 }
-                return `${this.name}: ${this.dieRoll} ${valueModStr}`;
+                if (this.value != 0) {
+                    return `${this.name}: ${this.dieRoll} ${valueModStr}`;
+                }
+                else {                    
+                    return `${this.name}: ${this.dieRoll}`;
+                }
                 break;
             default:
                 return `${this.name}`;
