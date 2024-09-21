@@ -8,11 +8,16 @@ function CharacterFrame({ character, updateCharacter }) {
     return (
         <div className="characterFrame">
             {character.name}
+            <input type="text" onChange={(e) => {
+                let value = e.target.value;
+                character.dieroll = value;
+                updateCharacter(character);
+            }}></input>
             <button onClick={
                     () => {
                         let values = [];
                         for (let i = 0; i < 5; i++) {
-                            let value = rollDice("2d8");
+                            let value = rollDice(character.dieroll || "1d20");
                             values.push(value);
                         }
                         // values = values.sort((a, b) => a - b);
