@@ -9,54 +9,54 @@ function CharacterFrame({ character, updateCharacter }) {
     return (
         <div className="characterFrame">
             <div className="characterContent">
-            {character.name}
-            <div className={"attributeContainer"}>
+                {character.name}
+                <div className={"attributeContainer"}>
+                    {
+                        character.attributeList.map((attr, i) => (
+                            <AttributeFrame
+                                attribute={attr}
+                                character={character}
+                                updateCharacter={updateCharacter}
+                                key={`character_attribute_${i}`}
+                            ></AttributeFrame>
+                        ))
+                    }
+                </div>
+
                 {
-                    character.attributeList.map((attr, i) => (
-                        <AttributeFrame
-                            attribute={attr}
-                            character={character}
-                            updateCharacter={updateCharacter}
-                            key={`character_attribute_${i}`}
-                        ></AttributeFrame>
-                    ))
+                    !character.editAttributes && character.dieRollLog?.length > 0 &&
+                    <span>
+
+                        {character.dieRollLog.map((roll, i) =>
+                            <span className={"rollResult"} key={`character_die_roll_log_${i}`}>{roll}</span>
+                        )}
+
+                    </span>
+
                 }
             </div>
-           
-            {
-                !character.editAttributes && character.dieRollLog?.length > 0 &&
-                <span>
-                    
-                    {character.dieRollLog.map((roll, i) =>
-                        <span className={"rollResult"} key={`character_die_roll_log_${i}`}>{roll}</span>
-                    )}
-
-                </span>
-
-            }
-                </div>
             <div className="buttonPanel">
-             <button onClick={(e) => {
-                let attr = new Attribute("attr");
-                character.editAttributes = !character.editAttributes;
-                updateCharacter(character);
-            }}>Edit Attributes</button>
-            {character.editAttributes
-                &&
                 <button onClick={(e) => {
                     let attr = new Attribute("attr");
-                    character.attributeList.push(attr);
-                    character.editAttributes = true;
+                    character.editAttributes = !character.editAttributes;
                     updateCharacter(character);
-                }}>New Attribute</button>
-            }
-            {!character.editAttributes && character.dieRollLog?.length > 0 &&
-                <button onClick={() => {
-                    character.dieRollLog = [];
-                    updateCharacter(character);
-                }}>Clear Die Roll Log</button>
-            }{}
-                </div>
+                }}>Edit Attributes</button>
+                {character.editAttributes
+                    &&
+                    <button onClick={(e) => {
+                        let attr = new Attribute("attr");
+                        character.attributeList.push(attr);
+                        character.editAttributes = true;
+                        updateCharacter(character);
+                    }}>New Attribute</button>
+                }
+                {!character.editAttributes && character.dieRollLog?.length > 0 &&
+                    <button onClick={() => {
+                        character.dieRollLog = [];
+                        updateCharacter(character);
+                    }}>Clear Die Roll Log</button>
+                }{ }
+            </div>
         </div>
     );
 }

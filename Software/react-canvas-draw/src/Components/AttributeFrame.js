@@ -88,7 +88,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
     else if (attribute.IsSpacer) {
         return (
             <div></div>
-        )
+        );
     }
     else {
         return (

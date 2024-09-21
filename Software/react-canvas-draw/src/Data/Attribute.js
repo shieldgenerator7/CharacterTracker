@@ -67,7 +67,7 @@ class Attribute {
         }
     }
 
-    get IsSpacer(){
+    get IsSpacer() {
         return this.name.startsWith("---") && this.name.endsWith("---");
     }
 }
