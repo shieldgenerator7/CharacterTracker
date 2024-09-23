@@ -88,6 +88,10 @@ function App() {
         log.recordEntryAttributeAdjust(game, character, attributeName, oldValue, newValue);
         setLog(log);
     }
+    let abilityModified = (character, abilityName, oldValue, newValue) => {
+        //TODO: implement this
+        console.warn("abilityModified not implemented yet", character, abilityName, oldValue, newValue);
+    }
 
     // //Paste String
     // let pasteString = "";
@@ -161,6 +165,7 @@ function App() {
                             updateCharacter={(c) => updateCharacter(c)}
                             diceRolled={diceRolled}
                             attributeAdjusted={attributeAdjusted}
+                            abilityModified={abilityModified}
                             key={`character_${i}`}
                         ></CharacterFrame>
                     ))

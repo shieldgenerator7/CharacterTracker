@@ -521,3 +521,16 @@
     /* justify-content: center; */
     /* align-items: center; */
 }
+
+.abilityFrameEdit {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    border: 1px solid #ffecb7;
+    padding: 5px;
+}
+.abilityFrameLine {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}

@@ -8,7 +8,7 @@ class Ability {
         this.description = "";
 
         //resource
-        this.resourceName = undefined;
+        this.resourceName = "";
         this.resourceCost = 0;
 
         //on click
@@ -17,7 +17,7 @@ class Ability {
 
         //effect
         this.dieRollBonus = 0;
-        this.dieRollAttributeFilter = undefined;//"Attack" or other attribute
+        this.dieRollAttributeFilter = "";//"Attack" or other attribute
 
         //runtime vars
         this.active = false;
