@@ -22,6 +22,14 @@ class LogEntry {
         return getTime(this._dateTime);
     }
 
+    canCollate(character, event, location) {
+        return this.characterName == character.name
+            && this.event == event
+            && this.location == location
+            //is this a variable change log entry?
+            && Object.entries(this.variableChangeList).length > 0;
+    }
+
     recordVariableChange(name, oldVal, newVal) {
         let entry = this.variableChangeList[name];
         if (!entry) {
