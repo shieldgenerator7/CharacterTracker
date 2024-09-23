@@ -12,6 +12,7 @@ import { rollDice } from './Data/DiceRoller';
 import CharacterFrame from './Components/CharacterFrame';
 import Character, { inflateCharacter } from './Data/Character';
 import CommandPanel from './Components/CommandPanel';
+import Log from './Data/Log';
 
 function App() {
     //Storage
@@ -46,6 +47,13 @@ function App() {
         setCharacter(newcharacter);
         storage.characterList = characterList;
     };
+    //Log
+    let log = new Log();
+    let setLog = (l) => { log = l; };
+    const defaultLog = () => storage.log ?? new Log();
+    [log, setLog] = useState(defaultLog);
+    window.log = log;
+
     // //Paste String
     // let pasteString = "";
     // let setPasteString = (s) => { pasteString = s; };
@@ -123,6 +131,7 @@ function App() {
 
                 <CommandPanel
                     
+                    log={log}
                 ></CommandPanel>
                 
             </header>

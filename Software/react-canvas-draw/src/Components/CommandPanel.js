@@ -1,8 +1,9 @@
 "use strict";
 
 import Field from "./Field";
+import LogPanel from "./LogPanel";
 
-function CommandPanel({ game, updateGame }) {
+function CommandPanel({ game, updateGame, log }) {
     game ??= { event: "TEST" };
     updateGame ??= (game) => { };
     return (
@@ -17,6 +18,9 @@ function CommandPanel({ game, updateGame }) {
                 className="editText"
                 placeHolder="Event"
             ></Field>
+            <LogPanel
+                log={log}
+            ></LogPanel>
         </div>
     );
 }

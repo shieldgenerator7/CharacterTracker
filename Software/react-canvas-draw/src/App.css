@@ -490,4 +490,23 @@
     border-top: 1px solid black;
     position: absolute;
     bottom: 0px;
+    display: flex;
+    flex-direction: column;
 }
+
+.logPanel {
+    border: 1px solid black;
+    background: #a89b76;
+    width: 90%;
+    margin-left: 10px;
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.logEntryFrame {
+    background: #a89b76;
+    border-bottom: 1px solid black;
+    background: #c7b78b;
+    margin-bottom: 5px;
+}/**/
