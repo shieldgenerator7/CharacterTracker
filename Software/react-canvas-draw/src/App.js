@@ -54,6 +54,11 @@ function App() {
     [log, setLog] = useState(defaultLog);
     window.log = log;
 
+    let diceRolled = (character, rollName, rollValue, rollResult) => {
+        log.recordEntryDieRoll({}, character, rollName, rollValue, rollResult);
+        setLog(log);
+    }
+
     // //Paste String
     // let pasteString = "";
     // let setPasteString = (s) => { pasteString = s; };
@@ -123,7 +128,8 @@ function App() {
                     characterList.map((char,i) => (
                 <CharacterFrame
                     character={char}
-                    updateCharacter={(c)=>updateCharacter(c)}
+                            updateCharacter={(c) => updateCharacter(c)}
+                            diceRolled={diceRolled}
                     key={`character_${i}`}
                 ></CharacterFrame>
                     ))

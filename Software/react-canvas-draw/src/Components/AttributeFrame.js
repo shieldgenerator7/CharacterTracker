@@ -9,8 +9,9 @@ import { clamp } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function AttributeFrame({ attribute, character, updateCharacter }) {
+function AttributeFrame({ attribute, character, updateCharacter, diceRolled }) {
     let onClickType = attribute.OnClickType;
+    //Edit Attributes
     if (character.editAttributes) {
         return (
             <div className="attributeFrameEdit">
@@ -86,11 +87,13 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
             </div>
         );
     }
+    //Show spacer
     else if (attribute.IsSpacer) {
         return (
             <div></div>
         );
     }
+    //Button controls
     else {
         return (
             <div className="attributeFrame">
@@ -117,10 +120,11 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                                 onClick={
                                     () => {
                                         let value = rollDice(attribute.dieRoll || "1d20");
-                                        value += attribute.value * 1;
+                                        let result = value + attribute.value * 1;
                                         character.dieRollLog ??= [];
-                                        character.dieRollLog.push(value);
+                                        character.dieRollLog.push(result);
                                         updateCharacter(character);
+                                        diceRolled(character, attribute.name, value, result);
                                     }
                                 }
                                 onContextMenu={
