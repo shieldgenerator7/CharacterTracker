@@ -158,6 +158,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
+                <div className='characterZone'>
                 {
                     characterList.map((char, i) => (
                         <CharacterFrame
@@ -170,6 +171,7 @@ function App() {
                         ></CharacterFrame>
                     ))
                 }
+                </div>
 
                 <CommandPanel
                     game={game}

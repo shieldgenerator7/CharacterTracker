@@ -364,19 +364,30 @@
     border-radius: 7px;
 }
 
+.characterZone{
+    position: absolute;
+    top:0px;
+    width:100%;
+    height:80%;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
 .characterFrame {
     display: inline-block;
     border: 5px solid #38362f;
     /* background: #f5eac9; */
     background: #cebd90;
-    width: 425px;
-    height: 700px;
+    width: 450px;
+    height: 98%;
+    /* min-height: 90%; */
     border-radius: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-shadow: 10px 25px 15px rgb(66, 66, 66);
     position: relative;
     overflow-y: hidden;
-    min-width: 400px;
+    min-width: 430px;
 }
 
 .characterContent {
@@ -402,6 +413,8 @@
 
 .attributeContainer {
     display: block;
+    overflow-y: auto;
+    max-height:40%;
 }
 
 .attributeFrame {
@@ -537,6 +550,8 @@
 
 .abilityContainer {
     display: block;
+    overflow-y: auto;
+    max-height:40%;
 }
 .abilityDisplay{
     font-size: medium;
