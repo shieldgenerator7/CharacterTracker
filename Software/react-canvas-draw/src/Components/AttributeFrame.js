@@ -31,6 +31,7 @@ function AttributeFrame({ attribute, character, updateCharacter }) {
                         updateCharacter(character);
                     }}
                     className={"editTextShort"}
+                    placeHolder={attribute.name}
                 ></Field>
                 <Field
                     name={"Val"}
