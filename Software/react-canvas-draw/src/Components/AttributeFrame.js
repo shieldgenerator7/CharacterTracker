@@ -19,6 +19,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                     name={"Attribute"}
                     value={attribute.name}
                     setValue={(value) => {
+                        attributeAdjusted(character, `${attribute.name}_name`, attribute.name, value);
                         attribute.name = value;
                         updateCharacter(character);
                     }}
@@ -28,6 +29,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                     name={"Display"}
                     value={attribute.displayName}
                     setValue={(value) => {
+                        attributeAdjusted(character, `${attribute.name}_displayname`, attribute.displayName, value);
                         attribute.displayName = value;
                         updateCharacter(character);
                     }}
@@ -38,6 +40,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                     name={"Val"}
                     value={attribute.value}
                     setValue={(value) => {
+                        attributeAdjusted(character, attribute.name, attribute.value, value);
                         attribute.value = value;
                         updateCharacter(character);
                     }}
@@ -47,6 +50,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                     name={"Max"}
                     value={attribute.max}
                     setValue={(value) => {
+                        attributeAdjusted(character, `${attribute.name}_max`, attribute.max, value);
                         attribute.max = value;
                         updateCharacter(character);
                     }}
@@ -56,6 +60,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                     name={"Die Roll"}
                     value={attribute.dieRoll}
                     setValue={(value) => {
+                        attributeAdjusted(character, `${attribute.name}_dieRoll`, attribute.dieRoll, value);
                         attribute.dieRoll = value;
                         updateCharacter(character);
                     }}
