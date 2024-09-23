@@ -3,9 +3,9 @@
 "use strict";
 
 import Attribute from "../Data/Character";
-import { ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
+import { ACTION_PREV_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
-import { clamp } from "../Utility/Utility";
+import { clamp, isString } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
@@ -130,8 +130,46 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                         let result = value + attribute.value * 1;
                                         character.dieRollLog ??= [];
                                         character.dieRollLog.push(result);
-                                        updateCharacter(character);
+                                        
                                         diceRolled(character, attribute.name, value, result);
+                                        //roll ability dice, if applicable
+                                        character.abilityList
+                                            .filter(ability => ability.Active && ability.action == ACTION_PREV_ROLL_MODIFY)
+                                            .forEach(ability => {
+                                                let ablname = `${attribute.name} (+${ability.name})`
+                                                //early exit: attribute filter
+                                                if (ability.dieRollAttributeFilter) {
+                                                    if (ability.dieRollAttributeFilter != attribute.name) {
+                                                        return;
+                                                    }
+                                                }
+                                                //bonus: dice roll
+                                                if (("" + ability.dieRollBonus).includes("d")) {
+                                                    let bonusvalue = rollDice(ability.dieRollBonus);
+                                                    let bonusresult = bonusvalue + result;
+                                                    character.dieRollLog.push(bonusvalue);
+                                                    diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                }
+                                                //bonus: constant
+                                                else if (ability.dieRollBonus * 1 > 0) {
+                                                    let bonusvalue = ability.dieRollBonus * 1;
+                                                    let bonusresult = bonusvalue + result;
+                                                    diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                }
+                                                //bonus: Attribute
+                                                else if (isString(ability.dieRollBonus)) {
+                                                    let attrName = ability.dieRollBonus.trim();
+                                                    let attr = character.attributeList
+                                                        .filter(a => a.name.trim() == attrName || a.displayName.trim() == attrName);
+                                                    if (attr?.value) {
+                                                        let bonusvalue = attr.value * 1;
+                                                        let bonusresult = bonusvalue + result;
+                                                        diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                    }
+                                                }
+                                            });
+                                        //
+                                        updateCharacter(character);
                                     }
                                 }
                                 onContextMenu={
