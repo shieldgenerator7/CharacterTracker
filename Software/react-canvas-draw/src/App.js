@@ -11,6 +11,7 @@ import AbilityPanel from './Components/AbilityPanel';
 import { rollDice } from './Data/DiceRoller';
 import CharacterFrame from './Components/CharacterFrame';
 import Character, { inflateCharacter } from './Data/Character';
+import CommandPanel from './Components/CommandPanel';
 
 function App() {
     //Storage
@@ -119,6 +120,10 @@ function App() {
                 ></CharacterFrame>
                     ))
                 }
+
+                <CommandPanel
+                    
+                ></CommandPanel>
                 
             </header>
         </div>
