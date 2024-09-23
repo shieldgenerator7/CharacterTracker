@@ -159,7 +159,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                                 else if (isString(ability.dieRollBonus)) {
                                                     let attrName = ability.dieRollBonus.trim();
                                                     let attr = character.attributeList
-                                                        .filter(a => a.name.trim() == attrName || a.displayName.trim() == attrName);
+                                                        .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
                                                     if (attr?.value) {
                                                         let bonusvalue = attr.value * 1;
                                                         let bonusresult = bonusvalue + result;

@@ -110,7 +110,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         if (ability.ConsumesResource) {
                             let res = character.consumeResource(ability);
                             if (res[0] != res[1]) {
-                                attributeAdjusted(character, ability.resourceName, res[0], res[1]);
+                                attributeAdjusted(character, `${ability.resourceName} (${ability.name})`, res[0], res[1]);
                             }
                         }
                     }
