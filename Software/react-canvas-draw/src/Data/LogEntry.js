@@ -1,6 +1,6 @@
 "use strict";
 
-import { getDate, getTime } from "../Utility/Utility";
+import { getDate, getTime, isEmpty, isNumber } from "../Utility/Utility";
 
 class LogEntry {
     constructor(character, rollName) {
@@ -49,8 +49,22 @@ class LogEntry {
             retStr += entries.map(obj => {
                 let name = obj[0];
                 let v = obj[1];
-                let diff = v.newVal - v.oldVal;
-                return `${name}: ${v.oldVal} -> ${v.newVal} (${(diff>0)?"+":""}${diff})`;
+                let diff = (isNumber(v.newVal) && isNumber(v.oldVal))
+                    ? v.newVal - v.oldVal
+                    : (isEmpty(v.oldVal) && !isEmpty(v.newVal))
+                        ? "added"
+                        : (!isEmpty(v.oldVal) && isEmpty(v.newVal))
+                            ? "removed"
+                            : undefined;
+                if (v.oldVal == v.newVal) {
+                    diff = undefined;
+                }
+                return `${name}: ${v.oldVal} -> ${v.newVal}${(diff != undefined)
+                        ? (isNumber)
+                            ? ` (${(diff > 0) ? "+" : ""}${diff})`
+                            : diff
+                        : ""
+                    }`;
             }).join("; ");
             return retStr;
         }

@@ -1,6 +1,7 @@
 "use strict";
 
 import LogEntry from "./LogEntry";
+const REGEX_SPACER_TEST = /^[- ]*$/;
 
 class Log {
     constructor() {
@@ -17,8 +18,13 @@ class Log {
     }
 
     recordEntryAttributeAdjust(game, character, attributeName, oldValue, newValue) {
+        if (REGEX_SPACER_TEST.test(attributeName)) {
+            return;
+        }
         let entry = this.entryList.at(-1);
-        if (entry && entry.canCollate(character, game.event, game.location)) {
+        if (entry && entry.canCollate(character, game.event, game.location)
+            && (!attributeName.endsWith("_name") || newValue.startsWith(oldValue))
+        ) {
             entry.recordVariableChange(attributeName, oldValue, newValue);
         }
         else {
