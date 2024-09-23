@@ -84,6 +84,10 @@ function App() {
         log.recordEntryDieRoll(game, character, rollName, rollValue, rollResult);
         setLog(log);
     };
+    let attributeAdjusted = (character, attributeName, oldValue, newValue) => {
+        log.recordEntryAttributeAdjust(game, character, attributeName, oldValue, newValue);
+        setLog(log);
+    }
 
     // //Paste String
     // let pasteString = "";
@@ -156,6 +160,7 @@ function App() {
                             character={char}
                             updateCharacter={(c) => updateCharacter(c)}
                             diceRolled={diceRolled}
+                            attributeAdjusted={attributeAdjusted}
                             key={`character_${i}`}
                         ></CharacterFrame>
                     ))

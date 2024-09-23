@@ -15,5 +15,14 @@ class Log {
         entry.location = game.location;
         this.entryList.push(entry);
     }
+
+    recordEntryAttributeAdjust(game, character, attributeName, oldValue, newValue) {
+        let entry = new LogEntry(character, attributeName);
+        entry.rollValue = oldValue;
+        entry.rollResult = newValue;
+        entry.event = game.event;
+        entry.location = game.location;
+        this.entryList.push(entry);
+    }
 }
 export default Log;

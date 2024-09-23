@@ -9,7 +9,7 @@ import { clamp } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function AttributeFrame({ attribute, character, updateCharacter, diceRolled }) {
+function AttributeFrame({ attribute, character, updateCharacter, diceRolled, attributeAdjusted }) {
     let onClickType = attribute.OnClickType;
     //Edit Attributes
     if (character.editAttributes) {
@@ -103,8 +103,10 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled }) {
                             <Counter
                                 value={attribute.value}
                                 setValue={(v) => {
+                                    let oldValue = attribute.value;
                                     attribute.value = v;
                                     updateCharacter(character);
+                                    attributeAdjusted(character, attribute.name, oldValue, v);
                                 }}
                                 allowNegative={false}
                                 inline={true}

@@ -6,7 +6,7 @@ import { rollDice } from "../Data/DiceRoller";
 import AttributeFrame from "./AttributeFrame";
 import Field from "./Field";
 
-function CharacterFrame({ character, updateCharacter, diceRolled }) {
+function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjusted }) {
     return (
         <div className="characterFrame">
             <div className="characterContent">
@@ -35,6 +35,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled }) {
                                 character={character}
                                 updateCharacter={updateCharacter}
                                 diceRolled={diceRolled}
+                                attributeAdjusted={attributeAdjusted}
                                 key={`character_attribute_${i}`}
                             ></AttributeFrame>
                         ))
