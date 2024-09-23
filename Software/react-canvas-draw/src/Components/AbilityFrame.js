@@ -92,10 +92,25 @@ function AbilityFrame({ ability, character, updateCharacter, abilityModified }) 
     );
     }
     else {
+        let disabled = (!ability.Active && ability.ConsumesResource && !character.hasResource(ability))
+            ? true
+            : false;
         return (
-            <div className={`abilityDisplay ${(ability.Active)?"abilityDisplayActive":""}`}
+            <div className=
+                {
+                    `abilityDisplay 
+                    ${(ability.Active) ? "abilityDisplayActive" : ""}
+                    ${(disabled) ? "abilityDisplayDisabled" : ""}`
+                }
+                disabled={disabled}
                 onClick={(e) => {
+                    if (disabled) { return; }
                     ability.Active = !ability.Active;
+                    if (ability.Active) {
+                        if (ability.ConsumesResource) {
+                            
+                        }
+                    }
                     updateCharacter(character);
                 }}
             >

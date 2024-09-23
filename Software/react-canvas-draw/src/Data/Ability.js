@@ -30,5 +30,9 @@ class Ability {
     set Active(value) {
         this.active = value;
     }
+
+    get ConsumesResource() {
+        return this.resourceName && this.resourceCost > 0;
+    }
 }
 export default Ability;

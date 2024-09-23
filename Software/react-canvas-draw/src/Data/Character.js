@@ -1,5 +1,6 @@
 "use strict";
 
+import Ability from "./Ability";
 import { inflateAttribute } from "./Attribute";
 
 class Character {
@@ -18,6 +19,12 @@ class Character {
         this.dieRollLog = [];
     }
 
+    hasResource(ability) {
+        let attrName = ability.resourceName.trim();
+        let attr = this.attributeList
+            .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
+        return attr && attr.value >= ability.resourceCost;
+    }
 
 }
 export default Character;
@@ -35,6 +42,7 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     });
     character.abilityList = character.abilityList.filter(a => a);
     character.abilityList.forEach(ability => {
+        Object.setPrototypeOf(ability, Ability.prototype);
         // inflateAbility(ability);
     });
 

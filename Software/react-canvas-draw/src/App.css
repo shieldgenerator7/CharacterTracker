@@ -539,7 +539,7 @@
     display: block;
 }
 .abilityDisplay{
-    font-size: large;
+    font-size: medium;
     padding-top: 5px;
     padding-bottom: 5px;
     padding: 5px;
@@ -548,6 +548,15 @@
 .abilityDisplay:hover{
     background: #ffeec1;
     border-radius: 7px;
+}
+.abilityDisplayDisabled{
+    color: rgb(105, 105, 105);
+    background: #b9aa84;
+    border-radius: 7px;
+}
+.abilityDisplayDisabled:hover{
+    color:black;
+    background: #cebd90;
 }
 .abilityDisplayActive{
     background: #ffffff;
