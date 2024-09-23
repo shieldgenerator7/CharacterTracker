@@ -18,8 +18,7 @@ class Log {
 
     recordEntryAttributeAdjust(game, character, attributeName, oldValue, newValue) {
         let entry = new LogEntry(character, attributeName);
-        entry.rollValue = oldValue;
-        entry.rollResult = newValue;
+        entry.recordVariableChange(attributeName, oldValue, newValue);
         entry.event = game.event;
         entry.location = game.location;
         this.entryList.push(entry);

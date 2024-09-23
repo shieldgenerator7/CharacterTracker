@@ -33,8 +33,19 @@ class LogEntry {
         entry.newVal = newVal;
     }
 
-    get DisplayText() {
-        //TODO: add variable changes
+    get DisplayText() {        
+        //"2024-09-23 03:08 - 2024-04-15 @Crownspire: Tak Redwind Health: 20 -> 18 (-2)"
+        let entries = Object.entries(this.variableChangeList);
+        if (entries.length > 0) {
+            let retStr = `${this.Date} ${this.Time} - ${this.event} @${this.location}: ${this.characterName}: `;
+            retStr += entries.map(obj => {
+                let name = obj[0];
+                let v = obj[1];
+                let diff = v.newVal - v.oldVal;
+                return `${name}: ${v.oldVal} -> ${v.newVal} (${(diff>0)?"+":""}${diff})`;
+            }).join("; ");
+            return retStr;
+        }
         //"2024-09-22 22:18 - 2024-04-15 @Crownspire: Tak Redwind Attack: 15 -> 17"
         return `${this.Date} ${this.Time} - ${this.event} @${this.location}: ${this.characterName} ${this.rollName}: ${this.rollValue} -> ${this.rollResult}`;
     }
