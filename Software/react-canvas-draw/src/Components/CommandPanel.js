@@ -4,8 +4,6 @@ import Field from "./Field";
 import LogPanel from "./LogPanel";
 
 function CommandPanel({ game, updateGame, log }) {
-    game ??= { event: "TEST" };
-    updateGame ??= (game) => { };
     return (
         <div className="commandPanel">
             <div>

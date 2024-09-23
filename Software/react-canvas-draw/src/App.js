@@ -13,6 +13,7 @@ import CharacterFrame from './Components/CharacterFrame';
 import Character, { inflateCharacter } from './Data/Character';
 import CommandPanel from './Components/CommandPanel';
 import Log from './Data/Log';
+import Game from './Data/Game';
 
 function App() {
     //Storage
@@ -47,6 +48,20 @@ function App() {
         setCharacter(newcharacter);
         storage.characterList = characterList;
     };
+
+    //Game
+    let game = new Game();
+    let setGame = (g) => { game = g; };
+    const defaultGame = () => storage.game ?? new Game();
+    [game, setGame] = useState(defaultGame);
+    window.game = game;
+    let updateGame = (oldgame) => {
+        let newgame = JSON.parse(JSON.stringify(oldgame));
+        //
+        setGame(newgame);
+        storage.game = game;
+    };
+
     //Log
     let log = new Log();
     let setLog = (l) => { log = l; };
@@ -55,7 +70,7 @@ function App() {
     window.log = log;
 
     let diceRolled = (character, rollName, rollValue, rollResult) => {
-        log.recordEntryDieRoll({}, character, rollName, rollValue, rollResult);
+        log.recordEntryDieRoll(game, character, rollName, rollValue, rollResult);
         setLog(log);
     };
 
@@ -136,7 +151,8 @@ function App() {
                 }
 
                 <CommandPanel
-
+                    game={game}
+                    updateGame={updateGame}
                     log={log}
                 ></CommandPanel>
 
