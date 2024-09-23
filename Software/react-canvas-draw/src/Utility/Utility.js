@@ -79,6 +79,20 @@ function loop(n, min, max) {
     return (n + diff * Math.ceil(Math.abs(n / diff))) % diff + min;
 }
 
+//2024-09-22: copied from getDisplayDate()
+export function getDate(date) {
+    date ??= new Date();
+    // YYYY-MM-DD
+    return `${date.getFullYear()}-${('' + (date.getMonth() + 1)).padStart(2, '0')}-${date.getDate()}`;
+}
+
+//2024-09-22: copied from getDate()
+export function getTime(date) {
+    date ??= new Date();
+    // HH:MM:SS
+    return `${('' + date.getHours()).padStart(2, '0')}:${('' + date.getMinutes()).padStart(2, '0')}:${('' + date.getSeconds()).padStart(2, '0')}`;    
+}
+
 function getDisplayDate(date) {
     date ??= new Date();
     // MM/DD HH:MM

@@ -1,9 +1,10 @@
 "use strict";
 
+import { getDate, getTime } from "../Utility/Utility";
+
 class LogEntry {
     constructor(character, rollName) {
-        this.date = Date.now();//TODO: separate this maybe?
-        this.time = Date.now();//TODO: separate this maybe?
+        this.dateTime = Date.now();
         this.event = "";
         this.location = "";
         this.characterName = character.name;
@@ -12,6 +13,13 @@ class LogEntry {
         this.rollResult = 0;
         this.variableChangeList = {};
 
+    }
+
+    get Date() {
+        return getDate(this._dateTime);
+    }
+    get Time() {
+        return getTime(this._dateTime);
     }
 
     recordVariableChange(name, oldVal, newVal) {
@@ -28,7 +36,7 @@ class LogEntry {
     get DisplayText() {
         //TODO: add variable changes
         //"2024-09-22 22:18 - 2024-04-15 @Crownspire: Tak Redwind Attack: 15 -> 17"
-        return `${this.date} ${this.time} - ${this.event} @${this.location}: ${this.characterName} ${this.rollName}: ${this.rollValue} -> ${this.rollResult}`;
+        return `${this.Date} ${this.Time} - ${this.event} @${this.location}: ${this.characterName} ${this.rollName}: ${this.rollValue} -> ${this.rollResult}`;
     }
 }
 export default LogEntry;

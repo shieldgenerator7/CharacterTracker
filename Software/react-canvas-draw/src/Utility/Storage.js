@@ -60,6 +60,7 @@ class Storage {
         Object.setPrototypeOf(this.storage.log, Log.prototype);
         this.storage.log.entryList.forEach(entry => {
             Object.setPrototypeOf(entry, LogEntry.prototype);
+            entry._dateTime = new Date(entry.dateTime);
         });
         // Object
         this.storage.cardList.forEach(card => {
