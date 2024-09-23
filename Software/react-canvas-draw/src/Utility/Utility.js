@@ -90,7 +90,7 @@ export function getDate(date) {
 export function getTime(date) {
     date ??= new Date();
     // HH:MM:SS
-    return `${('' + date.getHours()).padStart(2, '0')}:${('' + date.getMinutes()).padStart(2, '0')}:${('' + date.getSeconds()).padStart(2, '0')}`;    
+    return `${('' + date.getHours()).padStart(2, '0')}:${('' + date.getMinutes()).padStart(2, '0')}:${('' + date.getSeconds()).padStart(2, '0')}`;
 }
 
 function getDisplayDate(date) {

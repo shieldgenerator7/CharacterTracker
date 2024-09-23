@@ -53,12 +53,12 @@ class LogEntry {
                 this.variableChangeList[newValKey] = {
                     oldVal: oldVal,
                     newVal: newVal,
-                }
+                };
             }
         }
     }
 
-    get DisplayText() {        
+    get DisplayText() {
         //"2024-09-23 03:08 - 2024-04-15 @Crownspire: Tak Redwind Health: 20 -> 18 (-2)"
         let entries = Object.entries(this.variableChangeList);
         if (entries.length > 0) {
@@ -77,10 +77,10 @@ class LogEntry {
                     diff = undefined;
                 }
                 return `${name}: ${v.oldVal} -> ${v.newVal}${(diff != undefined)
-                        ? (isNumber)
-                            ? ` (${(diff > 0) ? "+" : ""}${diff})`
-                            : diff
-                        : ""
+                    ? (isNumber)
+                        ? ` (${(diff > 0) ? "+" : ""}${diff})`
+                        : diff
+                    : ""
                     }`;
             }).join("; ");
             return retStr;

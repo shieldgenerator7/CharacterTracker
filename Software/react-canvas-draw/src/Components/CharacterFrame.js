@@ -12,7 +12,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
     return (
         <div className="characterFrame">
             <div className="characterContent">
-                        <h1>{character.name}</h1>
+                <h1>{character.name}</h1>
                 {character.editAttributes &&
                     <Field
                         name={"Character Name"}

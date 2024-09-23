@@ -26,11 +26,11 @@ class Log {
             entry.recordVariableChange(attributeName, oldValue, newValue);
         }
         else {
-        entry = new LogEntry(character, attributeName);
-        entry.recordVariableChange(attributeName, oldValue, newValue);
-        entry.event = game.event;
-        entry.location = game.location;
-        this.entryList.push(entry);
+            entry = new LogEntry(character, attributeName);
+            entry.recordVariableChange(attributeName, oldValue, newValue);
+            entry.event = game.event;
+            entry.location = game.location;
+            this.entryList.push(entry);
         }
     }
 }

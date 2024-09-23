@@ -87,11 +87,11 @@ function App() {
     let attributeAdjusted = (character, attributeName, oldValue, newValue) => {
         log.recordEntryAttributeAdjust(game, character, attributeName, oldValue, newValue);
         setLog(log);
-    }
+    };
     let abilityModified = (character, abilityName, oldValue, newValue) => {
         //TODO: implement this
         console.warn("abilityModified not implemented yet", character, abilityName, oldValue, newValue);
-    }
+    };
 
     // //Paste String
     // let pasteString = "";
@@ -159,18 +159,18 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className='characterZone'>
-                {
-                    characterList.map((char, i) => (
-                        <CharacterFrame
-                            character={char}
-                            updateCharacter={(c) => updateCharacter(c)}
-                            diceRolled={diceRolled}
-                            attributeAdjusted={attributeAdjusted}
-                            abilityModified={abilityModified}
-                            key={`character_${i}`}
-                        ></CharacterFrame>
-                    ))
-                }
+                    {
+                        characterList.map((char, i) => (
+                            <CharacterFrame
+                                character={char}
+                                updateCharacter={(c) => updateCharacter(c)}
+                                diceRolled={diceRolled}
+                                attributeAdjusted={attributeAdjusted}
+                                abilityModified={abilityModified}
+                                key={`character_${i}`}
+                            ></CharacterFrame>
+                        ))
+                    }
                 </div>
 
                 <CommandPanel

@@ -134,7 +134,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                         character.abilityList
                                             .filter(ability => ability.Active && ability.action == ACTION_PREV_ROLL_MODIFY)
                                             .forEach(ability => {
-                                                let ablname = `${attribute.name} (+${ability.name})`
+                                                let ablname = `${attribute.name} (+${ability.name})`;
                                                 //early exit: attribute filter
                                                 if (ability.dieRollAttributeFilter) {
                                                     if (ability.dieRollAttributeFilter != attribute.name) {
@@ -168,7 +168,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                                     }
                                                 }
                                             });
-                                        
+
                                         //
                                         character.dieRollLog ??= [];
                                         character.dieRollLog.push(result + modified);
