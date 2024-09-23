@@ -26,6 +26,17 @@ class Character {
         return attr && attr.value >= ability.resourceCost;
     }
 
+    consumeResource(ability) {        
+        let attrName = ability.resourceName.trim();
+        let attr = this.attributeList
+            .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
+        if (attr) {
+            let prevValue = attr.Value;
+            attr.Value -= ability.resourceCost;
+            return [prevValue, attr.Value];
+        }
+    }
+
 }
 export default Character;
 window.Character = Character;

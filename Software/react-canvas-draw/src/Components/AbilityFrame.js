@@ -4,7 +4,7 @@ import { ACTION_PREV_ROLL_MODIFY, ACTION_PREV_ROLL_REROLL, ACTION_VARIABLE_MODIF
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateCharacter, abilityModified }) {
+function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, abilityModified }) {
     if (character.editAttributes){
     return (
         <div className="abilityFrameEdit">
@@ -108,7 +108,10 @@ function AbilityFrame({ ability, character, updateCharacter, abilityModified }) 
                     ability.Active = !ability.Active;
                     if (ability.Active) {
                         if (ability.ConsumesResource) {
-                            
+                            let res = character.consumeResource(ability);
+                            if (res[0] != res[1]) {
+                                attributeAdjusted(character, ability.resourceName, res[0], res[1]);
+                            }
                         }
                     }
                     updateCharacter(character);

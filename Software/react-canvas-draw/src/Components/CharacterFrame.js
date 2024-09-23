@@ -48,6 +48,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                                 character={character}
                                 updateCharacter={updateCharacter}
                                 diceRolled={diceRolled}
+                                attributeAdjusted={attributeAdjusted}
                                 abilityModified={abilityModified}
                                 key={`character_ability_${i}`}
                             ></AbilityFrame>
