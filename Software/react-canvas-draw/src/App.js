@@ -82,7 +82,7 @@ function App() {
 
     let diceRolled = (character, rollName, rollValue, rollResult) => {
         log.recordEntryDieRoll(game, character, rollName, rollValue, rollResult);
-        updateLog(log);
+        setLog(log);
     };
 
     // //Paste String
