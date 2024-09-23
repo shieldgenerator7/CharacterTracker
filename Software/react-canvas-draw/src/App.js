@@ -57,7 +57,7 @@ function App() {
     let diceRolled = (character, rollName, rollValue, rollResult) => {
         log.recordEntryDieRoll({}, character, rollName, rollValue, rollResult);
         setLog(log);
-    }
+    };
 
     // //Paste String
     // let pasteString = "";
@@ -125,21 +125,21 @@ function App() {
         <div className="App">
             <header className="App-header">
                 {
-                    characterList.map((char,i) => (
-                <CharacterFrame
-                    character={char}
+                    characterList.map((char, i) => (
+                        <CharacterFrame
+                            character={char}
                             updateCharacter={(c) => updateCharacter(c)}
                             diceRolled={diceRolled}
-                    key={`character_${i}`}
-                ></CharacterFrame>
+                            key={`character_${i}`}
+                        ></CharacterFrame>
                     ))
                 }
 
                 <CommandPanel
-                    
+
                     log={log}
                 ></CommandPanel>
-                
+
             </header>
         </div>
     );
