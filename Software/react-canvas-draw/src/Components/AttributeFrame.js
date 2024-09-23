@@ -128,9 +128,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                     () => {
                                         let value = rollDice(attribute.dieRoll || "1d20");
                                         let result = value + attribute.value * 1;
-                                        character.dieRollLog ??= [];
-                                        character.dieRollLog.push(result);
-                                        
+                                        let modified = 0;
                                         diceRolled(character, attribute.name, value, result);
                                         //roll ability dice, if applicable
                                         character.abilityList
@@ -147,14 +145,15 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                                 if (("" + ability.dieRollBonus).includes("d")) {
                                                     let bonusvalue = rollDice(ability.dieRollBonus);
                                                     let bonusresult = bonusvalue + result;
-                                                    character.dieRollLog.push(bonusvalue);
                                                     diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                    modified += bonusvalue;
                                                 }
                                                 //bonus: constant
                                                 else if (ability.dieRollBonus * 1 > 0) {
                                                     let bonusvalue = ability.dieRollBonus * 1;
                                                     let bonusresult = bonusvalue + result;
                                                     diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                    modified += bonusvalue;
                                                 }
                                                 //bonus: Attribute
                                                 else if (isString(ability.dieRollBonus)) {
@@ -165,10 +164,14 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                                         let bonusvalue = attr.value * 1;
                                                         let bonusresult = bonusvalue + result;
                                                         diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                        modified += bonusvalue;
                                                     }
                                                 }
                                             });
+                                        
                                         //
+                                        character.dieRollLog ??= [];
+                                        character.dieRollLog.push(result + modified);
                                         updateCharacter(character);
                                     }
                                 }
