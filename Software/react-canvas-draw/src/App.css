@@ -540,6 +540,23 @@
 }
 .abilityDisplay{
     font-size: large;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding: 5px;
+    width: 95%;
+}
+.abilityDisplay:hover{
+    background: #ffeec1;
+    border-radius: 7px;
+}
+.abilityDisplayActive{
+    background: #ffffff;
+    border-radius: 7px;
+}
+.abilityDisplayActive:hover{
+    background: #ffffff;
+    border-radius: 7px;
+    border: 1px solid black;
 }
 .abilityName{
     font-weight: bold;

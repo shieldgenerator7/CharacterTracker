@@ -23,5 +23,12 @@ class Ability {
         this.active = false;
 
     }
+
+    get Active() {
+        return this.active;
+    }
+    set Active(value) {
+        this.active = value;
+    }
 }
 export default Ability;

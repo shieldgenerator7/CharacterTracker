@@ -93,7 +93,12 @@ function AbilityFrame({ ability, character, updateCharacter, abilityModified }) 
     }
     else {
         return (
-            <div className="abilityDisplay">
+            <div className={`abilityDisplay ${(ability.Active)?"abilityDisplayActive":""}`}
+                onClick={(e) => {
+                    ability.Active = !ability.Active;
+                    updateCharacter(character);
+                }}
+            >
                 <span className="abilityName">{ability.name}
                     {
                     (ability.resourceName && ability.resourceCost > 0)
