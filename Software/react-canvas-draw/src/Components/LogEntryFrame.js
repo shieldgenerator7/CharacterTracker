@@ -2,7 +2,7 @@
 
 function LogEntryFrame({ entry }) {
     return (
-        <div className="logEntryName">
+        <div className="logEntryFrame">
             {entry.DisplayText}
         </div>
     );

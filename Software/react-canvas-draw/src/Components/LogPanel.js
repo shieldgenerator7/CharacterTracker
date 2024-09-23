@@ -6,7 +6,7 @@ import LogEntryFrame from "./LogEntryFrame";
 function LogPanel({ log }) {
     console.log("log", log);
     return (
-        <div>
+        <div className="logPanel">
             {
                 log.entryList.map((entry, i) => (
                     <LogEntryFrame

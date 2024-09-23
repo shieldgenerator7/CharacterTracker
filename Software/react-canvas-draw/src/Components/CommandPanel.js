@@ -8,6 +8,7 @@ function CommandPanel({ game, updateGame, log }) {
     updateGame ??= (game) => { };
     return (
         <div className="commandPanel">
+            <div>
             <Field
                 name="Event"
                 value={game.event}
@@ -18,6 +19,7 @@ function CommandPanel({ game, updateGame, log }) {
                 className="editText"
                 placeHolder="Event"
             ></Field>
+            </div>
             <LogPanel
                 log={log}
             ></LogPanel>
