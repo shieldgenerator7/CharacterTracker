@@ -51,7 +51,10 @@ function App() {
 
     //Game
     let game = new Game();
-    let setGame = (g) => { game = g; };
+    let setGame = (g) => {
+        game = g;
+        storage.game = game;
+    };
     const defaultGame = () => storage.game ?? new Game();
     [game, setGame] = useState(defaultGame);
     window.game = game;
@@ -59,19 +62,27 @@ function App() {
         let newgame = JSON.parse(JSON.stringify(oldgame));
         //
         setGame(newgame);
-        storage.game = game;
     };
 
     //Log
     let log = new Log();
-    let setLog = (l) => { log = l; };
+    let setLog = (l) => {
+        log = l;
+        storage.log = log;
+    };
     const defaultLog = () => storage.log ?? new Log();
     [log, setLog] = useState(defaultLog);
     window.log = log;
 
+    let updateLog = (oldlog) => {
+        let newlog = JSON.parse(JSON.stringify(oldlog));
+        //
+        setLog(newlog);
+    };
+
     let diceRolled = (character, rollName, rollValue, rollResult) => {
         log.recordEntryDieRoll(game, character, rollName, rollValue, rollResult);
-        setLog(log);
+        updateLog(log);
     };
 
     // //Paste String

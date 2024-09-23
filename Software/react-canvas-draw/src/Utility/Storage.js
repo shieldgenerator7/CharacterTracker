@@ -3,6 +3,9 @@
 import { backwardsCompatifyCharacter, inflateCharacter } from "../Data/Character";
 import { backwardsCompatifyCreature, inflateCreature } from "../Data/Creature";
 import { backwardsCompatifyDeck, inflateDeck } from "../Data/Deck";
+import Game from "../Data/Game";
+import Log from "../Data/Log";
+import LogEntry from "../Data/LogEntry";
 
 //2024-03-08: copied from StoryViewer
 
@@ -51,6 +54,14 @@ class Storage {
             inflateCharacter(character);
             backwardsCompatifyCharacter(character);
         });
+        //
+        Object.setPrototypeOf(this.storage.game, Game.prototype);
+        //
+        Object.setPrototypeOf(this.storage.log, Log.prototype);
+        this.storage.log.entryList.forEach(entry => {
+            Object.setPrototypeOf(entry, LogEntry.prototype);
+        });
+        // Object
         this.storage.cardList.forEach(card => {
             inflateCreature(card);
             backwardsCompatifyCreature(card);
@@ -74,11 +85,19 @@ class Storage {
     set characterList(value) {
         this.storage.characterList = value;
     }
-    get cardList() {
-        return this.storage.cardList;
+
+    get log() {
+        return this.storage.log;
     }
-    set cardList(value) {
-        this.storage.cardList = value;
+    set log(value) {
+        this.storage.log = value;
+    }
+
+    get game() {
+        return this.storage.game;
+    }
+    set game(value) {
+        this.storage.game = value;
     }
 }
 export default Storage;
