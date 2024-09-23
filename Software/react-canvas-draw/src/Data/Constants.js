@@ -15,3 +15,5 @@ export const LIMIT_NEGATIVE_ONLY = 2;
 export const ACTION_PREV_ROLL_MODIFY = 0;
 export const ACTION_PREV_ROLL_REROLL = 1;
 export const ACTION_VARIABLE_MODIFY = 2;
+
+export const REGEX_SPACER_TEST = /^[- ]*$/;

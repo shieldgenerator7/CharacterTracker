@@ -1,7 +1,7 @@
 "use strict";
 
 import { clamp } from "../Utility/Utility";
-import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "./Constants";
+import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE, REGEX_SPACER_TEST } from "./Constants";
 
 class Attribute {
     constructor(name) {
@@ -68,7 +68,7 @@ class Attribute {
     }
 
     get IsSpacer() {
-        return this.name.startsWith("---") && this.name.endsWith("---");
+        return REGEX_SPACER_TEST.test(this.name);
     }
 }
 export default Attribute;

@@ -1,7 +1,7 @@
 "use strict";
 
+import { REGEX_SPACER_TEST } from "./Constants";
 import LogEntry from "./LogEntry";
-const REGEX_SPACER_TEST = /^[- ]*$/;
 
 class Log {
     constructor() {
