@@ -7,11 +7,19 @@ import React from "react";
 class LogPanel extends React.Component{
     constructor(props) {
         super(props)
+        this.panel = React.createRef();
     }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        let div = this.panel.current;
+        div.scrollTop = div.scrollHeight;
+    }//
 
     render(){
     return (
-        <div className="logPanel">
+        <div className="logPanel"
+            ref={this.panel}
+        >
             {
                 this.props.log.entryList.map((entry, i) => (
                     <LogEntryFrame
