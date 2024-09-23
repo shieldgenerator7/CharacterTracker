@@ -6,11 +6,11 @@ import { backwardsCompatifyDeck, inflateDeck } from "../Data/Deck";
 
 //2024-03-08: copied from StoryViewer
 
-const storageName = "CreatureCombat_CardList";
+const storageName = "CharacterTracker_SaveGame";
 
 class Storage {
     constructor() {
-        this.storageName = "CreatureCombat_CardList";
+        this.storageName = "CharacterTracker_SaveGame";
         this.storage = {
             //list of all characters
             characterList: [],//TODO: just store the game
