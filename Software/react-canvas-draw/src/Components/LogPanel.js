@@ -2,13 +2,20 @@
 
 import Log from "../Data/Log";
 import LogEntryFrame from "./LogEntryFrame";
+import React from "react";
 
-function LogPanel({ log }) {
-    console.log("log", log);
+class LogPanel extends React.Component{
+    constructor(props) {
+        super(props)
+        this.log = props.log;
+    }
+
+    render(){
+    console.log("log", this.log);
     return (
         <div className="logPanel">
             {
-                log.entryList.map((entry, i) => (
+                this.log.entryList.map((entry, i) => (
                     <LogEntryFrame
                         entry={entry}
                         key={`log_entry_${i}`}
@@ -17,5 +24,6 @@ function LogPanel({ log }) {
             }
         </div>
     );
+}
 }
 export default LogPanel;
