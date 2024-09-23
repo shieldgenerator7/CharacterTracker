@@ -22,7 +22,7 @@ class Log {
             return;
         }
         let entry = this.entryList.at(-1);
-        if (entry && entry.canCollate(character, game.event, game.location)) {
+        if (entry && entry.canCollate(character, attributeName, game.event, game.location)) {
             entry.recordVariableChange(attributeName, oldValue, newValue);
         }
         else {

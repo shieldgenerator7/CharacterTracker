@@ -22,15 +22,19 @@ class LogEntry {
         return getTime(this._dateTime);
     }
 
-    canCollate(character, event, location) {
-        return this.characterName == character.name
+    canCollate(character, name, event, location) {
+        let isNameChange = (n) => n.endsWith("_name") || n.endsWith("_displayname");
+        let newnamechange = isNameChange(name);
+        let existingnamechange = Object.entries(this.variableChangeList).some(n => isNameChange(n[0]));
+        return newnamechange == existingnamechange
+            && this.characterName == character.name
             && this.event == event
             && this.location == location
             //is this a variable change log entry?
             && Object.entries(this.variableChangeList).length > 0;
     }
 
-    recordVariableChange(name, oldVal, newVal) {
+    recordVariableChange(name, oldVal = "", newVal = "") {
         let entry = this.variableChangeList[name];
         if (!entry) {
             entry = this.variableChangeList[name] = {
