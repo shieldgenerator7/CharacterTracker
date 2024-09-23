@@ -22,9 +22,7 @@ class Log {
             return;
         }
         let entry = this.entryList.at(-1);
-        if (entry && entry.canCollate(character, game.event, game.location)
-            && (!attributeName.endsWith("_name") || newValue.startsWith(oldValue))
-        ) {
+        if (entry && entry.canCollate(character, game.event, game.location)) {
             entry.recordVariableChange(attributeName, oldValue, newValue);
         }
         else {

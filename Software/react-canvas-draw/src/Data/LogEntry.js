@@ -39,6 +39,19 @@ class LogEntry {
             };
         }
         entry.newVal = newVal;
+        //account for name changing
+        if (name.endsWith("_name")) {
+            let oldValKey = `${oldVal}_name`;
+            if (this.variableChangeList[oldValKey]) {
+                oldVal = this.variableChangeList[oldValKey].oldVal;
+                delete this.variableChangeList[oldValKey];
+                let newValKey = `${newVal}_name`;
+                this.variableChangeList[newValKey] = {
+                    oldVal: oldVal,
+                    newVal: newVal,
+                }
+            }
+        }
     }
 
     get DisplayText() {        
