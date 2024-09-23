@@ -534,3 +534,17 @@
     flex-direction: row;
     margin-top: 5px;
 }
+
+.abilityContainer {
+    display: block;
+}
+.abilityDisplay{
+    font-size: large;
+}
+.abilityName{
+    font-weight: bold;
+    margin-right: 10px;
+}
+.abilityDescription{
+    font-size:medium;
+}

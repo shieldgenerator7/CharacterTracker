@@ -5,6 +5,7 @@ import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
 function AbilityFrame({ ability, character, updateCharacter, abilityModified }) {
+    if (character.editAttributes){
     return (
         <div className="abilityFrameEdit">
             <div className="abilityFrameLine">
@@ -89,5 +90,23 @@ function AbilityFrame({ ability, character, updateCharacter, abilityModified }) 
             </div>
         </div>
     );
+    }
+    else {
+        return (
+            <div className="abilityDisplay">
+                <span className="abilityName">{ability.name}
+                    {
+                    (ability.resourceName && ability.resourceCost > 0)
+                        ? ` (${ability.resourceCost} ${ability.resourceName})`
+                        : ""
+                    }
+                    :
+                </span>
+                <span className="abilityDescription">
+                    {ability.description?.trim()}
+                </span>
+            </div>
+        );
+    }
 }
 export default AbilityFrame;

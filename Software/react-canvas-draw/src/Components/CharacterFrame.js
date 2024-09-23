@@ -12,12 +12,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
     return (
         <div className="characterFrame">
             <div className="characterContent">
-                {!character.editAttributes &&
-                    <>
                         <h1>{character.name}</h1>
-                        <h2>Attributes</h2>
-                    </>
-                }
                 {character.editAttributes &&
                     <Field
                         name={"Character Name"}
@@ -29,6 +24,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         className={"editText"}
                     ></Field>
                 }
+                <h2>Attributes</h2>
                 <div className={"attributeContainer"}>
                     {
                         character.attributeList.map((attr, i) => (
@@ -43,7 +39,8 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         ))
                     }
                 </div>
-                <div className={"attributeContainer"}>
+                <h2>Abilities</h2>
+                <div className={"abilityContainer"}>
                     {
                         character.abilityList.map((ability, i) => (
                             <AbilityFrame
