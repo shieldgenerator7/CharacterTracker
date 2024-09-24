@@ -27,6 +27,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                 }
                 <h2>Attributes</h2>
                 <div className={"attributeContainer"}>
+                    {character.editAttributes &&
                         <ListOrdered
                             arr={character.attributeList}
                             contentFunc={
@@ -47,9 +48,26 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                             updateCharacter(character);
                         }}
                         ></ListOrdered>
+                    }
+                    {!character.editAttributes &&
+                        
+                        (<>{
+                        character.attributeList.map((attr, i) => (
+                            <AttributeFrame
+                            attribute={attr}
+                            character={character}
+                            updateCharacter={updateCharacter}
+                            diceRolled={diceRolled}
+                            attributeAdjusted={attributeAdjusted}
+                            key={`character_attribute_${i}`}
+                        ></AttributeFrame> 
+                        ))
+                        }</>)
+                    }
                 </div>
                 <h2>Abilities</h2>
                 <div className={"abilityContainer"}>
+                {character.editAttributes &&
                         <ListOrdered
                         arr={character.abilityList}
                         contentFunc={
@@ -71,6 +89,23 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         updateCharacter(character);
                     }}
                     ></ListOrdered>
+                    }
+                    {!character.editAttributes &&
+                        
+                        (<>{
+                        character.abilityList.map((ability, i) => (
+                            <AbilityFrame
+                                ability={ability}
+                                character={character}
+                                updateCharacter={updateCharacter}
+                                diceRolled={diceRolled}
+                                attributeAdjusted={attributeAdjusted}
+                                abilityModified={abilityModified}
+                                key={`character_ability_${i}`}
+                            ></AbilityFrame>
+                        ))
+                        }</>)
+                    }
                 </div>
 
                 {
