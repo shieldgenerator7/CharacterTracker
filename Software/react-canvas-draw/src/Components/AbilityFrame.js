@@ -4,7 +4,7 @@ import { ACTION_PREV_ROLL_MODIFY, ACTION_PREV_ROLL_REROLL, ACTION_VARIABLE_MODIF
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, abilityModified }) {
+function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, abilityModified, extraButtons }) {
     if (character.editAttributes) {
         return (
             <div className="abilityFrameEdit">
@@ -87,6 +87,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         }}
                         className={"editText"}
                     ></Field>
+                    {extraButtons}
                 </div>
             </div>
         );

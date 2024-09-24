@@ -50,8 +50,10 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                 </div>
                 <h2>Abilities</h2>
                 <div className={"abilityContainer"}>
-                    {
-                        character.abilityList.map((ability, i) => (
+                        <ListOrdered
+                        arr={character.abilityList}
+                        contentFunc={
+                            (ability, i, extraButtons) => (
                             <AbilityFrame
                                 ability={ability}
                                 character={character}
@@ -59,10 +61,16 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                                 diceRolled={diceRolled}
                                 attributeAdjusted={attributeAdjusted}
                                 abilityModified={abilityModified}
+                                extraButtons={extraButtons}
                                 key={`character_ability_${i}`}
                             ></AbilityFrame>
-                        ))
-                    }
+                            )
+                        }
+                    updateFunc={(arr) => {
+                        character.abilityList = arr;
+                        updateCharacter(character);
+                    }}
+                    ></ListOrdered>
                 </div>
 
                 {
