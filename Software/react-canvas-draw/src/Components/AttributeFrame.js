@@ -9,7 +9,7 @@ import { clamp, isString } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function AttributeFrame({ attribute, character, updateCharacter, diceRolled, attributeAdjusted }) {
+function AttributeFrame({ attribute, character, updateCharacter, diceRolled, attributeAdjusted, extraButtons }) {
     let onClickType = attribute.OnClickType;
     //Edit Attributes
     if (character.editAttributes) {
@@ -66,29 +66,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                     }}
                     className={"editTextShort"}
                 ></Field>
-                <button onClick={() => {
-                    let index = character.attributeList.indexOf(attribute);
-                    if (index < character.attributeList.length - 1) {
-                        character.attributeList.splice(index, 1);
-                        character.attributeList.splice(index + 1, 0, attribute);
-                        updateCharacter(character);
-                    }
-                }}>&darr;</button>
-                <button onClick={() => {
-                    let index = character.attributeList.indexOf(attribute);
-                    if (index > 0) {
-                        character.attributeList.splice(index, 1);
-                        character.attributeList.splice(index - 1, 0, attribute);
-                        updateCharacter(character);
-                    }
-                }}>&uarr;</button>
-                <button onClick={() => {
-                    let index = character.attributeList.indexOf(attribute);
-                    if (index > 0) {
-                        character.attributeList.splice(index, 1);
-                        updateCharacter(character);
-                    }
-                }}>X</button>
+                {extraButtons}
             </div>
         );
     }

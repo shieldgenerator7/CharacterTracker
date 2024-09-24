@@ -7,6 +7,7 @@ import { rollDice } from "../Data/DiceRoller";
 import AbilityFrame from "./AbilityFrame";
 import AttributeFrame from "./AttributeFrame";
 import Field from "./Field";
+import ListOrdered from "./ListOrdered";
 
 function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjusted, abilityModified }) {
     return (
@@ -26,18 +27,26 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                 }
                 <h2>Attributes</h2>
                 <div className={"attributeContainer"}>
-                    {
-                        character.attributeList.map((attr, i) => (
+                        <ListOrdered
+                            arr={character.attributeList}
+                            contentFunc={
+                                (attr, i, extraButtons) => (
                             <AttributeFrame
                                 attribute={attr}
                                 character={character}
                                 updateCharacter={updateCharacter}
                                 diceRolled={diceRolled}
                                 attributeAdjusted={attributeAdjusted}
+                                extraButtons={extraButtons}
                                 key={`character_attribute_${i}`}
                             ></AttributeFrame>
-                        ))
-                    }
+                                )
+                            }
+                        updateFunc={(arr) => {
+                            character.attributeList = arr;
+                            updateCharacter(character);
+                        }}
+                        ></ListOrdered>
                 </div>
                 <h2>Abilities</h2>
                 <div className={"abilityContainer"}>
