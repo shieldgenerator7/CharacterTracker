@@ -1,6 +1,27 @@
 "use strict";
 
-function ListOrdered({ arr, contentFunc, updateFunc }) {
+import { Component } from "react";
+
+/**
+     * 
+     * @param {*} arr 
+     * @param {*} contentFunc 
+     * @param {*} updateFunc 
+     */
+class ListOrdered extends Component{
+    /**
+     * 
+     * @param {*} arr 
+     * @param {*} contentFunc 
+     * @param {*} updateFunc 
+     */
+    constructor(props) {
+        super(props);//arr, contentFunc, updateFunc
+    }
+    render() {
+        let arr = this.props.arr;
+        let contentFunc = this.props.contentFunc;
+        let updateFunc = this.props.updateFunc;
     return (
         <div>
             {arr.map((obj, i) => (
@@ -37,5 +58,6 @@ function ListOrdered({ arr, contentFunc, updateFunc }) {
             ))}
         </div>
     );
+}
 }
 export default ListOrdered;
