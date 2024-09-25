@@ -455,10 +455,17 @@
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
+    border: 3px solid white;
 }
+.rollResult:hover {
+    border: 3px solid rgb(175, 175, 175);
+}/**/
 
 .rollResultSelect {
     border: 3px solid rgb(44, 180, 44);
+}
+.rollResultSelect:hover {
+    border: 3px solid rgb(61, 255, 61);
 }
 
 .field {
@@ -590,13 +597,14 @@
 }
 
 .abilityDisplayDisabled:hover {
-    color: black;
-    background: #cebd90;
+    color: rgb(105, 105, 105);
+    background: #b9aa84;
 }
 
 .abilityDisplayActive {
     background: #ffffff;
     border-radius: 7px;
+    border: 1px solid #ffffff;
 }
 
 .abilityDisplayActive:hover {
