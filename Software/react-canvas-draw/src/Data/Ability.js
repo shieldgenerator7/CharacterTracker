@@ -1,6 +1,6 @@
 "use strict";
 
-import { ACTION_PREV_ROLL_MODIFY, ONCLICK_TOGGLE } from "./Constants";
+import { ACTION_ROLL_MODIFY, ONCLICK_TOGGLE } from "./Constants";
 
 class Ability {
     constructor(name) {
@@ -13,7 +13,7 @@ class Ability {
 
         //on click
         this.onclick = ONCLICK_TOGGLE;
-        this.action = ACTION_PREV_ROLL_MODIFY;
+        this.action = ACTION_ROLL_MODIFY;
 
         //effect
         this.dieRollBonus = 0;

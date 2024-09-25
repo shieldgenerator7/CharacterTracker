@@ -3,7 +3,7 @@
 "use strict";
 
 import Attribute from "../Data/Character";
-import { ACTION_PREV_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
+import { ACTION_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
 import { clamp, isString } from "../Utility/Utility";
 import Counter from "./Counter";
@@ -110,7 +110,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                         diceRolled(character, attribute.name, value, result);
                                         //roll ability dice, if applicable
                                         character.abilityList
-                                            .filter(ability => ability.Active && ability.action == ACTION_PREV_ROLL_MODIFY)
+                                            .filter(ability => ability.Active && ability.action == ACTION_ROLL_MODIFY)
                                             .forEach(ability => {
                                                 let ablname = `${attribute.name} (+${ability.name})`;
                                                 //early exit: attribute filter

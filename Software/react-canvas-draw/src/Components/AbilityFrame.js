@@ -1,6 +1,6 @@
 "use strict";
 
-import { ACTION_PREV_ROLL_MODIFY, ACTION_PREV_ROLL_REROLL, ACTION_VARIABLE_MODIFY } from "../Data/Constants";
+import { ACTION_ROLL_MODIFY, ACTION_ROLL_REROLL, ACTION_VARIABLE_MODIFY } from "../Data/Constants";
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
@@ -53,8 +53,8 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                     ></Field>
                     <SearchSelect
                         options={[
-                            ACTION_PREV_ROLL_MODIFY,
-                            ACTION_PREV_ROLL_REROLL,
+                            ACTION_ROLL_MODIFY,
+                            ACTION_ROLL_REROLL,
                             ACTION_VARIABLE_MODIFY
                         ]}
                         option={ability.action}
