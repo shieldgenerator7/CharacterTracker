@@ -76,8 +76,8 @@ class ListOrdered extends Component {
                         )}
                         {/* Copy button */}
                         <button className="listorderedbutton" onClick={() => {
-                            // arr.splice(i, 1);
-                            // updateFunc(arr);
+                            let json = JSON.stringify(obj);
+                            navigator.clipboard.writeText(json);
                         }}>
                             &#10697;</button>
                         {/* Remove button */}
