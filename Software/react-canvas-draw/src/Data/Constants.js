@@ -17,3 +17,7 @@ export const ACTION_ROLL_REROLL = "Reroll Prev Roll";
 export const ACTION_VARIABLE_MODIFY = "Modify Variable";
 
 export const REGEX_SPACER_TEST = /^[- ]*$/;
+
+export const JSON_TYPE_CHARACTER = "j_char";
+export const JSON_TYPE_ATTRIBUTE = "j_attr";
+export const JSON_TYPE_ABILITY = "j_abil";
