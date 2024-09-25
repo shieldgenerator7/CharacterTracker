@@ -151,7 +151,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                         //
                                         character.dieRollLog.push(roll);
                                         character.dieRollLogSelect.length = 0;
-                                        character.dieRollLogSelect.push( character.dieRollLog.length-1);
+                                        character.dieRollLogSelect.push(character.dieRollLog.length - 1);
                                         updateCharacter(character);
                                     }
                                 }

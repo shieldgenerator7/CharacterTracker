@@ -16,24 +16,24 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                 <h1>{character.name}</h1>
                 {character.editAttributes &&
                     <>
-                    <Field
-                        name={"Character Name"}
-                        value={character.name}
-                        setValue={(v) => {
-                            character.name = v;
-                            updateCharacter(character);
-                        }}
-                        className={"editTextLong"}
-                    ></Field>
-                    <button onClick={(e)=>{
-                    let json = JSON.stringify(character);
-                    navigator.clipboard.writeText(json);
-                    }} >Copy Character</button>
+                        <Field
+                            name={"Character Name"}
+                            value={character.name}
+                            setValue={(v) => {
+                                character.name = v;
+                                updateCharacter(character);
+                            }}
+                            className={"editTextLong"}
+                        ></Field>
+                        <button onClick={(e) => {
+                            let json = JSON.stringify(character);
+                            navigator.clipboard.writeText(json);
+                        }} >Copy Character</button>
                     </>
                 }
                 {character.editAttributes &&
                     characterList.indexOf(character) >= 0 &&
-                    
+
                     <button
                         onClick={(e) => {
                             let index = characterList.indexOf(character);
@@ -133,10 +133,10 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         <h2>Dice Rolls
                             <button className="listorderedbuttonX"
                                 onClick={() => {
-                        character.dieRollLog = [];
-                        updateCharacter(character);
+                                    character.dieRollLog = [];
+                                    updateCharacter(character);
                                 }}>X
-                                </button>
+                            </button>
                         </h2>
                         <span className="diceRollLog">
 
@@ -199,26 +199,26 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         navigator.clipboard.readText().then(v => {
                             let clipboardText = v || "{}";
                             try {
-                            let obj = JSON.parse(clipboardText);
-                            //Attribute
-                            if (obj.value != undefined) {//TODO: improve type detection
-                                let attr = obj;
-                                inflateAttribute(attr);
-                                character.attributeList.push(attr);
-                                character.editAttributes = true;
-                                updateCharacter(character);
-                            }
-                            //Ability
-                            if (obj.description != undefined) {//TODO: improve type detection
-                                let ability = obj;
-                                inflateAbility(ability);
-                                character.abilityList.push(ability);
-                                character.editAttributes = true;
-                                updateCharacter(character);
-                            }
+                                let obj = JSON.parse(clipboardText);
+                                //Attribute
+                                if (obj.value != undefined) {//TODO: improve type detection
+                                    let attr = obj;
+                                    inflateAttribute(attr);
+                                    character.attributeList.push(attr);
+                                    character.editAttributes = true;
+                                    updateCharacter(character);
+                                }
+                                //Ability
+                                if (obj.description != undefined) {//TODO: improve type detection
+                                    let ability = obj;
+                                    inflateAbility(ability);
+                                    character.abilityList.push(ability);
+                                    character.editAttributes = true;
+                                    updateCharacter(character);
+                                }
                             }
                             catch (SyntaxError) {
-                                
+
                             }
                         });
                     }}>PASTE</button>

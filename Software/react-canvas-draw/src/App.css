@@ -456,22 +456,26 @@
     padding-right: 15px;
     border: 3px solid white;
 }
-.rollResultInternal{
+
+.rollResultInternal {
     display: flex;
     flex-direction: column;
     line-height: 15px;
 }
+
 .rollResult:hover {
     border: 3px solid rgb(175, 175, 175);
-}/**/
+}
 
 .rollResultSelect {
     border: 3px solid rgb(44, 180, 44);
 }
+
 .rollResultSelect:hover {
     border: 3px solid rgb(61, 255, 61);
 }
-.rollResultName{
+
+.rollResultName {
     font-size: small;
     padding: 0px;
     margin: 0px;
@@ -529,12 +533,14 @@
     display: flex;
     flex-direction: row;
 }
-.commandControls{
+
+.commandControls {
     display: flex;
     flex-direction: column;
-    
+
 }
-.commandControls button{
+
+.commandControls button {
     margin-top: 10px;
 }
 
@@ -627,11 +633,12 @@
     font-size: medium;
 }
 
-.listordereditem{
+.listordereditem {
     display: flex;
     flex-direction: row;
 }
-.listordereddraghandle{
+
+.listordereddraghandle {
     display: inline;
     cursor: move;
     /* padding: 5px 10px 5px 10px; */
@@ -639,11 +646,13 @@
     margin-right: 5px;
     height: 40px;
 }
-.listordereddraghandle:hover{
+
+.listordereddraghandle:hover {
     background: #ffeec1;
     border-radius: 5px;
 }
-.listorderedbutton{
+
+.listorderedbutton {
     display: inline;
     /* padding: 5px 10px 5px 10px; */
     /* margin-left: 5px;
@@ -653,11 +662,13 @@
     background: none;
     height: 40px;
 }
-.listorderedbutton:hover{
+
+.listorderedbutton:hover {
     background: #ffeec1;
     border-radius: 5px;
 }
-.listorderedbuttonX{
+
+.listorderedbuttonX {
     display: inline;
     /* padding: 5px 10px 5px 10px; */
     padding: 1px 5px 1px 5px;
@@ -668,7 +679,8 @@
     background: none;
     height: 40px;
 }
-.listorderedbuttonX:hover{
+
+.listorderedbuttonX:hover {
     background: #ff9e9e;
     border-radius: 5px;
 }

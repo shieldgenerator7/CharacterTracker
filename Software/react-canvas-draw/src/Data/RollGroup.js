@@ -3,7 +3,7 @@
 import { arraySum } from "../Utility/Utility";
 import Roll from "./Roll";
 
-class RollGroup{
+class RollGroup {
     constructor(rollList = []) {
         this.name = "";
         this.rollList = rollList;

@@ -42,7 +42,7 @@ function CommandPanel({ game, updateGame, characterList, setCharacterList, log }
                                 }
                             }
                             catch (SyntaxError) {
-                                
+
                             }
                         });
                     }}

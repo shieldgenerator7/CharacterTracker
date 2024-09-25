@@ -1,6 +1,6 @@
 "use strict";
 
-class Roll{
+class Roll {
     constructor(name, value) {
         this.name = name;
         this.value = value;
