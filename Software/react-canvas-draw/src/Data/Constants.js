@@ -1,6 +1,6 @@
 "use strict";
 
-export const VERSION = "0.003";
+export const VERSION = "0.004";
 
 
 export const ONCLICK_ADJUST_VALUE = 0;
