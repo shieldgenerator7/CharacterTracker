@@ -540,13 +540,10 @@
 }
 
 .logPanel {
-    border-top: 1px solid black;
+    border-left: 1px solid black;
     background: #6e664e;
     width: 100%;
     height: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-top: 5px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
