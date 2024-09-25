@@ -156,6 +156,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                     <button onClick={(e) => {
                         navigator.clipboard.readText().then(v => {
                             let clipboardText = v || "{}";
+                            try {
                             let obj = JSON.parse(clipboardText);
                             //Attribute
                             if (obj.value != undefined) {//TODO: improve type detection
@@ -172,6 +173,10 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                                 character.abilityList.push(ability);
                                 character.editAttributes = true;
                                 updateCharacter(character);
+                            }
+                            }
+                            catch (SyntaxError) {
+                                
                             }
                         });
                     }}>PASTE</button>
