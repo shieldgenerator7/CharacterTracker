@@ -145,7 +145,16 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                                     className={`rollResult ${character.dieRollLogSelect.includes(roll) && "rollResultSelect" || ""}`}
                                     key={`character_die_roll_log_${i}`}
                                     onClick={() => {
-                                        character.dieRollLog.splice(i, 1);
+                                        let selected = character.dieRollLogSelect.includes(roll);
+                                        //Deselect
+                                        if (selected) {
+                                            let index = character.dieRollLogSelect.indexOf(roll);
+                                            character.dieRollLogSelect.splice(index, 1);
+                                        }
+                                        //Select
+                                        else {
+                                            character.dieRollLogSelect.push(roll);
+                                        }
                                         updateCharacter(character);
                                     }}
                                 >{roll}</span>
