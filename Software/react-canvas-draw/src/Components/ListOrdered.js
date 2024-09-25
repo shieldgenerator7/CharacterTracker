@@ -19,7 +19,6 @@ class ListOrdered extends Component {
         super(props);//arr, contentFunc, updateFunc
         //2024-09-24: copied from https://www.geeksforgeeks.org/drag-and-drop-sortable-list-using-reactjs/
         this.state = {
-            items: props.arr,
             draggingItem: null,
             newItemName: '',
             newItemImage: '',
@@ -40,16 +39,16 @@ class ListOrdered extends Component {
     };
 
     handleDrop = (e, targetItem) => {
-        const { draggingItem, items } = this.state;
+        const { draggingItem } = this.state;
+        const { arr } = this.props;
         if (!draggingItem) return;
 
-        const currentIndex = items.indexOf(draggingItem);
-        const targetIndex = items.indexOf(targetItem);
+        const currentIndex = arr.indexOf(draggingItem);
+        const targetIndex = arr.indexOf(targetItem);
 
         if (currentIndex !== -1 && targetIndex !== -1) {
-            items.splice(currentIndex, 1);
-            items.splice(targetIndex, 0, draggingItem);
-            this.setState({ items });
+            arr.splice(currentIndex, 1);
+            arr.splice(targetIndex, 0, draggingItem);
         }
     };
     render() {
