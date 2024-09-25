@@ -1,10 +1,12 @@
 "use strict";
 
 import { ACTION_ROLL_MODIFY, ACTION_ROLL_REROLL, ACTION_VARIABLE_MODIFY } from "../Data/Constants";
+import { rollDice } from "../Data/DiceRoller";
+import { isString } from "../Utility/Utility";
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, abilityModified, extraButtons }) {
+function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, abilityModified, diceRolled, extraButtons }) {
     if (character.editAttributes) {
         return (
             <div className="abilityFrameEdit">
@@ -121,7 +123,54 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                             if (character.dieRollLogSelect.length > 0) {
                                 switch (ability.action) {
                                     case ACTION_ROLL_MODIFY:
-                                        console.warn("ACTION_ROLL_MODIFY not implemented");
+                                        character.dieRollLogSelect.forEach(roll => {
+                                            //2024-09-25: copied from AttributeFrame
+                                            //roll ability dice, if applicable
+                                            let result = roll;
+                                            let modified = 0;
+                                            let ablname = "MODIFY"; //`${attribute.name} (+${ability.name})`; //TODO: update this when rolls get more info
+                                            //early exit: attribute filter
+                                            //TODO: put this back in when roll becomes an object
+                                            // if (ability.dieRollAttributeFilter) {
+                                            //     if (ability.dieRollAttributeFilter != attribute.name) {
+                                            //         return;
+                                            //     }
+                                            // }
+                                            //bonus: dice roll
+                                            if (("" + ability.dieRollBonus).includes("d")) {
+                                                let bonusvalue = rollDice(ability.dieRollBonus);
+                                                let bonusresult = bonusvalue + result;
+                                                diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                modified += bonusvalue;
+                                            }
+                                            //bonus: constant
+                                            else if (ability.dieRollBonus * 1 > 0) {
+                                                let bonusvalue = ability.dieRollBonus * 1;
+                                                let bonusresult = bonusvalue + result;
+                                                diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                modified += bonusvalue;
+                                            }
+                                            //bonus: Attribute
+                                            else if (isString(ability.dieRollBonus)) {
+                                                let attrName = ability.dieRollBonus.trim();
+                                                let attr = character.attributeList
+                                                    .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
+                                                if (attr?.value) {
+                                                    let bonusvalue = attr.value * 1;
+                                                    let bonusresult = bonusvalue + result;
+                                                    diceRolled(character, ablname, bonusvalue, bonusresult);
+                                                    modified += bonusvalue;
+                                                }
+                                            }
+
+                                            //
+                                            let finalRoll = result + modified;
+                                            //update roll
+                                            let index = character.dieRollLog.indexOf(roll);
+                                            character.dieRollLog.splice(index, 1, finalRoll);
+                                        });
+                                        updateCharacter(character);
+
                                         break;
                                     case ACTION_ROLL_REROLL:
                                         console.warn("ACTION_ROLL_REROLL not implemented");
