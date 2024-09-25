@@ -7,7 +7,7 @@ import LogPanel from "./LogPanel";
 function CommandPanel({ game, updateGame, characterList, setCharacterList, log }) {
     return (
         <div className="commandPanel">
-            <div>
+            <div className="commandControls">
                 <Field
                     name="Event"
                     value={game.event}
