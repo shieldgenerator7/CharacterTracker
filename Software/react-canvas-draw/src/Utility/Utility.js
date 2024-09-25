@@ -11,7 +11,7 @@
 
 //Returns true if the given string is null, undefined, empty string, or only white space
 export function isEmpty(str) {
-    return !str || !str.trim();
+    return !str || !(`${str}`).trim();
 }
 
 export function isString(s) { return s === "" + s; }
