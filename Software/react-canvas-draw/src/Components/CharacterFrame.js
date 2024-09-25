@@ -130,7 +130,14 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                 {
                     !character.editAttributes && character.dieRollLog?.length > 0 &&
                     <>
-                        <h2>Dice Rolls</h2>
+                        <h2>Dice Rolls
+                            <button className="listorderedbuttonX"
+                                onClick={() => {
+                        character.dieRollLog = [];
+                        updateCharacter(character);
+                                }}>X
+                                </button>
+                        </h2>
                         <span className="diceRollLog">
 
                             {character.dieRollLog.map((roll, i) =>
@@ -200,12 +207,6 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         });
                     }}>PASTE</button>
                 }
-                {!character.editAttributes && character.dieRollLog?.length > 0 &&
-                    <button onClick={() => {
-                        character.dieRollLog = [];
-                        updateCharacter(character);
-                    }}>CLEAR DIE ROLL LOG</button>
-                }{ }
             </div>
         </div>
     );
