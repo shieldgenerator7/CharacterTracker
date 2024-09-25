@@ -157,7 +157,12 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                                         }
                                         updateCharacter(character);
                                     }}
-                                >{roll.Value}</span>
+                                >
+                                    {/* <div className="rollResultInternal"> */}
+                                    {roll.Value}
+                                    {/* <span className="rollResultName">{roll.name}</span>
+                                    </div> */}
+                                </span>
                             )}
 
                         </span>

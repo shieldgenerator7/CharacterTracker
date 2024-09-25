@@ -457,6 +457,11 @@
     padding-right: 15px;
     border: 3px solid white;
 }
+.rollResultInternal{
+    display: flex;
+    flex-direction: column;
+    line-height: 15px;
+}
 .rollResult:hover {
     border: 3px solid rgb(175, 175, 175);
 }/**/
@@ -466,6 +471,11 @@
 }
 .rollResultSelect:hover {
     border: 3px solid rgb(61, 255, 61);
+}
+.rollResultName{
+    font-size: small;
+    padding: 0px;
+    margin: 0px;
 }
 
 .field {
