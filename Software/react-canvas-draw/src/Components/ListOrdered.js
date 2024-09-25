@@ -17,7 +17,41 @@ class ListOrdered extends Component {
      */
     constructor(props) {
         super(props);//arr, contentFunc, updateFunc
+        //2024-09-24: copied from https://www.geeksforgeeks.org/drag-and-drop-sortable-list-using-reactjs/
+        this.state = {
+            items: props.arr,
+            draggingItem: null,
+            newItemName: '',
+            newItemImage: '',
+        };
     }
+    //2024-09-24: the following handle...() methods copied from https://www.geeksforgeeks.org/drag-and-drop-sortable-list-using-reactjs/
+    handleDragStart = (e, item) => {
+        this.setState({ draggingItem: item });
+        e.dataTransfer.setData('text/plain', '');
+    };
+
+    handleDragEnd = () => {
+        this.setState({ draggingItem: null });
+    };
+
+    handleDragOver = (e) => {
+        e.preventDefault();
+    };
+
+    handleDrop = (e, targetItem) => {
+        const { draggingItem, items } = this.state;
+        if (!draggingItem) return;
+
+        const currentIndex = items.indexOf(draggingItem);
+        const targetIndex = items.indexOf(targetItem);
+
+        if (currentIndex !== -1 && targetIndex !== -1) {
+            items.splice(currentIndex, 1);
+            items.splice(targetIndex, 0, draggingItem);
+            this.setState({ items });
+        }
+    };
     render() {
         let arr = this.props.arr;
         let contentFunc = this.props.contentFunc;
@@ -25,7 +59,19 @@ class ListOrdered extends Component {
         return (
             <div>
                 {arr.map((obj, i) => (
-                    <div>
+                    <div
+                    key={`listordered_${i}`}
+                    className=
+                        {`item ${obj === this.state.draggingItem ? 
+                            'dragging' : ''
+                        }`}
+                    draggable="true"
+                    onDragStart={(e) => 
+                        this.handleDragStart(e, obj)}
+                    onDragEnd={this.handleDragEnd}
+                    onDragOver={this.handleDragOver}
+                    onDrop={(e) => this.handleDrop(e, obj)}
+                    >
                         {contentFunc(
                             obj,
                             i,
@@ -54,6 +100,7 @@ class ListOrdered extends Component {
                             </>
                             )
                         )}
+                        {/* <RiDragMove2Line/> */}
                     </div>
                 ))}
             </div>
