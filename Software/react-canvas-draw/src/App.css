@@ -610,8 +610,23 @@
     cursor: move;
     padding: 5px 10px 5px 10px;
     margin-right: 5px;
+    height: 40px;
 }
 .listordereddraghandle:hover{
     background: #ffeec1;
+    border-radius: 5px;
+}
+.listorderedbuttonX{
+    display: inline;
+    padding: 5px 10px 5px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    border: none;
+    background: none;
+    height: 40px;
+}
+.listorderedbuttonX:hover{
+    background: #ff9e9e;
     border-radius: 5px;
 }

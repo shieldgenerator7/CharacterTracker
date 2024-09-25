@@ -72,16 +72,13 @@ class ListOrdered extends Component {
                         </div>
                         {contentFunc(
                             obj,
-                            i,
-                            (<>
-                                {/* Remove */}
-                                <button onClick={() => {
-                                    arr.splice(i, 1);
-                                    updateFunc(arr);
-                                }}>X</button>
-                            </>
-                            )
+                            i
                         )}
+                        {/* Remove button */}
+                        <button className="listorderedbuttonX" onClick={() => {
+                            arr.splice(i, 1);
+                            updateFunc(arr);
+                        }}>X</button>
                         {/* <RiDragMove2Line/> */}
                     </div>
                 ))}
