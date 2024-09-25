@@ -109,7 +109,7 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                         roll.name = attribute.name;
                                         let originalResult = roll.Value;
                                         roll.addRoll(attribute.name, attribute.value * 1);
-                                        diceRolled(character, attribute.name, roll.Value, originalResult);
+                                        diceRolled(character, attribute.name, originalResult, roll.Value);
                                         //roll ability dice, if applicable
                                         character.abilityList
                                             .filter(ability => ability.Active && ability.action == ACTION_ROLL_MODIFY)
