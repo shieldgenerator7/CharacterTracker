@@ -123,7 +123,8 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                             if (character.dieRollLogSelect.length > 0) {
                                 switch (ability.action) {
                                     case ACTION_ROLL_MODIFY:
-                                        character.dieRollLogSelect.forEach(roll => {
+                                        character.dieRollLogSelect.forEach(rollIndex => {
+                                            let roll = character.dieRollLog[rollIndex];
                                             //2024-09-25: copied from AttributeFrame
                                             //roll ability dice, if applicable
                                             let ablname = `${roll.name} (+${ability.name})`;
