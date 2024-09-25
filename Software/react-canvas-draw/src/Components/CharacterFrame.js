@@ -158,7 +158,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                             let clipboardText = v;
                             let obj = JSON.parse(clipboardText);
                             //Attribute
-                            if (obj.displayName != undefined) {//TODO: improve type detection
+                            if (obj.value != undefined) {//TODO: improve type detection
                                 let attr = obj;
                                 inflateAttribute(attr);
                                 character.attributeList.push(attr);
