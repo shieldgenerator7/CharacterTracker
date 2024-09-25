@@ -1,7 +1,7 @@
 "use strict";
 
 import Ability from "../Data/Ability";
-import Attribute from "../Data/Attribute";
+import Attribute, { inflateAttribute } from "../Data/Attribute";
 import Character from "../Data/Character";
 import { rollDice } from "../Data/DiceRoller";
 import AbilityFrame from "./AbilityFrame";
@@ -151,6 +151,19 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         character.editAttributes = true;
                         updateCharacter(character);
                     }}>NEW ABILITY</button>
+                }
+                {character.editAttributes &&
+                    <button onClick={(e) => {
+                        navigator.clipboard.readText().then(v => {
+                            let clipboardText = v;
+                            console.log("clipboard has been read", clipboardText);
+                            let attr = JSON.parse(clipboardText);
+                            // inflateAttribute(attr);
+                            // character.attributeList.push(attr);
+                            character.editAttributes = true;
+                            // updateCharacter(character);
+                        });
+                    }}>PASTE</button>
                 }
                 {!character.editAttributes && character.dieRollLog?.length > 0 &&
                     <button onClick={() => {
