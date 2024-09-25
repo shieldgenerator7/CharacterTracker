@@ -1,5 +1,8 @@
 "use strict";
 
+import Roll from "./Roll";
+import RollGroup from "./RollGroup";
+
 class DiceRoller {
     constructor() {
 
@@ -36,12 +39,12 @@ export function rollDice(dieRollString) {
     return _rollDice(split[0], split[1]);
 }
 function _rollDice(count, die) {
-    let sum = 0;
+    let group = new RollGroup();
     for (let i = 0; i < count; i++) {
-        let roll = Math.ceil(Math.random() * die);
-        sum += roll;
+        let value = Math.ceil(Math.random() * die);
+        group.addRoll(`1d${die}`, value);
     }
-    return sum;
+    return group;
 }
 window.rollDice = rollDice;
 

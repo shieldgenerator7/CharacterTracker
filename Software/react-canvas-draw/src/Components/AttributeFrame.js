@@ -5,6 +5,7 @@
 import Attribute from "../Data/Character";
 import { ACTION_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
+import RollGroup from "../Data/RollGroup";
 import { clamp, isString } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
@@ -104,10 +105,11 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                             <button className={"plusMinus"}
                                 onClick={
                                     () => {
-                                        let value = rollDice(attribute.dieRoll || "1d20");
-                                        let result = value + attribute.value * 1;
-                                        let modified = 0;
-                                        diceRolled(character, attribute.name, value, result);
+                                        let roll = rollDice(attribute.dieRoll || "1d20");
+                                        roll.name = attribute.name;
+                                        let originalResult = roll.Value;
+                                        roll.addRoll(attribute.name, attribute.value * 1);
+                                        diceRolled(character, attribute.name, roll.Value, originalResult);
                                         //roll ability dice, if applicable
                                         character.abilityList
                                             .filter(ability => ability.Active && ability.action == ACTION_ROLL_MODIFY)
@@ -121,17 +123,17 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                                 }
                                                 //bonus: dice roll
                                                 if (("" + ability.dieRollBonus).includes("d")) {
-                                                    let bonusvalue = rollDice(ability.dieRollBonus);
-                                                    let bonusresult = bonusvalue + result;
-                                                    diceRolled(character, ablname, bonusvalue, bonusresult);
-                                                    modified += bonusvalue;
+                                                    let bonusroll = rollDice(ability.dieRollBonus);
+                                                    bonusroll.name = ability.name;
+                                                    bonusroll.rollList.forEach(roll => roll.name += ` ${ability.name}`);
+                                                    roll.rollList = roll.rollList.concat(bonusroll.rollList);
+                                                    diceRolled(character, ablname, bonusroll.Value, roll.Value);
                                                 }
                                                 //bonus: constant
                                                 else if (ability.dieRollBonus * 1 > 0) {
                                                     let bonusvalue = ability.dieRollBonus * 1;
-                                                    let bonusresult = bonusvalue + result;
-                                                    diceRolled(character, ablname, bonusvalue, bonusresult);
-                                                    modified += bonusvalue;
+                                                    roll.addRoll(ability.name, bonusvalue);
+                                                    diceRolled(character, ablname, bonusvalue, roll.Value);
                                                 }
                                                 //bonus: Attribute
                                                 else if (isString(ability.dieRollBonus)) {
@@ -140,18 +142,16 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                                         .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
                                                     if (attr?.value) {
                                                         let bonusvalue = attr.value * 1;
-                                                        let bonusresult = bonusvalue + result;
-                                                        diceRolled(character, ablname, bonusvalue, bonusresult);
-                                                        modified += bonusvalue;
+                                                        roll.addRoll(`${attr.name} (${ability.name})`, bonusvalue);
+                                                        diceRolled(character, ablname, bonusvalue, roll.Value);
                                                     }
                                                 }
                                             });
 
                                         //
-                                        let finalRoll = result + modified;
-                                        character.dieRollLog.push(finalRoll);
+                                        character.dieRollLog.push(roll);
                                         character.dieRollLogSelect.length = 0;
-                                        character.dieRollLogSelect.push(finalRoll);
+                                        character.dieRollLogSelect.push(roll);
                                         updateCharacter(character);
                                     }
                                 }

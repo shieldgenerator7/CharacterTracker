@@ -2,6 +2,7 @@
 
 import Ability, { inflateAbility } from "./Ability";
 import { inflateAttribute } from "./Attribute";
+import { inflateRollGroup } from "./RollGroup";
 
 class Character {
     constructor(name) {
@@ -56,6 +57,12 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     character.abilityList.forEach(ability => {
         inflateAbility(ability);
     });
+
+    character.dieRollLog = character.dieRollLog.filter(a => a);
+    character.dieRollLog.forEach(rollGroup => {
+        inflateRollGroup(rollGroup);
+    })
+    character.dieRollLogSelect = [];
 
     //Portrait
     // if (character.imageURL && !isImage(character.imgPortrait)) {

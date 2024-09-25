@@ -126,29 +126,26 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                                         character.dieRollLogSelect.forEach(roll => {
                                             //2024-09-25: copied from AttributeFrame
                                             //roll ability dice, if applicable
-                                            let result = roll;
-                                            let modified = 0;
-                                            let ablname = "MODIFY"; //`${attribute.name} (+${ability.name})`; //TODO: update this when rolls get more info
+                                            let ablname = `${roll.name} (+${ability.name})`;
                                             //early exit: attribute filter
-                                            //TODO: put this back in when roll becomes an object
-                                            // if (ability.dieRollAttributeFilter) {
-                                            //     if (ability.dieRollAttributeFilter != attribute.name) {
-                                            //         return;
-                                            //     }
-                                            // }
+                                            if (ability.dieRollAttributeFilter) {
+                                                if (ability.dieRollAttributeFilter != roll.name) {
+                                                    return;
+                                                }
+                                            }
                                             //bonus: dice roll
                                             if (("" + ability.dieRollBonus).includes("d")) {
-                                                let bonusvalue = rollDice(ability.dieRollBonus);
-                                                let bonusresult = bonusvalue + result;
-                                                diceRolled(character, ablname, bonusvalue, bonusresult);
-                                                modified += bonusvalue;
+                                                let bonusroll = rollDice(ability.dieRollBonus);
+                                                bonusroll.name = ability.name;
+                                                bonusroll.rollList.forEach(roll => roll.name += ` ${ability.name}`);
+                                                roll.rollList = roll.rollList.concat(bonusroll.rollList);
+                                                diceRolled(character, ablname, bonusroll.Value, roll.Value);
                                             }
                                             //bonus: constant
                                             else if (ability.dieRollBonus * 1 > 0) {
                                                 let bonusvalue = ability.dieRollBonus * 1;
-                                                let bonusresult = bonusvalue + result;
-                                                diceRolled(character, ablname, bonusvalue, bonusresult);
-                                                modified += bonusvalue;
+                                                roll.addRoll(ability.name, bonusvalue);
+                                                diceRolled(character, ablname, bonusvalue, roll.Value);
                                             }
                                             //bonus: Attribute
                                             else if (isString(ability.dieRollBonus)) {
@@ -157,19 +154,11 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                                                     .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
                                                 if (attr?.value) {
                                                     let bonusvalue = attr.value * 1;
-                                                    let bonusresult = bonusvalue + result;
-                                                    diceRolled(character, ablname, bonusvalue, bonusresult);
-                                                    modified += bonusvalue;
+                                                    roll.addRoll(`${attr.name} (${ability.name})`, bonusvalue);
+                                                    diceRolled(character, ablname, bonusvalue, roll.Value);
                                                 }
                                             }
-
-                                            //
-                                            let finalRoll = result + modified;
-                                            //update roll
-                                            let index = character.dieRollLog.indexOf(roll);
-                                            character.dieRollLog.splice(index, 1, finalRoll);
                                         });
-                                        updateCharacter(character);
 
                                         break;
                                     case ACTION_ROLL_REROLL:

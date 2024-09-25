@@ -1,11 +1,9 @@
 "use strict";
 
 class Roll{
-    constructor(name, code, value, result) {
+    constructor(name, value) {
         this.name = name;
-        this.code = code;
         this.value = value;
-        this.result = result;
     }
 }
 export default Roll;
