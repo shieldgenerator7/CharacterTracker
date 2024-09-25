@@ -108,10 +108,28 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                     if (disabled) { return; }
                     ability.Active = !ability.Active;
                     if (ability.Active) {
+                        let resourceAllGood = true;
                         if (ability.ConsumesResource) {
+                            resourceAllGood = false;
                             let res = character.consumeResource(ability);
                             if (res[0] != res[1]) {
                                 attributeAdjusted(character, `${ability.resourceName} (${ability.name})`, res[0], res[1]);
+                                resourceAllGood = true;
+                            }
+                        }
+                        if (resourceAllGood) {
+                            if (character.dieRollLogSelect.length > 0) {
+                                switch (ability.action) {
+                                    case ACTION_ROLL_MODIFY:
+                                        console.warn("ACTION_ROLL_MODIFY not implemented");
+                                        break;
+                                    case ACTION_ROLL_REROLL:
+                                        console.warn("ACTION_ROLL_REROLL not implemented");
+                                        break;
+                                    case ACTION_VARIABLE_MODIFY:
+                                        console.warn("ACTION_VARIABLE_MODIFY not implemented");
+                                        break;
+                                }
                             }
                         }
                     }
