@@ -608,7 +608,8 @@
 .listordereddraghandle{
     display: inline;
     cursor: move;
-    padding: 5px 10px 5px 10px;
+    /* padding: 5px 10px 5px 10px; */
+    padding: 1px 5px 1px 5px;
     margin-right: 5px;
     height: 40px;
 }
@@ -616,10 +617,25 @@
     background: #ffeec1;
     border-radius: 5px;
 }
+.listorderedbutton{
+    display: inline;
+    /* padding: 5px 10px 5px 10px; */
+    /* margin-left: 5px;
+    margin-right: 5px; */
+    margin-top: 3px;
+    border: none;
+    background: none;
+    height: 40px;
+}
+.listorderedbutton:hover{
+    background: #ffeec1;
+    border-radius: 5px;
+}
 .listorderedbuttonX{
     display: inline;
-    padding: 5px 10px 5px 10px;
-    margin-left: 5px;
+    /* padding: 5px 10px 5px 10px; */
+    padding: 1px 5px 1px 5px;
+    /* margin-left: 5px; */
     margin-right: 5px;
     margin-top: 3px;
     border: none;

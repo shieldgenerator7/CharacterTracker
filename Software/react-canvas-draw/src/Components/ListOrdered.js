@@ -74,6 +74,12 @@ class ListOrdered extends Component {
                             obj,
                             i
                         )}
+                        {/* Copy button */}
+                        <button className="listorderedbutton" onClick={() => {
+                            // arr.splice(i, 1);
+                            // updateFunc(arr);
+                        }}>
+                            &#9112;</button>
                         {/* Remove button */}
                         <button className="listorderedbuttonX" onClick={() => {
                             arr.splice(i, 1);
