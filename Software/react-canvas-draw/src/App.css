@@ -417,7 +417,6 @@
 .attributeContainer {
     display: block;
     overflow-y: auto;
-    max-height: 40%;
 }
 
 .attributeFrame {
@@ -581,7 +580,6 @@
 
 .abilityContainer {
     overflow-y: auto;
-    max-height: 40%;
 }
 
 .abilityDisplay {
