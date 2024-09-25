@@ -167,6 +167,8 @@ function App() {
                                 diceRolled={diceRolled}
                                 attributeAdjusted={attributeAdjusted}
                                 abilityModified={abilityModified}
+                                characterList={characterList}
+                                setCharacterList={setCharacterList}
                                 key={`character_${i}`}
                             ></CharacterFrame>
                         ))
@@ -176,6 +178,8 @@ function App() {
                 <CommandPanel
                     game={game}
                     updateGame={updateGame}
+                    characterList={characterList}
+                    setCharacterList={setCharacterList}
                     log={log}
                 ></CommandPanel>
 

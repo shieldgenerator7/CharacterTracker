@@ -9,12 +9,13 @@ import AttributeFrame from "./AttributeFrame";
 import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 
-function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjusted, abilityModified }) {
+function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList }) {
     return (
         <div className="characterFrame">
             <div className="characterContent">
                 <h1>{character.name}</h1>
                 {character.editAttributes &&
+                    <>
                     <Field
                         name={"Character Name"}
                         value={character.name}
@@ -24,6 +25,24 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         }}
                         className={"editText"}
                     ></Field>
+                    <button onClick={(e)=>{
+                    let json = JSON.stringify(character);
+                    navigator.clipboard.writeText(json);
+                    }} >Copy Character</button>
+                    </>
+                }
+                {character.editAttributes &&
+                    characterList.indexOf(character) >= 0 &&
+                    
+                    <button
+                        onClick={(e) => {
+                            let index = characterList.indexOf(character);
+                            if (index >= 0) {
+                                characterList.splice(index, 1);
+                                setCharacterList([...characterList]);
+                            }
+                        }}
+                    >Delete Character</button>
                 }
                 <h2>Attributes</h2>
                 <div className={"attributeContainer"}>
