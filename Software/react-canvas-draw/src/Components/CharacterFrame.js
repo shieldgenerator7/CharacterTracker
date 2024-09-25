@@ -23,7 +23,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                             character.name = v;
                             updateCharacter(character);
                         }}
-                        className={"editText"}
+                        className={"editTextLong"}
                     ></Field>
                     <button onClick={(e)=>{
                     let json = JSON.stringify(character);
