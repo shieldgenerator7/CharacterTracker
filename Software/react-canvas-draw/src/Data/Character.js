@@ -62,7 +62,6 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     character.dieRollLog.forEach(rollGroup => {
         inflateRollGroup(rollGroup);
     })
-    character.dieRollLogSelect = [];
 
     //Portrait
     // if (character.imageURL && !isImage(character.imgPortrait)) {

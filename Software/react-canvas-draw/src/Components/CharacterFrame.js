@@ -142,18 +142,18 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
 
                             {character.dieRollLog.map((roll, i) =>
                                 <span
-                                    className={`rollResult ${character.dieRollLogSelect.includes(roll) && "rollResultSelect" || ""}`}
+                                    className={`rollResult ${character.dieRollLogSelect.includes(i) && "rollResultSelect" || ""}`}
                                     key={`character_die_roll_log_${i}`}
                                     onClick={() => {
-                                        let selected = character.dieRollLogSelect.includes(roll);
+                                        let selected = character.dieRollLogSelect.includes(i);
                                         //Deselect
                                         if (selected) {
-                                            let index = character.dieRollLogSelect.indexOf(roll);
+                                            let index = character.dieRollLogSelect.indexOf(i);
                                             character.dieRollLogSelect.splice(index, 1);
                                         }
                                         //Select
                                         else {
-                                            character.dieRollLogSelect.push(roll);
+                                            character.dieRollLogSelect.push(i);
                                         }
                                         updateCharacter(character);
                                     }}
