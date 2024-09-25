@@ -125,6 +125,11 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                                     case ACTION_ROLL_MODIFY:
                                         character.dieRollLogSelect.forEach(rollIndex => {
                                             let roll = character.dieRollLog[rollIndex];
+                                            //early exit: no roll
+                                            if (!roll) {
+                                                console.error("no roll at index!", rollIndex, character.name, character);
+                                                return;
+                                            }
                                             //2024-09-25: copied from AttributeFrame
                                             //roll ability dice, if applicable
                                             let ablname = `${roll.name} (+${ability.name})`;

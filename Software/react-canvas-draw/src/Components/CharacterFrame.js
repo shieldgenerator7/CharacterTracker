@@ -134,6 +134,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                             <button className="listorderedbuttonX"
                                 onClick={() => {
                                     character.dieRollLog = [];
+                                    character.dieRollLogSelect = [];
                                     updateCharacter(character);
                                 }}>X
                             </button>
