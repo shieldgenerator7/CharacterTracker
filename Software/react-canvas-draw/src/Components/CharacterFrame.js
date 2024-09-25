@@ -155,7 +155,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                 {character.editAttributes &&
                     <button onClick={(e) => {
                         navigator.clipboard.readText().then(v => {
-                            let clipboardText = v;
+                            let clipboardText = v || "{}";
                             let obj = JSON.parse(clipboardText);
                             //Attribute
                             if (obj.value != undefined) {//TODO: improve type detection
