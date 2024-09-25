@@ -17,6 +17,7 @@ class Character {
 
         this.restList = [];//TOOD: implement rests
         this.dieRollLog = [];
+        this.dieRollLogSelect = [];
     }
 
     hasResource(ability) {
@@ -68,4 +69,5 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
 }
 export function backwardsCompatifyCharacter(character) {
     character.dieRollLog ??= [];
+    character.dieRollLogSelect ??= [];
 }

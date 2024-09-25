@@ -141,7 +141,9 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         <span className="diceRollLog">
 
                             {character.dieRollLog.map((roll, i) =>
-                                <span className={"rollResult"} key={`character_die_roll_log_${i}`}
+                                <span
+                                    className={`rollResult ${character.dieRollLogSelect.includes(roll) && "rollResultSelect" || ""}`}
+                                    key={`character_die_roll_log_${i}`}
                                     onClick={() => {
                                         character.dieRollLog.splice(i, 1);
                                         updateCharacter(character);

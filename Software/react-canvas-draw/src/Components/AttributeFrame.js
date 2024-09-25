@@ -148,8 +148,10 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                             });
 
                                         //
-                                        character.dieRollLog ??= [];
-                                        character.dieRollLog.push(result + modified);
+                                        let finalRoll = result + modified;
+                                        character.dieRollLog.push(finalRoll);
+                                        character.dieRollLogSelect.length = 0;
+                                        character.dieRollLogSelect.push(finalRoll);
                                         updateCharacter(character);
                                     }
                                 }

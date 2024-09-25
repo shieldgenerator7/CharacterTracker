@@ -457,6 +457,10 @@
     padding-right: 15px;
 }
 
+.rollResultSelect {
+    border: 3px solid rgb(44, 180, 44);
+}
+
 .field {
     display: flex;
     flex-direction: column;
