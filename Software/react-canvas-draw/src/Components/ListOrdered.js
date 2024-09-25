@@ -79,7 +79,7 @@ class ListOrdered extends Component {
                             // arr.splice(i, 1);
                             // updateFunc(arr);
                         }}>
-                            &#9112;</button>
+                            &#10697;</button>
                         {/* Remove button */}
                         <button className="listorderedbuttonX" onClick={() => {
                             arr.splice(i, 1);
