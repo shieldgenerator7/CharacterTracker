@@ -553,7 +553,6 @@
 }
 
 .abilityContainer {
-    display: block;
     overflow-y: auto;
     max-height: 40%;
 }
@@ -600,4 +599,19 @@
 
 .abilityDescription {
     font-size: medium;
+}
+
+.listordereditem{
+    display: flex;
+    flex-direction: row;
+}
+.listordereddraghandle{
+    display: inline;
+    cursor: move;
+    padding: 5px 10px 5px 10px;
+    margin-right: 5px;
+}
+.listordereddraghandle:hover{
+    background: #ffeec1;
+    border-radius: 5px;
 }
