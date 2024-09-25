@@ -1,6 +1,6 @@
 "use strict";
 
-import Ability from "../Data/Ability";
+import Ability, { inflateAbility } from "../Data/Ability";
 import Attribute, { inflateAttribute } from "../Data/Attribute";
 import Character from "../Data/Character";
 import { rollDice } from "../Data/DiceRoller";
@@ -156,12 +156,23 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                     <button onClick={(e) => {
                         navigator.clipboard.readText().then(v => {
                             let clipboardText = v;
-                            console.log("clipboard has been read", clipboardText);
-                            let attr = JSON.parse(clipboardText);
-                            // inflateAttribute(attr);
-                            // character.attributeList.push(attr);
-                            character.editAttributes = true;
-                            // updateCharacter(character);
+                            let obj = JSON.parse(clipboardText);
+                            //Attribute
+                            if (obj.displayName != undefined) {//TODO: improve type detection
+                                let attr = obj;
+                                inflateAttribute(attr);
+                                character.attributeList.push(attr);
+                                character.editAttributes = true;
+                                updateCharacter(character);
+                            }
+                            //Ability
+                            if (obj.description != undefined) {//TODO: improve type detection
+                                let ability = obj;
+                                inflateAbility(ability);
+                                character.abilityList.push(ability);
+                                character.editAttributes = true;
+                                updateCharacter(character);
+                            }
                         });
                     }}>PASTE</button>
                 }
