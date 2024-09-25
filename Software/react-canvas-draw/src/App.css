@@ -376,7 +376,8 @@
 }
 
 .characterFrame {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     border: 5px solid #38362f;
     /* background: #f5eac9; */
     background: #cebd90;
@@ -398,7 +399,8 @@
     overflow-x: hidden;
     overflow-wrap: anywhere;
     overflow-y: auto;
-    height: 90%;
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
 .characterContent h1 {
@@ -471,7 +473,7 @@
 
 .buttonPanel {
     width: 100%;
-    height: 10%;
+    height: 45px;
     z-index: 1;
     background: #a89b76;
     text-align: left;
@@ -482,7 +484,7 @@
     margin-left: 10px;
     border: none;
     background: #a89b76;
-    padding: 10px;
+    padding: 8px;
 }
 
 .buttonPanel button:hover {
@@ -528,7 +530,7 @@
     vertical-align: middle;
     text-align: left;
     padding-left: 5px;
-    padding: 10px 5px 5px;
+    padding: 5px 5px 2px 5px;
 
     /* 2024-09-22: copied from https://stackoverflow.com/a/22218694/2336212 */
     /* display: flex; */
