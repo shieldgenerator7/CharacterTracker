@@ -59,17 +59,17 @@ class ListOrdered extends Component {
             <div>
                 {arr.map((obj, i) => (
                     <div
-                    key={`listordered_${i}`}
-                    className=
-                        {`item ${obj === this.state.draggingItem ? 
-                            'dragging' : ''
-                        }`}
-                    draggable="true"
-                    onDragStart={(e) => 
-                        this.handleDragStart(e, obj)}
-                    onDragEnd={this.handleDragEnd}
-                    onDragOver={this.handleDragOver}
-                    onDrop={(e) => this.handleDrop(e, obj)}
+                        key={`listordered_${i}`}
+                        className={
+                            `item ${obj === this.state.draggingItem &&
+                            'dragging' || ""
+                            }`
+                        }
+                        draggable="true"
+                        onDragStart={(e) => this.handleDragStart(e, obj)}
+                        onDragEnd={this.handleDragEnd}
+                        onDragOver={this.handleDragOver}
+                        onDrop={(e) => this.handleDrop(e, obj)}
                     >
                         {contentFunc(
                             obj,
