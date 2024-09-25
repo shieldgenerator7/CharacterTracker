@@ -36,3 +36,8 @@ class Ability {
     }
 }
 export default Ability;
+
+//2024-09-24: copied from Ability/Ability.js
+export function inflateAbility(ability) {
+    Object.setPrototypeOf(ability, Ability.prototype);
+}

@@ -1,6 +1,6 @@
 "use strict";
 
-import Ability from "./Ability";
+import Ability, { inflateAbility } from "./Ability";
 import { inflateAttribute } from "./Attribute";
 
 class Character {
@@ -53,8 +53,7 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     });
     character.abilityList = character.abilityList.filter(a => a);
     character.abilityList.forEach(ability => {
-        Object.setPrototypeOf(ability, Ability.prototype);
-        // inflateAbility(ability);
+        inflateAbility(ability);
     });
 
     //Portrait
