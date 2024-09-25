@@ -157,7 +157,7 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                                         }
                                         updateCharacter(character);
                                     }}
-                                >{roll}</span>
+                                >{roll.Value}</span>
                             )}
 
                         </span>
