@@ -3,7 +3,7 @@
 import { backwardsCompatifyCharacter, inflateCharacter } from "../Data/Character";
 import { backwardsCompatifyCreature, inflateCreature } from "../Data/Creature";
 import { backwardsCompatifyDeck, inflateDeck } from "../Data/Deck";
-import Game from "../Data/Game";
+import Game, { backwardsCompatifyGame, inflateGame } from "../Data/Game";
 import Log from "../Data/Log";
 import LogEntry from "../Data/LogEntry";
 
@@ -17,6 +17,8 @@ class Storage {
         this.storage = {
             //list of all characters
             characterList: [],//TODO: just store the game
+            //game
+            game: new Game(),
             //list of all cards this player has
             cardList: [],
             //list of decks this player has
@@ -55,7 +57,8 @@ class Storage {
             backwardsCompatifyCharacter(character);
         });
         //
-        Object.setPrototypeOf(this.storage.game, Game.prototype);
+        inflateGame(this.storage.game);
+        backwardsCompatifyGame(this.storage.game);
         //
         Object.setPrototypeOf(this.storage.log, Log.prototype);
         this.storage.log.entryList.forEach(entry => {

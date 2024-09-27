@@ -12,14 +12,18 @@ import AttributeFrame from "./AttributeFrame";
 import ConsumableFrame from "./ConsumableFrame";
 import Field from "./Field";
 import ListOrdered from "./ListOrdered";
+import SearchSelect from "./SearchSelect";
+import { isString } from "../Utility/Utility";
 
-function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList }) {
+function CharacterFrame({ character, updateCharacter, game, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList }) {
     let showConsumableList = false;
     let setShowConsumableList = (b) => showConsumableList = b;
     [showConsumableList, setShowConsumableList] = useState(false);
     let btnShowConsumableListId = `character_${character.name?.replaceAll(" ", "")}_showConsumableList`;
+    let sltConsumableListId = `character_${character.name?.replaceAll(" ", "")}_sltConsumableList`;
     let onClickIgnoreIds = [
         btnShowConsumableListId,
+        sltConsumableListId,
     ];
     return (
         <div className="characterFrame"
@@ -160,12 +164,24 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                             }}>+</button>
                     }
                     {showConsumableList &&
-                    <button onClick={(e) => {
-                        let consumable = new Consumable("consumable");
-                        character.consumableList.push(consumable);
-                        character.editAttributes = true;
-                        updateCharacter(character);
-                    }}>Add Consumable</button>
+                        <SearchSelect
+                            id={sltConsumableListId}
+                            options={game.consumableList.concat("New Consumable")}
+                            setOption={(option) => {
+                                console.log("option selected", option);
+                                let needsEdited = false;
+                                if (isString(option)) {
+                                    option = new Consumable(option);
+                                    needsEdited = true;
+                                }
+                                let consumable = new Consumable(option.name);
+                                character.consumableList.push(consumable);
+                                character.editAttributes = needsEdited;
+                                updateCharacter(character);
+                                setShowConsumableList(false);
+                            }}
+                            optionNameFunc={(o)=>o.name ?? o}
+                        ></SearchSelect>
                     }
                 </h2>
                 <div className={"consumableContainer"}>
