@@ -27,7 +27,7 @@ function ConsumableFrame({ consumableReference, character, updateCharacter, game
             title={"Consumable"}
             ability={consumable.ability}
             updateFunc={() => {
-                consumable.Name = consumable.ability.name;
+                updateCharacter(character);
                 updateFunc(consumable);
             }}
             character={character}
@@ -39,6 +39,9 @@ function ConsumableFrame({ consumableReference, character, updateCharacter, game
             activeFunc={()=>consumableReference.active}
             setActiveFunc={(b) => {
                 consumableReference.active = b;
+                if (consumableReference.count <= 0) {
+                    character.addConsumable(consumable, 0);
+                }
                 updateCharacter(character);
             }}
         ></AbilityFrame>

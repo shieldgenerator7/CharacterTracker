@@ -40,10 +40,12 @@ function App() {
             (c) => { if (c == character) { updateCharacter(c); } }
         );
         //
-        if (characterList.includes(oldcharacter)) {
-            let index = characterList.indexOf(oldcharacter);
-            characterList.splice(index, 1, newcharacter);
+        let charList = [...characterList];        
+        if (charList.includes(oldcharacter)) {
+            let index = charList.indexOf(oldcharacter);
+            charList.splice(index, 1, newcharacter);
         }
+        setCharacterList(charList);
         //
         setCharacter(newcharacter);
         storage.characterList = characterList;
