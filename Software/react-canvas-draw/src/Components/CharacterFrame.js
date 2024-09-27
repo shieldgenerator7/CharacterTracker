@@ -173,7 +173,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 let consumable = game.getConsumable(option);
                                 if (!consumable) {
                                     consumable = new Consumable(option);
-                                    game.consumableList.push(option);
+                                    game.consumableList.push(consumable);
                                     needsEdited = true;
                                     character.editAttributes = true;
                                     updateGame(game);
