@@ -194,6 +194,11 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         count={consumableRef.count}
                                         character={character}
                                         updateCharacter={updateCharacter}
+                                        game={game}
+                                        updateFunc={(consumable) => {
+                                            consumableRef.consumableName = consumable.name;
+                                            updateGame(game);
+                                        }}
                                         diceRolled={diceRolled}
                                         attributeAdjusted={attributeAdjusted}
                                         abilityModified={abilityModified}
@@ -215,6 +220,11 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     count={consumableRef.count}
                                     character={character}
                                     updateCharacter={updateCharacter}
+                                    game={game}
+                                    updateFunc={(consumable) => {
+                                        consumableRef.consumableName = consumable.name;
+                                        updateGame(game);
+                                    }}
                                     diceRolled={diceRolled}
                                     attributeAdjusted={attributeAdjusted}
                                     abilityModified={abilityModified}
