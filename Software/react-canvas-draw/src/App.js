@@ -13,7 +13,7 @@ import CharacterFrame from './Components/CharacterFrame';
 import Character, { inflateCharacter } from './Data/Character';
 import CommandPanel from './Components/CommandPanel';
 import Log from './Data/Log';
-import Game from './Data/Game';
+import Game, { inflateGame } from './Data/Game';
 
 function App() {
     //Storage
@@ -60,6 +60,7 @@ function App() {
     window.game = game;
     let updateGame = (oldgame) => {
         let newgame = JSON.parse(JSON.stringify(oldgame));
+        inflateGame(newgame);
         //
         setGame(newgame);
     };
