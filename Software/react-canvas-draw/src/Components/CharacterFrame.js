@@ -227,7 +227,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     updateCharacter={updateCharacter}
                                     game={game}
                                     updateFunc={(consumable) => {
-                                        consumableRef.consumableName = consumable.name;
+                                        consumableRef.Name = consumable.name;
                                         updateCharacter(character);
                                         updateGame(game);
                                     }}
