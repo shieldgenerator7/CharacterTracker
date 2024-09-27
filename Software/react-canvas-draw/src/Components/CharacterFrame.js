@@ -3,6 +3,7 @@
 import Ability, { inflateAbility } from "../Data/Ability";
 import Attribute, { inflateAttribute } from "../Data/Attribute";
 import Character from "../Data/Character";
+import { DIE_ROLL_FLAIR_CRIT, DIE_ROLL_FLAIR_FUMBLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
 import AbilityFrame from "./AbilityFrame";
 import AttributeFrame from "./AttributeFrame";
@@ -143,7 +144,13 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
 
                             {character.dieRollLog.map((roll, i) =>
                                 <span
-                                    className={`rollResult ${character.dieRollLogSelect.includes(i) && "rollResultSelect" || ""}`}
+                                    className={
+                                        `rollResult
+                                        ${character.dieRollLogSelect.includes(i) && "rollResultSelect" || ""}
+                                        ${roll.hasFlair(DIE_ROLL_FLAIR_CRIT) && "rollResultCrit" || ""}
+                                        ${roll.hasFlair(DIE_ROLL_FLAIR_FUMBLE) && "rollResultFumb" || ""}
+                                        `
+                                    }
                                     key={`character_die_roll_log_${i}`}
                                     onClick={() => {
                                         let selected = character.dieRollLogSelect.includes(i);

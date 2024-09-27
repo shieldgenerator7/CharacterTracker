@@ -21,3 +21,7 @@ export const REGEX_SPACER_TEST = /^[- ]*$/;
 export const JSON_TYPE_CHARACTER = "j_char";
 export const JSON_TYPE_ATTRIBUTE = "j_attr";
 export const JSON_TYPE_ABILITY = "j_abil";
+
+export const DIE_ROLL_FLAIR_NORMAL = "drf_normal";
+export const DIE_ROLL_FLAIR_CRIT = "drf_crit";
+export const DIE_ROLL_FLAIR_FUMBLE = "drf_fumble";

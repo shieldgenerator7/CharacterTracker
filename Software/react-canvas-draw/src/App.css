@@ -464,15 +464,33 @@
 }
 
 .rollResult:hover {
-    border: 3px solid rgb(175, 175, 175);
-}
-
-.rollResultSelect {
-    border: 3px solid rgb(44, 180, 44);
+    border: 3px solid rgb(150, 150, 150);
+    background: #d1cec2;
 }
 
 .rollResultSelect:hover {
-    border: 3px solid rgb(61, 255, 61);
+    border: 3px solid rgb(150, 150, 150);
+}
+
+.rollResultCrit{
+    background: rgb(44, 180, 44);
+    border: 3px solid rgb(44, 180, 44);
+}
+.rollResultCrit:hover{
+    background: rgb(61, 255, 61);
+    border: 3px solid rgb(44, 180, 44);
+}
+.rollResultFumb{
+    background: rgb(187, 99, 99);
+    border: 3px solid rgb(187, 99, 99);
+}
+.rollResultFumb:hover{
+    background: rgb(248, 147, 147);    
+    border: 3px solid rgb(187, 99, 99);
+}
+
+.rollResultSelect {
+    border: 3px solid rgb(0, 0, 0);
 }
 
 .rollResultName {

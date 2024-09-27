@@ -17,8 +17,12 @@ class RollGroup {
         return arraySum(this.rollList, roll => roll.value);
     }
 
-    addRoll(name, value) {
-        this.rollList.push(new Roll(name, value));
+    addRoll(name, value, flair) {
+        this.rollList.push(new Roll(name, value, flair));
+    }
+    
+    hasFlair(flair) {
+        return this.rollList.some(r => r.flair == flair);   
     }
 }
 export default RollGroup;

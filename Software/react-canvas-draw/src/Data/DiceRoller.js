@@ -1,5 +1,6 @@
 "use strict";
 
+import { DIE_ROLL_FLAIR_CRIT, DIE_ROLL_FLAIR_FUMBLE, DIE_ROLL_FLAIR_NORMAL } from "./Constants";
 import Roll from "./Roll";
 import RollGroup from "./RollGroup";
 
@@ -42,7 +43,12 @@ function _rollDice(count, die) {
     let group = new RollGroup();
     for (let i = 0; i < count; i++) {
         let value = Math.ceil(Math.random() * die);
-        group.addRoll(`1d${die}`, value);
+        let flair = (value == die)
+            ? DIE_ROLL_FLAIR_CRIT
+            : (value == 1)
+                ? DIE_ROLL_FLAIR_FUMBLE
+                : DIE_ROLL_FLAIR_NORMAL;
+        group.addRoll(`d${die}`, value, flair);
     }
     return group;
 }
