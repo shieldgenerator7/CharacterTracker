@@ -1,6 +1,7 @@
 "use strict";
 
 import { backwardsCompatifyCharacter, inflateCharacter } from "../Data/Character";
+import Consumable from "../Data/Consumable";
 import { backwardsCompatifyCreature, inflateCreature } from "../Data/Creature";
 import { backwardsCompatifyDeck, inflateDeck } from "../Data/Deck";
 import Game, { backwardsCompatifyGame, inflateGame } from "../Data/Game";
@@ -59,6 +60,15 @@ class Storage {
         //
         inflateGame(this.storage.game);
         backwardsCompatifyGame(this.storage.game);
+        //
+        //populate game consumables if its missing some
+        this.storage.characterList.forEach(character => {
+            character.consumableList.forEach(consumableRef => {
+                if (!this.storage.game.getConsumable(consumableRef.consumableName)) {
+                    this.storage.game.consumableList.push(new Consumable(consumableRef.consumableName));
+                }
+            })
+        });
         //
         Object.setPrototypeOf(this.storage.log, Log.prototype);
         this.storage.log.entryList.forEach(entry => {
