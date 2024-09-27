@@ -76,14 +76,13 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         <ListOrdered
                             arr={character.attributeList}
                             contentFunc={
-                                (attr, i, extraButtons) => (
+                                (attr, i) => (
                                     <AttributeFrame
                                         attribute={attr}
                                         character={character}
                                         updateCharacter={updateCharacter}
                                         diceRolled={diceRolled}
                                         attributeAdjusted={attributeAdjusted}
-                                        extraButtons={extraButtons}
                                         key={`character_attribute_${i}`}
                                     ></AttributeFrame>
                                 )
@@ -116,7 +115,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         <ListOrdered
                             arr={character.abilityList}
                             contentFunc={
-                                (ability, i, extraButtons) => (
+                                (ability, i) => (
                                     <AbilityFrame
                                         ability={ability}
                                         character={character}
@@ -124,7 +123,6 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         diceRolled={diceRolled}
                                         attributeAdjusted={attributeAdjusted}
                                         abilityModified={abilityModified}
-                                        extraButtons={extraButtons}
                                         key={`character_ability_${i}`}
                                     ></AbilityFrame>
                                 )

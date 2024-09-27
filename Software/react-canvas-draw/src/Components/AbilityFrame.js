@@ -6,7 +6,7 @@ import { isString } from "../Utility/Utility";
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, abilityModified, diceRolled, extraButtons }) {
+function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, abilityModified, diceRolled}) {
     if (character.editAttributes) {
         return (
             <div className="abilityFrameEdit">
@@ -89,7 +89,6 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         }}
                         className={"editText"}
                     ></Field>
-                    {extraButtons}
                 </div>
             </div>
         );

@@ -10,7 +10,7 @@ import { clamp, isString } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function AttributeFrame({ attribute, character, updateCharacter, diceRolled, attributeAdjusted, extraButtons }) {
+function AttributeFrame({ attribute, character, updateCharacter, diceRolled, attributeAdjusted }) {
     let onClickType = attribute.OnClickType;
     //Edit Attributes
     if (character.editAttributes) {
@@ -67,7 +67,6 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                     }}
                     className={"editTextShort"}
                 ></Field>
-                {extraButtons}
             </div>
         );
     }
