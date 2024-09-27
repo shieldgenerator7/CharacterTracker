@@ -32,8 +32,8 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                         className={"editTextLong"}
                     ></Field>
                 </div>
+                {showResourceCost &&
                 <div className="abilityFrameLine">
-                    {showResourceCost &&
                     <Field
                         name={"Resource Name"}
                         value={ability.resourceName}
@@ -44,8 +44,6 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                         }}
                         className={"editText"}
                     ></Field>
-                    }
-                    {showResourceCost &&
                     <Field
                         name={"Cost"}
                         value={ability.resourceCost}
@@ -56,8 +54,8 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                         }}
                         className={"editNumber"}
                     ></Field>
-                    }
                 </div>
+                }
 
                 <div className="abilityFrameLine">                    
                     <SearchSelect
