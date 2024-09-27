@@ -166,7 +166,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     {showConsumableList &&
                         <SearchSelect
                             id={sltConsumableListId}
-                            options={["New Consumable"].concat(game.consumableList).map(o=>o.name ?? o)}
+                            options={["","New Consumable"].concat(game.consumableList).map(o=>o.name ?? o)}
                             setOption={(option) => {
                                 console.log("option selected", option);
                                 let needsEdited = false;
