@@ -481,6 +481,10 @@
     margin: 0px;
 }
 
+.diceRollLog {
+    line-height: 50px;
+}
+
 .field {
     display: flex;
     flex-direction: column;
@@ -517,10 +521,6 @@
     color: white;
     border: 1px solid white;
     border-radius: 12px;
-}
-
-.diceRollLog {
-    line-height: 50px;
 }
 
 .commandPanel {
