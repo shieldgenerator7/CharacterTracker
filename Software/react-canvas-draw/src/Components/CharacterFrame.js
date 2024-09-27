@@ -1,5 +1,6 @@
 "use strict";
 
+import { useState } from "react";
 import Ability, { inflateAbility } from "../Data/Ability";
 import Attribute, { inflateAttribute } from "../Data/Attribute";
 import Character from "../Data/Character";
@@ -13,8 +14,26 @@ import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 
 function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList }) {
+    let showConsumableList = false;
+    let setShowConsumableList = (b) => showConsumableList = b;
+    [showConsumableList, setShowConsumableList] = useState(false);
+    let btnShowConsumableListId = `character_${character.name?.replaceAll(" ", "")}_showConsumableList`;
+    let onClickIgnoreIds = [
+        btnShowConsumableListId,
+    ];
     return (
-        <div className="characterFrame">
+        <div className="characterFrame"
+            onClick={(e) => {
+                //early exit: id is an id set to be ignored
+                if (onClickIgnoreIds.includes(e.target.id)
+                    || onClickIgnoreIds.includes(e.target.parentElement?.id)
+                ) {
+                    return;
+                }
+                //close consumable list
+                setShowConsumableList(false);
+            }}
+        >
             <div className="characterContent">
                 <h1>{character.name}</h1>
                 {character.editAttributes &&
@@ -133,12 +152,21 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
 
                 <h2>
                     Consumables
+                    {!showConsumableList &&
+                        <button
+                            id={btnShowConsumableListId}
+                            onClick={(e) => {
+                                setShowConsumableList(true);
+                            }}>+</button>
+                    }
+                    {showConsumableList &&
                     <button onClick={(e) => {
                         let consumable = new Consumable("consumable");
                         character.consumableList.push(consumable);
                         character.editAttributes = true;
                         updateCharacter(character);
-                    }}>+</button>
+                    }}>Add Consumable</button>
+                    }
                 </h2>
                 <div className={"consumableContainer"}>
                     {character.editAttributes &&
