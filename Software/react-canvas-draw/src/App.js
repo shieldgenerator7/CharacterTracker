@@ -49,6 +49,19 @@ function App() {
         storage.characterList = characterList;
     };
 
+    let renameConsumablePropagation = (oldname, newname, exceptCharacter) => {
+        characterList.forEach(character => {
+            if (character == exceptCharacter) {
+                return;
+            }
+            let cr = character.consumableList.find(c => c.consumableName == oldname);
+            if (cr) {
+                cr.consumableName = newname;
+            }
+        })
+        setCharacterList([...characterList]);
+    }
+
     //Game
     let game = new Game();
     let setGame = (g) => {
@@ -178,6 +191,7 @@ function App() {
                                 abilityModified={abilityModified}
                                 characterList={characterList}
                                 setCharacterList={setCharacterList}
+                                renameConsumable={ renameConsumablePropagation}
                                 key={`character_${i}`}
                             ></CharacterFrame>
                         ))

@@ -15,7 +15,7 @@ import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
 import { isString } from "../Utility/Utility";
 
-function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList }) {
+function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
     let showConsumableList = false;
     let setShowConsumableList = (b) => showConsumableList = b;
     [showConsumableList, setShowConsumableList] = useState(false);
@@ -188,7 +188,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         <ListOrdered
                             arr={character.consumableList}
                             contentFunc={
-                                (consumableRef, i) => (
+                                (consumableRef, i) => {
+                                    const oldname = consumableRef.consumableName;
+                                    return (
                                     <ConsumableFrame
                                         consumable={game.getConsumable(consumableRef.consumableName)}
                                         count={consumableRef.count}
@@ -197,6 +199,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         game={game}
                                         updateFunc={(consumable) => {
                                             consumableRef.consumableName = consumable.name;
+                                            renameConsumable(oldname, consumable.name, character);
                                             updateCharacter(character);
                                             updateGame(game);
                                         }}
@@ -205,7 +208,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         abilityModified={abilityModified}
                                         key={`character_consumable_${i}`}
                                     ></ConsumableFrame>
-                                )
+                                );
+                                }
                             }
                             updateFunc={(arr) => {
                                 character.consumableList = arr;
