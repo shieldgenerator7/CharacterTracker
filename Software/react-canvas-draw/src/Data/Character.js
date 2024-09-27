@@ -45,10 +45,18 @@ class Character {
     addConsumable(consumable, count) {
         let consumableReference = this.consumableList.find(cr => cr.consumableName == consumable.name);
         if (!consumableReference) {
+            //early exit: theres none to add, and its not in the list
+            if (count == 0) {
+                return;
+            }
             consumableReference = new ConsumableReference(consumable.name, 0);
             this.consumableList.push(consumableReference);
         }
         consumableReference.count += count;
+        if (consumableReference.count <= 0 && !consumableReference.active) {
+            let index = this.consumableList.indexOf(consumableReference);
+            this.consumableList.splice(index, 1);
+        }
     }
 
 }
