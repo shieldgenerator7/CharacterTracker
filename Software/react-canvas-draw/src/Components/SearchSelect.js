@@ -9,6 +9,7 @@ function SearchSelect({ options, option, setOption, id }) {
 
     return (
         <select id={id ?? ""} value={option ?? options[0]}
+            className="searchSelect"
             onChange={(e) => {
                 let option = e.target.value;
                 setOption(option);

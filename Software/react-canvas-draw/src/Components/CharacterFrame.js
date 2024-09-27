@@ -157,7 +157,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                 <h2>
                     Consumables
                     {!showConsumableList &&
-                        <button
+                        <button className="addButton"
                             id={btnShowConsumableListId}
                             onClick={(e) => {
                                 setShowConsumableList(true);
@@ -166,7 +166,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     {showConsumableList &&
                         <SearchSelect
                             id={sltConsumableListId}
-                            options={["","New Consumable"].concat(game.consumableList).map(o=>o.name ?? o)}
+                            options={["","NEW"].concat(game.consumableList).map(o=>o.name ?? o)}
                             setOption={(option) => {
                                 console.log("option selected", option);
                                 let needsEdited = false;

@@ -706,3 +706,33 @@
     background: #ff9e9e;
     border-radius: 5px;
 }
+
+.addButton{
+    display: inline;
+    padding: px 25px 1px 25px;
+    margin-left: 5px;
+    /* margin-top: 3px; */
+    border: none;
+    background: none;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #a89b76;
+    border-radius: 5px;
+}
+.addButton:hover {
+    background: #ffeec1;
+    border:none;
+}
+
+.searchSelect{
+    height:30px;
+    border: none;
+    background: #ffeec1;
+    border-radius: 5px;
+}
+.searchSelect option{
+    height:30px;
+    border: 1px solid black;
+    background: #ffeec1;
+}
+
