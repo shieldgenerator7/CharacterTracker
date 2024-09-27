@@ -15,7 +15,7 @@ import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
 import { isString } from "../Utility/Utility";
 
-function CharacterFrame({ character, updateCharacter, game, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList }) {
+function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList }) {
     let showConsumableList = false;
     let setShowConsumableList = (b) => showConsumableList = b;
     [showConsumableList, setShowConsumableList] = useState(false);
@@ -166,21 +166,22 @@ function CharacterFrame({ character, updateCharacter, game, diceRolled, attribut
                     {showConsumableList &&
                         <SearchSelect
                             id={sltConsumableListId}
-                            options={game.consumableList.concat("New Consumable")}
+                            options={["New Consumable"].concat(game.consumableList).map(o=>o.name ?? o)}
                             setOption={(option) => {
                                 console.log("option selected", option);
                                 let needsEdited = false;
-                                if (isString(option)) {
-                                    option = new Consumable(option);
+                                let consumable = game.getConsumable(option);
+                                if (!consumable) {
+                                    consumable = new Consumable(option);
+                                    game.consumableList.push(option);
                                     needsEdited = true;
+                                    character.editAttributes = true;
+                                    updateGame(game);
                                 }
-                                let consumable = new Consumable(option.name);
-                                character.consumableList.push(consumable);
-                                character.editAttributes = needsEdited;
+                                character.addConsumable(consumable, 1);
                                 updateCharacter(character);
                                 setShowConsumableList(false);
                             }}
-                            optionNameFunc={(o)=>o.name ?? o}
                         ></SearchSelect>
                     }
                 </h2>
@@ -189,9 +190,10 @@ function CharacterFrame({ character, updateCharacter, game, diceRolled, attribut
                         <ListOrdered
                             arr={character.consumableList}
                             contentFunc={
-                                (consumable, i) => (
+                                (consumableRef, i) => (
                                     <ConsumableFrame
-                                        consumable={consumable}
+                                        consumable={game.getConsumable(consumableRef.consumableName)}
+                                        count={consumableRef.count}
                                         character={character}
                                         updateCharacter={updateCharacter}
                                         diceRolled={diceRolled}
@@ -209,9 +211,10 @@ function CharacterFrame({ character, updateCharacter, game, diceRolled, attribut
                     }
                     {!character.editAttributes &&
                         (<>{
-                            character.consumableList.map((consumable, i) => (
+                            character.consumableList.map((consumableRef, i) => (
                                 <ConsumableFrame
-                                    consumable={consumable}
+                                    consumable={game.getConsumable(consumableRef.consumableName)}
+                                    count={consumableRef.count}
                                     character={character}
                                     updateCharacter={updateCharacter}
                                     diceRolled={diceRolled}

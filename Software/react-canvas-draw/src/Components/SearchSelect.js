@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-function SearchSelect({ options, option, setOption, optionNameFunc=(o)=>o, id }) {
+function SearchSelect({ options, option, setOption, id }) {
     let searchStr = "";
     let setSearchStr = (str) => searchStr = str;
     [searchStr, setSearchStr] = useState();
@@ -19,9 +19,9 @@ function SearchSelect({ options, option, setOption, optionNameFunc=(o)=>o, id })
                 .filter(o => !searchStr || o.includes(searchStr))
                 .map((o,i) => {
                     return (
-                        <option value={optionNameFunc(o)} key={i}
+                        <option value={o} key={i}
                             onClick={(e) => { setOption(o); }}
-                        >{optionNameFunc(o)}</option>
+                        >{o}</option>
                     );
                 })
             }

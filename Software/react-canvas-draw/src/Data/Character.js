@@ -3,6 +3,7 @@
 import Ability, { inflateAbility } from "./Ability";
 import { inflateAttribute } from "./Attribute";
 import { inflateConsumable } from "./Consumable";
+import ConsumableReference from "./ConsumableReference";
 import { inflateRollGroup } from "./RollGroup";
 
 class Character {
@@ -41,6 +42,15 @@ class Character {
         }
     }
 
+    addConsumable(consumable, count) {
+        let consumableReference = this.consumableList.find(cr => cr.consumableName == consumable.name);
+        if (!consumableReference) {
+            consumableReference = new ConsumableReference(consumable.name, 0);
+            this.consumableList.push(consumableReference);
+        }
+        consumableReference.count += count;
+    }
+
 }
 export default Character;
 window.Character = Character;
@@ -62,7 +72,7 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
 
     character.consumableList = character.consumableList.filter(a => a);
     character.consumableList.forEach(consumable => {
-        inflateConsumable(consumable); 
+        // inflateConsumable(consumable); 
     });
 
     character.dieRollLog = character.dieRollLog.filter(a => a);

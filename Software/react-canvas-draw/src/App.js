@@ -164,6 +164,8 @@ function App() {
                             <CharacterFrame
                                 character={char}
                                 updateCharacter={(c) => updateCharacter(c)}
+                                game={game}
+                                updateGame={updateGame}
                                 diceRolled={diceRolled}
                                 attributeAdjusted={attributeAdjusted}
                                 abilityModified={abilityModified}
