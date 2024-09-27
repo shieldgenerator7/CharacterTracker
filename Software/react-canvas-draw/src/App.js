@@ -54,6 +54,7 @@ function App() {
     let setGame = (g) => {
         game = g;
         storage.game = game;
+        window.game = game;
     };
     const defaultGame = () => storage.game ?? new Game();
     [game, setGame] = useState(defaultGame);
@@ -62,7 +63,12 @@ function App() {
         let newgame = JSON.parse(JSON.stringify(oldgame));
         inflateGame(newgame);
         //
-        setGame(newgame);
+
+        // setGame(newgame);
+        game = newgame;
+        storage.game = game;
+        window.game = game;
+        
     };
 
     //Log

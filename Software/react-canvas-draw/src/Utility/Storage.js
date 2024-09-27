@@ -93,6 +93,13 @@ class Storage {
         }
     }
 
+    get game() {
+        return this.storage.game;
+    }
+    set game(value) {
+        this.storage.game = value;
+    }
+
     get characterList() {
         return this.storage.characterList;
     }

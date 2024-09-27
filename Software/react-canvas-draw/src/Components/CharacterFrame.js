@@ -197,6 +197,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         game={game}
                                         updateFunc={(consumable) => {
                                             consumableRef.consumableName = consumable.name;
+                                            updateCharacter(character);
                                             updateGame(game);
                                         }}
                                         diceRolled={diceRolled}
@@ -223,6 +224,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     game={game}
                                     updateFunc={(consumable) => {
                                         consumableRef.consumableName = consumable.name;
+                                        updateCharacter(character);
                                         updateGame(game);
                                     }}
                                     diceRolled={diceRolled}
