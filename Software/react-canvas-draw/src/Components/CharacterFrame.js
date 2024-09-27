@@ -119,7 +119,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     <AbilityFrame
                                         ability={ability}
                                         character={character}
-                                        updateCharacter={updateCharacter}
+                                        updateFunc={()=>updateCharacter(character)}
                                         diceRolled={diceRolled}
                                         attributeAdjusted={attributeAdjusted}
                                         abilityModified={abilityModified}
@@ -140,7 +140,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 <AbilityFrame
                                     ability={ability}
                                     character={character}
-                                    updateCharacter={updateCharacter}
+                                    updateFunc={()=>updateCharacter(character)}
                                     diceRolled={diceRolled}
                                     attributeAdjusted={attributeAdjusted}
                                     abilityModified={abilityModified}

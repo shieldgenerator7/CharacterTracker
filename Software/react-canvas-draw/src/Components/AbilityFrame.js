@@ -6,7 +6,7 @@ import { isString } from "../Utility/Utility";
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, abilityModified, diceRolled}) {
+function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled}) {
     if (character.editAttributes) {
         return (
             <div className="abilityFrameEdit">
@@ -17,7 +17,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         setValue={(value) => {
                             abilityModified(character, `${ability.name}_name`, ability.name, value);
                             ability.name = value;
-                            updateCharacter(character);
+                            updateFunc();
                         }}
                         className={"editText"}
                     ></Field>
@@ -27,7 +27,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         setValue={(value) => {
                             abilityModified(character, `${ability.name}_description`, ability.description, value);
                             ability.description = value;
-                            updateCharacter(character);
+                            updateFunc();
                         }}
                         className={"editTextLong"}
                     ></Field>
@@ -39,7 +39,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         setValue={(value) => {
                             abilityModified(character, `${ability.name}_resourceName`, ability.resourceName, value);
                             ability.resourceName = value;
-                            updateCharacter(character);
+                            updateFunc();
                         }}
                         className={"editText"}
                     ></Field>
@@ -49,7 +49,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         setValue={(value) => {
                             abilityModified(character, `${ability.name}_resourceCost`, ability.resourceCost, value);
                             ability.resourceCost = value;
-                            updateCharacter(character);
+                            updateFunc();
                         }}
                         className={"editNumber"}
                     ></Field>
@@ -63,7 +63,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         setOption={(value) => {
                             abilityModified(character, `${ability.name}_action`, ability.action, value);
                             ability.action = value;
-                            updateCharacter(character);
+                            updateFunc();
                         }}
                     ></SearchSelect>
                 </div>
@@ -75,7 +75,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         setValue={(value) => {
                             abilityModified(character, `${ability.name}_dieRollBonus`, ability.dieRollBonus, value);
                             ability.dieRollBonus = value;
-                            updateCharacter(character);
+                            updateFunc();
                         }}
                         className={"editNumber"}
                     ></Field>
@@ -85,7 +85,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                         setValue={(value) => {
                             abilityModified(character, `${ability.name}_dieRollAttributeFilter`, ability.dieRollAttributeFilter, value);
                             ability.dieRollAttributeFilter = value;
-                            updateCharacter(character);
+                            updateFunc();
                         }}
                         className={"editText"}
                     ></Field>
@@ -176,7 +176,7 @@ function AbilityFrame({ ability, character, updateCharacter, attributeAdjusted, 
                             }
                         }
                     }
-                    updateCharacter(character);
+                    updateFunc();
                 }}
             >
                 <span className="abilityName">{ability.name}
