@@ -131,7 +131,15 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                 </div>
 
 
-                <h2>Consumables</h2>
+                <h2>
+                    Consumables
+                    <button onClick={(e) => {
+                        let consumable = new Consumable("consumable");
+                        character.consumableList.push(consumable);
+                        character.editAttributes = true;
+                        updateCharacter(character);
+                    }}>+</button>
+                </h2>
                 <div className={"consumableContainer"}>
                     {character.editAttributes &&
                         <ListOrdered
@@ -169,15 +177,6 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                                 ></ConsumableFrame>
                             ))
                         }</>)
-                    }
-                    {!character.editAttributes
-                        &&
-                        <button onClick={(e) => {
-                            let consumable = new Consumable("consumable");
-                            character.consumableList.push(consumable);
-                            character.editAttributes = true;
-                            updateCharacter(character);
-                        }}>NEW CONSUMABLE</button>
                     }
                 </div>
 
