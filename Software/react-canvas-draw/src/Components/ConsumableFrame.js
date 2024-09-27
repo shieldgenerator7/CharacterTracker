@@ -30,6 +30,7 @@ function ConsumableFrame({ consumable, count, character, updateCharacter, game, 
             abilityModified={abilityModified}
             diceRolled={diceRolled}
             showResourceCost={false}
+            inline={true}
         ></AbilityFrame>
             </div>
         }

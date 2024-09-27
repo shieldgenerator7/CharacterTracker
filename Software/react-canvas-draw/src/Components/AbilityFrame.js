@@ -6,7 +6,7 @@ import { isString } from "../Utility/Utility";
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled, title, showResourceCost=true}) {
+function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled, title, showResourceCost=true, inline=false}) {
     if (character.editAttributes) {
         return (
             <div className="abilityFrameEdit">
@@ -104,7 +104,8 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
         return (
             <div className=
                 {
-                    `abilityDisplay 
+                    `abilityDisplay
+                    ${(inline)?"abilityDisplayInline":""}
                     ${(ability.Active) ? "abilityDisplayActive" : ""}
                     ${(disabled) ? "abilityDisplayDisabled" : ""}`
                 }
