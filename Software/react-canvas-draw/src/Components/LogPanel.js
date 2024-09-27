@@ -21,7 +21,7 @@ class LogPanel extends React.Component {
                 ref={this.panel}
             >
                 {
-                    this.props.log.entryList.map((entry, i) => (
+                    this.props.log.entryList.slice(-100).map((entry, i) => (
                         <LogEntryFrame
                             entry={entry}
                             key={`log_entry_${i}`}
