@@ -6,13 +6,13 @@ import { isString } from "../Utility/Utility";
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled}) {
+function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled, title, showResourceCost=true}) {
     if (character.editAttributes) {
         return (
             <div className="abilityFrameEdit">
                 <div className="abilityFrameLine">
                     <Field
-                        name={"Ability"}
+                        name={title ?? "Ability"}
                         value={ability.name}
                         setValue={(value) => {
                             abilityModified(character, `${ability.name}_name`, ability.name, value);
@@ -33,6 +33,7 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                     ></Field>
                 </div>
                 <div className="abilityFrameLine">
+                    {showResourceCost &&
                     <Field
                         name={"Resource Name"}
                         value={ability.resourceName}
@@ -43,6 +44,8 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                         }}
                         className={"editText"}
                     ></Field>
+                    }
+                    {showResourceCost &&
                     <Field
                         name={"Cost"}
                         value={ability.resourceCost}
@@ -53,6 +56,10 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                         }}
                         className={"editNumber"}
                     ></Field>
+                    }
+                </div>
+
+                <div className="abilityFrameLine">                    
                     <SearchSelect
                         options={[
                             ACTION_ROLL_MODIFY,
@@ -66,9 +73,6 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                             updateFunc();
                         }}
                     ></SearchSelect>
-                </div>
-
-                <div className="abilityFrameLine">
                     <Field
                         name={"Bonus"}
                         value={ability.dieRollBonus}
