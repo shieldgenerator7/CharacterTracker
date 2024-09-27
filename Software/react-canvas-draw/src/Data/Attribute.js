@@ -4,14 +4,14 @@ import { clamp } from "../Utility/Utility";
 import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE, REGEX_SPACER_TEST } from "./Constants";
 
 class Attribute {
-    constructor(name) {
+    constructor(name, value = 0, max = 0, dieRoll = "1d20") {
         this.name = name;
         this.displayName = "";
-        this.value = 0;
-        this.max = 0;
+        this.value = value;
+        this.max = max;
         this.onclick = ONCLICK_ADJUST_VALUE;
         this.limit = LIMIT_POSITIVE_ONLY;
-        this.dieRoll = "1d20";//"d20", "2d8"
+        this.dieRoll = dieRoll;//"d20", "2d8"
         this.visible = true;
     }
 

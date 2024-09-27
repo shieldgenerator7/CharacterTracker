@@ -2,6 +2,7 @@
 
 import Ability, { inflateAbility } from "./Ability";
 import { inflateAttribute } from "./Attribute";
+import { inflateConsumable } from "./Consumable";
 import { inflateRollGroup } from "./RollGroup";
 
 class Character {
@@ -10,6 +11,7 @@ class Character {
         this.portrait = undefined;//TODO: implement portrait
         this.attributeList = [];
         this.abilityList = [];
+        this.consumableList = [];
 
         //TODO: implement equipment
         this.equipmentList = [];
@@ -56,6 +58,11 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     character.abilityList = character.abilityList.filter(a => a);
     character.abilityList.forEach(ability => {
         inflateAbility(ability);
+    });
+
+    character.consumableList = character.consumableList.filter(a => a);
+    character.consumableList.forEach(consumable => {
+        inflateConsumable(consumable); 
     });
 
     character.dieRollLog = character.dieRollLog.filter(a => a);

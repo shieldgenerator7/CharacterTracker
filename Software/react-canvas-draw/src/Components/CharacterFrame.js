@@ -4,9 +4,11 @@ import Ability, { inflateAbility } from "../Data/Ability";
 import Attribute, { inflateAttribute } from "../Data/Attribute";
 import Character from "../Data/Character";
 import { DIE_ROLL_FLAIR_CRIT, DIE_ROLL_FLAIR_FUMBLE } from "../Data/Constants";
+import Consumable from "../Data/Consumable";
 import { rollDice } from "../Data/DiceRoller";
 import AbilityFrame from "./AbilityFrame";
 import AttributeFrame from "./AttributeFrame";
+import ConsumableFrame from "./ConsumableFrame";
 import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 
@@ -127,6 +129,59 @@ function CharacterFrame({ character, updateCharacter, diceRolled, attributeAdjus
                         }</>)
                     }
                 </div>
+
+
+                <h2>Consumables</h2>
+                <div className={"consumableContainer"}>
+                    {character.editAttributes &&
+                        <ListOrdered
+                            arr={character.consumableList}
+                            contentFunc={
+                                (consumable, i) => (
+                                    <ConsumableFrame
+                                        consumable={consumable}
+                                        character={character}
+                                        updateCharacter={updateCharacter}
+                                        diceRolled={diceRolled}
+                                        attributeAdjusted={attributeAdjusted}
+                                        abilityModified={abilityModified}
+                                        key={`character_consumable_${i}`}
+                                    ></ConsumableFrame>
+                                )
+                            }
+                            updateFunc={(arr) => {
+                                character.consumableList = arr;
+                                updateCharacter(character);
+                            }}
+                        ></ListOrdered>
+                    }
+                    {!character.editAttributes &&
+                        (<>{
+                            character.consumableList.map((consumable, i) => (
+                                <ConsumableFrame
+                                    consumable={consumable}
+                                    character={character}
+                                    updateCharacter={updateCharacter}
+                                    diceRolled={diceRolled}
+                                    attributeAdjusted={attributeAdjusted}
+                                    abilityModified={abilityModified}
+                                    key={`character_consumable_${i}`}
+                                ></ConsumableFrame>
+                            ))
+                        }</>)
+                    }
+                    {!character.editAttributes
+                        &&
+                        <button onClick={(e) => {
+                            let consumable = new Consumable("consumable");
+                            character.consumableList.push(consumable);
+                            character.editAttributes = true;
+                            updateCharacter(character);
+                        }}>NEW CONSUMABLE</button>
+                    }
+                </div>
+
+
 
                 {
                     !character.editAttributes && character.dieRollLog?.length > 0 &&
