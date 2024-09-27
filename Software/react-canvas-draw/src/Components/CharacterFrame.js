@@ -192,9 +192,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     const oldname = consumableRef.consumableName;
                                     return (
                                     <ConsumableFrame
-                                        consumable={game.getConsumable(consumableRef.consumableName)}
-                                        consumablename={consumableRef.consumableName}
-                                        count={consumableRef.count}
+                                        consumableReference={consumableRef}
                                         character={character}
                                         updateCharacter={updateCharacter}
                                         game={game}
@@ -222,9 +220,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         (<>{
                             character.consumableList.map((consumableRef, i) => (
                                 <ConsumableFrame
-                                    consumable={game.getConsumable(consumableRef.consumableName)}
-                                    consumablename={consumableRef.consumableName}
-                                    count={consumableRef.count}
+                                    consumableReference={consumableRef}
                                     character={character}
                                     updateCharacter={updateCharacter}
                                     game={game}

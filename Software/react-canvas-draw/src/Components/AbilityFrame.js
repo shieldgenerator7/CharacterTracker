@@ -6,7 +6,9 @@ import { isString } from "../Utility/Utility";
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled, title, showResourceCost=true, inline=false}) {
+function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled, title, showResourceCost=true, inline=false, activeFunc, setActiveFunc }) {
+    activeFunc ??= () => ability.Active;
+    setActiveFunc ??= (b) => ability.Active = b;
     if (character.editAttributes) {
         return (
             <div className="abilityFrameEdit">
@@ -96,7 +98,7 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
         );
     }
     else {
-        let disabled = (!ability.Active && ability.ConsumesResource && !character.hasResource(ability))
+        let disabled = (!activeFunc() && ability.ConsumesResource && !character.hasResource(ability))
             ? true
             : false;
         return (
@@ -104,14 +106,14 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                 {
                     `abilityDisplay
                     ${(inline)?"abilityDisplayInline":""}
-                    ${(ability.Active) ? "abilityDisplayActive" : ""}
+                    ${(activeFunc()) ? "abilityDisplayActive" : ""}
                     ${(disabled) ? "abilityDisplayDisabled" : ""}`
                 }
                 disabled={disabled}
                 onClick={(e) => {
                     if (disabled) { return; }
-                    ability.Active = !ability.Active;
-                    if (ability.Active) {
+                    setActiveFunc(!activeFunc());
+                    if (activeFunc()) {
                         let resourceAllGood = true;
                         if (ability.ConsumesResource) {
                             resourceAllGood = false;

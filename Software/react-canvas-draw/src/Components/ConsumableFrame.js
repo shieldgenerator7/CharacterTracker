@@ -4,9 +4,11 @@ import AbilityFrame from "./AbilityFrame";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function ConsumableFrame({ consumable, consumablename, count, character, updateCharacter, game, updateFunc, attributeAdjusted, abilityModified, diceRolled }) {
+function ConsumableFrame({ consumableReference, character, updateCharacter, game, updateFunc, attributeAdjusted, abilityModified, diceRolled }) {
+    let consumable = game.getConsumable(consumableReference.consumableName);
+    let count = consumableReference.count;
     if (!consumable) {
-        return `Consumable not found! ${consumablename}`;
+        return `Consumable not found! ${consumableReference?.consumableName}`;
     }
     return <div>
         {!character.editAttributes &&
@@ -34,6 +36,11 @@ function ConsumableFrame({ consumable, consumablename, count, character, updateC
             diceRolled={diceRolled}
             showResourceCost={false}
             inline={true}
+            activeFunc={()=>consumableReference.active}
+            setActiveFunc={(b) => {
+                consumableReference.active = b;
+                updateCharacter(character);
+            }}
         ></AbilityFrame>
             </div>
         }
