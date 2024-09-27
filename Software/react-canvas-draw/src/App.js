@@ -14,6 +14,7 @@ import Character, { inflateCharacter } from './Data/Character';
 import CommandPanel from './Components/CommandPanel';
 import Log from './Data/Log';
 import Game, { inflateGame } from './Data/Game';
+import Consumable from './Data/Consumable';
 
 function App() {
     //Storage
@@ -95,12 +96,16 @@ function App() {
     const defaultLog = () => storage.log ?? new Log();
     [log, setLog] = useState(defaultLog);
     window.log = log;
+    window.setLog = setLog;
+    window.Log = Log;
 
     let updateLog = (oldlog) => {
         let newlog = JSON.parse(JSON.stringify(oldlog));
         //
         setLog(newlog);
     };
+    window.updateLog = updateLog;
+    window.Consumable = Consumable;
 
     let diceRolled = (character, rollName, rollValue, rollResult) => {
         log.recordEntryDieRoll(game, character, rollName, rollValue, rollResult);
