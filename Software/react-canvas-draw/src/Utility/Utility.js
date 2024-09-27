@@ -179,6 +179,19 @@ export function arrayRemoveDuplicates(array) {
 }
 
 /**
+ * Returns a new array with the duplicates removed, using the query
+ */
+export function arrayRemoveDuplicatesQuery(array, equalFunc=(m,n)=>m==n) {
+    let arr = [];
+    array.forEach(n => {
+        if (!arr.some(m=>equalFunc(m,n))) {
+            arr.push(n);
+        }
+    });
+    return arr;
+}
+
+/**
  * Returns a new array that has only unique elements from the given array, sorted based on frequency
  */
 export function arraySortOnFrequency(array) {

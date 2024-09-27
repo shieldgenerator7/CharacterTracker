@@ -7,6 +7,7 @@ import { backwardsCompatifyDeck, inflateDeck } from "../Data/Deck";
 import Game, { backwardsCompatifyGame, inflateGame } from "../Data/Game";
 import Log from "../Data/Log";
 import LogEntry from "../Data/LogEntry";
+import { arrayRemoveDuplicatesQuery } from "./Utility";
 
 //2024-03-08: copied from StoryViewer
 
@@ -67,8 +68,13 @@ class Storage {
                 if (!this.storage.game.getConsumable(consumableRef.consumableName)) {
                     this.storage.game.consumableList.push(new Consumable(consumableRef.consumableName));
                 }
-            })
+            });
         });
+        //remove extra consumables
+        this.game.consumableList = arrayRemoveDuplicatesQuery(
+            this.game.consumableList,
+            (m, n) => m.name == n.name
+        );
         //
         Object.setPrototypeOf(this.storage.log, Log.prototype);
         this.storage.log.entryList.forEach(entry => {
