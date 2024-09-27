@@ -193,6 +193,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     return (
                                     <ConsumableFrame
                                         consumable={game.getConsumable(consumableRef.consumableName)}
+                                        consumablename={consumableRef.consumableName}
                                         count={consumableRef.count}
                                         character={character}
                                         updateCharacter={updateCharacter}
@@ -222,6 +223,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             character.consumableList.map((consumableRef, i) => (
                                 <ConsumableFrame
                                     consumable={game.getConsumable(consumableRef.consumableName)}
+                                    consumablename={consumableRef.consumableName}
                                     count={consumableRef.count}
                                     character={character}
                                     updateCharacter={updateCharacter}
@@ -268,6 +270,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     }
                                     key={`character_die_roll_log_${i}`}
                                     onClick={() => {
+                                        console.log("roll", i, roll);
                                         let selected = character.dieRollLogSelect.includes(i);
                                         //Deselect
                                         if (selected) {

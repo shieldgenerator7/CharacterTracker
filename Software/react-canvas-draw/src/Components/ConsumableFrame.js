@@ -4,7 +4,10 @@ import AbilityFrame from "./AbilityFrame";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function ConsumableFrame({ consumable, count, character, updateCharacter, game, updateFunc, attributeAdjusted,abilityModified,diceRolled }) {
+function ConsumableFrame({ consumable, consumablename, count, character, updateCharacter, game, updateFunc, attributeAdjusted, abilityModified, diceRolled }) {
+    if (!consumable) {
+        return `Consumable not found! ${consumablename}`;
+    }
     return <div>
         {!character.editAttributes &&
             <div>
@@ -22,7 +25,7 @@ function ConsumableFrame({ consumable, count, character, updateCharacter, game, 
             title={"Consumable"}
             ability={consumable.ability}
             updateFunc={() => {
-                consumable.name = consumable.ability.name;
+                consumable.Name = consumable.ability.name;
                 updateFunc(consumable);
             }}
             character={character}
@@ -40,7 +43,7 @@ function ConsumableFrame({ consumable, count, character, updateCharacter, game, 
                     title={"Consumable"}
                     ability={consumable.ability}
                     updateFunc={() => {
-                        consumable.name = consumable.ability.name;
+                        consumable.Name = consumable.ability.name;
                         updateFunc(consumable);
                     }}
                     character={character}

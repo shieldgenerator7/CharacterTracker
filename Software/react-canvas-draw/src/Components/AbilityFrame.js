@@ -184,7 +184,7 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
             >
                 <span className="abilityName">{ability.name}
                     {
-                        (ability.resourceName && ability.resourceCost > 0)
+                        (ability.resourceName && ability.resourceCost > 0 && showResourceCost)
                             ? ` (${ability.resourceCost} ${ability.resourceName})`
                             : ""
                     }

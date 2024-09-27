@@ -24,26 +24,53 @@ class Character {
         this.dieRollLogSelect = [];
     }
 
+    getAttribute(attrName) {
+        attrName = attrName.trim();
+        return this.attributeList
+            .find(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName);
+    }
+
+    getConsumable(cnsmName) {
+        cnsmName = cnsmName.trim();
+        return this.consumableList.find(cr => cr.consumableName == cnsmName);
+    }
+
     hasResource(ability) {
-        let attrName = ability.resourceName.trim();
-        let attr = this.attributeList
-            .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
-        return attr && attr.value >= ability.resourceCost;
+        //Attributes
+        let attr = this.getAttribute(ability.resourceName);
+        if (attr && attr.value >= ability.resourceCost) {
+            return true;
+        }
+        //Consumables
+        let conRef = this.getConsumable(ability.resourceName);
+        if (conRef && conRef.count >= ability.resourceCost) {
+            return true;
+        }
+        //Default
+        return false;
     }
 
     consumeResource(ability) {
-        let attrName = ability.resourceName.trim();
-        let attr = this.attributeList
-            .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
+        //Attributes
+        let attr = this.getAttribute(ability.resourceName);
         if (attr) {
             let prevValue = attr.Value;
             attr.Value -= ability.resourceCost;
             return [prevValue, attr.Value];
         }
+        //Consumables
+        let conRef = this.getConsumable(ability.resourceName);
+        if (conRef) {
+            let prevCount = conRef.count;
+            conRef.count -= ability.resourceCost;
+            return [prevCount, conRef.count];
+        }
+        //Default
+        return [0, 0];
     }
 
     addConsumable(consumable, count) {
-        let consumableReference = this.consumableList.find(cr => cr.consumableName == consumable.name);
+        let consumableReference = this.getConsumable(consumable.name);
         if (!consumableReference) {
             //early exit: theres none to add, and its not in the list
             if (count == 0) {
