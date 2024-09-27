@@ -117,7 +117,7 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                                 .map(c => game.getConsumable(c.consumableName)?.ability)
                                         );
                                         abilityList = abilityList.filter(ability => ability?.action == ACTION_ROLL_MODIFY);
-                                        abilityList                                            
+                                        abilityList
                                             .forEach(ability => {
                                                 let ablname = `${attribute.name} (+${ability.name})`;
                                                 //early exit: attribute filter

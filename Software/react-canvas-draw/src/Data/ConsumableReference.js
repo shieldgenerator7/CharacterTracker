@@ -1,6 +1,6 @@
 "use strict";
 
-class ConsumableReference{
+class ConsumableReference {
     constructor(consumableName, count) {
         this.consumableName = consumableName;
         this.count = count;

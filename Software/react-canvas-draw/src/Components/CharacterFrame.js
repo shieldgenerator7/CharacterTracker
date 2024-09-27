@@ -121,7 +121,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     <AbilityFrame
                                         ability={ability}
                                         character={character}
-                                        updateFunc={()=>updateCharacter(character)}
+                                        updateFunc={() => updateCharacter(character)}
                                         diceRolled={diceRolled}
                                         attributeAdjusted={attributeAdjusted}
                                         abilityModified={abilityModified}
@@ -142,7 +142,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 <AbilityFrame
                                     ability={ability}
                                     character={character}
-                                    updateFunc={()=>updateCharacter(character)}
+                                    updateFunc={() => updateCharacter(character)}
                                     diceRolled={diceRolled}
                                     attributeAdjusted={attributeAdjusted}
                                     abilityModified={abilityModified}
@@ -166,7 +166,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     {showConsumableList &&
                         <SearchSelect
                             id={sltConsumableListId}
-                            options={["","NEW"].concat(game.consumableList).map(o=>o.name ?? o)}
+                            options={["", "NEW"].concat(game.consumableList).map(o => o.name ?? o)}
                             setOption={(option) => {
                                 console.log("option selected", option);
                                 let needsEdited = false;
@@ -193,23 +193,23 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 (consumableRef, i) => {
                                     const oldname = consumableRef.consumableName;
                                     return (
-                                    <ConsumableFrame
-                                        consumableReference={consumableRef}
-                                        character={character}
-                                        updateCharacter={updateCharacter}
-                                        game={game}
-                                        updateFunc={(consumable) => {
-                                            consumableRef.consumableName = consumable.name;
-                                            renameConsumable(oldname, consumable.name, character);
-                                            updateCharacter(character);
-                                            updateGame(game);
-                                        }}
-                                        diceRolled={diceRolled}
-                                        attributeAdjusted={attributeAdjusted}
-                                        abilityModified={abilityModified}
-                                        key={`character_consumable_${i}`}
-                                    ></ConsumableFrame>
-                                );
+                                        <ConsumableFrame
+                                            consumableReference={consumableRef}
+                                            character={character}
+                                            updateCharacter={updateCharacter}
+                                            game={game}
+                                            updateFunc={(consumable) => {
+                                                consumableRef.consumableName = consumable.name;
+                                                renameConsumable(oldname, consumable.name, character);
+                                                updateCharacter(character);
+                                                updateGame(game);
+                                            }}
+                                            diceRolled={diceRolled}
+                                            attributeAdjusted={attributeAdjusted}
+                                            abilityModified={abilityModified}
+                                            key={`character_consumable_${i}`}
+                                        ></ConsumableFrame>
+                                    );
                                 }
                             }
                             updateFunc={(arr) => {

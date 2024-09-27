@@ -2,7 +2,7 @@
 
 import Ability, { inflateAbility } from "./Ability";
 
-class Consumable{
+class Consumable {
     constructor(name) {
         this.name = name;
         this.ability = new Ability(name);

@@ -6,7 +6,7 @@ import { isString } from "../Utility/Utility";
 import Field from "./Field";
 import SearchSelect from "./SearchSelect";
 
-function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled, title, showResourceCost=true, inline=false, activeFunc, setActiveFunc }) {
+function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled, title, showResourceCost = true, inline = false, activeFunc, setActiveFunc }) {
     activeFunc ??= () => ability.Active;
     setActiveFunc ??= (b) => ability.Active = b;
     if (character.editAttributes) {
@@ -35,31 +35,31 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                     ></Field>
                 </div>
                 {showResourceCost &&
-                <div className="abilityFrameLine">
-                    <Field
-                        name={"Resource Name"}
-                        value={ability.resourceName}
-                        setValue={(value) => {
-                            abilityModified(character, `${ability.name}_resourceName`, ability.resourceName, value);
-                            ability.resourceName = value;
-                            updateFunc();
-                        }}
-                        className={"editText"}
-                    ></Field>
-                    <Field
-                        name={"Cost"}
-                        value={ability.resourceCost}
-                        setValue={(value) => {
-                            abilityModified(character, `${ability.name}_resourceCost`, ability.resourceCost, value);
-                            ability.resourceCost = value;
-                            updateFunc();
-                        }}
-                        className={"editNumber"}
-                    ></Field>
-                </div>
+                    <div className="abilityFrameLine">
+                        <Field
+                            name={"Resource Name"}
+                            value={ability.resourceName}
+                            setValue={(value) => {
+                                abilityModified(character, `${ability.name}_resourceName`, ability.resourceName, value);
+                                ability.resourceName = value;
+                                updateFunc();
+                            }}
+                            className={"editText"}
+                        ></Field>
+                        <Field
+                            name={"Cost"}
+                            value={ability.resourceCost}
+                            setValue={(value) => {
+                                abilityModified(character, `${ability.name}_resourceCost`, ability.resourceCost, value);
+                                ability.resourceCost = value;
+                                updateFunc();
+                            }}
+                            className={"editNumber"}
+                        ></Field>
+                    </div>
                 }
 
-                <div className="abilityFrameLine">                    
+                <div className="abilityFrameLine">
                     <SearchSelect
                         options={[
                             ACTION_ROLL_MODIFY,
@@ -105,7 +105,7 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
             <div className=
                 {
                     `abilityDisplay
-                    ${(inline)?"abilityDisplayInline":""}
+                    ${(inline) ? "abilityDisplayInline" : ""}
                     ${(activeFunc()) ? "abilityDisplayActive" : ""}
                     ${(disabled) ? "abilityDisplayDisabled" : ""}`
                 }

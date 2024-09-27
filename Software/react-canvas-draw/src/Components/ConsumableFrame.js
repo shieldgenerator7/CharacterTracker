@@ -13,38 +13,38 @@ function ConsumableFrame({ consumableReference, character, updateCharacter, game
     return <div>
         {!character.editAttributes &&
             <div>
-        <Counter
-            value={count}
-            setValue={(v) => {
-                let diff = v - count;
-                character.addConsumable(consumable, diff);
-                updateCharacter(character);
-            }}
-            label={`x${count}`}
-            inline={true}
-        ></Counter>
-        <AbilityFrame
-            title={"Consumable"}
-            ability={consumable.ability}
-            updateFunc={() => {
-                updateCharacter(character);
-                updateFunc(consumable);
-            }}
-            character={character}
-            attributeAdjusted={attributeAdjusted}
-            abilityModified={abilityModified}
-            diceRolled={diceRolled}
-            showResourceCost={false}
-            inline={true}
-            activeFunc={()=>consumableReference.active}
-            setActiveFunc={(b) => {
-                consumableReference.active = b;
-                if (consumableReference.count <= 0) {
-                    character.addConsumable(consumable, 0);
-                }
-                updateCharacter(character);
-            }}
-        ></AbilityFrame>
+                <Counter
+                    value={count}
+                    setValue={(v) => {
+                        let diff = v - count;
+                        character.addConsumable(consumable, diff);
+                        updateCharacter(character);
+                    }}
+                    label={`x${count}`}
+                    inline={true}
+                ></Counter>
+                <AbilityFrame
+                    title={"Consumable"}
+                    ability={consumable.ability}
+                    updateFunc={() => {
+                        updateCharacter(character);
+                        updateFunc(consumable);
+                    }}
+                    character={character}
+                    attributeAdjusted={attributeAdjusted}
+                    abilityModified={abilityModified}
+                    diceRolled={diceRolled}
+                    showResourceCost={false}
+                    inline={true}
+                    activeFunc={() => consumableReference.active}
+                    setActiveFunc={(b) => {
+                        consumableReference.active = b;
+                        if (consumableReference.count <= 0) {
+                            character.addConsumable(consumable, 0);
+                        }
+                        updateCharacter(character);
+                    }}
+                ></AbilityFrame>
             </div>
         }
         {character.editAttributes &&
@@ -64,6 +64,6 @@ function ConsumableFrame({ consumableReference, character, updateCharacter, game
                 ></AbilityFrame>
             </div>
         }
-    </div>
+    </div>;
 }
 export default ConsumableFrame;

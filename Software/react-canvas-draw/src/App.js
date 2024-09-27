@@ -41,7 +41,7 @@ function App() {
             (c) => { if (c == character) { updateCharacter(c); } }
         );
         //
-        let charList = [...characterList];        
+        let charList = [...characterList];
         if (charList.includes(oldcharacter)) {
             let index = charList.indexOf(oldcharacter);
             charList.splice(index, 1, newcharacter);
@@ -61,9 +61,9 @@ function App() {
             if (cr) {
                 cr.consumableName = newname;
             }
-        })
+        });
         setCharacterList([...characterList]);
-    }
+    };
 
     //Game
     let game = new Game();
@@ -84,7 +84,7 @@ function App() {
         game = newgame;
         storage.game = game;
         window.game = game;
-        
+
     };
 
     //Log
@@ -198,7 +198,7 @@ function App() {
                                 abilityModified={abilityModified}
                                 characterList={characterList}
                                 setCharacterList={setCharacterList}
-                                renameConsumable={ renameConsumablePropagation}
+                                renameConsumable={renameConsumablePropagation}
                                 key={`character_${i}`}
                             ></CharacterFrame>
                         ))

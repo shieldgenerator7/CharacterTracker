@@ -472,20 +472,23 @@
     border: 3px solid rgb(150, 150, 150);
 }
 
-.rollResultCrit{
+.rollResultCrit {
     background: rgb(44, 180, 44);
     border: 3px solid rgb(44, 180, 44);
 }
-.rollResultCrit:hover{
+
+.rollResultCrit:hover {
     background: rgb(61, 255, 61);
     border: 3px solid rgb(44, 180, 44);
 }
-.rollResultFumb{
+
+.rollResultFumb {
     background: rgb(187, 99, 99);
     border: 3px solid rgb(187, 99, 99);
 }
-.rollResultFumb:hover{
-    background: rgb(248, 147, 147);    
+
+.rollResultFumb:hover {
+    background: rgb(248, 147, 147);
     border: 3px solid rgb(187, 99, 99);
 }
 
@@ -613,6 +616,7 @@
     padding: 5px;
     width: 95%;
 }
+
 .abilityDisplayInline {
     display: inline;
     /* width:auto; */
@@ -707,7 +711,7 @@
     border-radius: 5px;
 }
 
-.addButton{
+.addButton {
     display: inline;
     padding: px 25px 1px 25px;
     margin-left: 5px;
@@ -719,20 +723,21 @@
     border: 1px solid #a89b76;
     border-radius: 5px;
 }
+
 .addButton:hover {
     background: #ffeec1;
-    border:none;
+    border: none;
 }
 
-.searchSelect{
-    height:30px;
+.searchSelect {
+    height: 30px;
     border: none;
     background: #ffeec1;
     border-radius: 5px;
 }
-.searchSelect option{
-    height:30px;
+
+.searchSelect option {
+    height: 30px;
     border: 1px solid black;
     background: #ffeec1;
 }
-

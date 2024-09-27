@@ -181,10 +181,10 @@ export function arrayRemoveDuplicates(array) {
 /**
  * Returns a new array with the duplicates removed, using the query
  */
-export function arrayRemoveDuplicatesQuery(array, equalFunc=(m,n)=>m==n) {
+export function arrayRemoveDuplicatesQuery(array, equalFunc = (m, n) => m == n) {
     let arr = [];
     array.forEach(n => {
-        if (!arr.some(m=>equalFunc(m,n))) {
+        if (!arr.some(m => equalFunc(m, n))) {
             arr.push(n);
         }
     });

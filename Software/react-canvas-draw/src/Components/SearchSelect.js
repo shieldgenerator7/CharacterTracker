@@ -17,7 +17,7 @@ function SearchSelect({ options, option, setOption, id }) {
         >
             {options
                 .filter(o => !searchStr || o.includes(searchStr))
-                .map((o,i) => {
+                .map((o, i) => {
                     return (
                         <option value={o} key={i}
                             onClick={(e) => { setOption(o); }}
