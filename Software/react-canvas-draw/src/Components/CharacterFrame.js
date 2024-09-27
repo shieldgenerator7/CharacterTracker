@@ -36,6 +36,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                 }
                 //close consumable list
                 setShowConsumableList(false);
+                // console.log("mouse event", e, e.target.id, onClickIgnoreIds);
             }}
         >
             <div className="characterContent">
@@ -101,6 +102,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     attribute={attr}
                                     character={character}
                                     updateCharacter={updateCharacter}
+                                    game={game}
                                     diceRolled={diceRolled}
                                     attributeAdjusted={attributeAdjusted}
                                     key={`character_attribute_${i}`}

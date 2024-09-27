@@ -10,7 +10,7 @@ import { clamp, isString } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function AttributeFrame({ attribute, character, updateCharacter, diceRolled, attributeAdjusted }) {
+function AttributeFrame({ attribute, character, updateCharacter, game, diceRolled, attributeAdjusted }) {
     let onClickType = attribute.OnClickType;
     //Edit Attributes
     if (character.editAttributes) {
@@ -110,8 +110,14 @@ function AttributeFrame({ attribute, character, updateCharacter, diceRolled, att
                                         roll.addRoll(attribute.name, attribute.value * 1);
                                         diceRolled(character, attribute.name, originalResult, roll.Value);
                                         //roll ability dice, if applicable
-                                        character.abilityList
-                                            .filter(ability => ability.Active && ability.action == ACTION_ROLL_MODIFY)
+                                        let abilityList = character.abilityList
+                                            .filter(ability => ability.Active);
+                                        abilityList = abilityList.concat(
+                                            character.consumableList.filter(c => c.active)
+                                                .map(c => game.getConsumable(c.consumableName)?.ability)
+                                        );
+                                        abilityList = abilityList.filter(ability => ability?.action == ACTION_ROLL_MODIFY);
+                                        abilityList                                            
                                             .forEach(ability => {
                                                 let ablname = `${attribute.name} (+${ability.name})`;
                                                 //early exit: attribute filter
