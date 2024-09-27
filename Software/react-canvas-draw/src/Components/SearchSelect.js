@@ -10,7 +10,6 @@ function SearchSelect({ options, option, setOption, id }) {
     return (
         <select id={id ?? ""} value={option ?? options[0]}
             onChange={(e) => {
-                console.log("option in select selected", e.target.value);
                 let option = e.target.value;
                 setOption(option);
             }}
