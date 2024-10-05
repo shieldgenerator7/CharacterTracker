@@ -288,6 +288,18 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     !character.editAttributes && character.dieRollLog?.length > 0 &&
                     <div className="diceRollLogPanel">
                         <h2>Dice Rolls
+                            <button className="addButton"
+                                onClick={(e) => {
+                                    let roll = rollDice("1d4");
+                                    diceRolled(character, "d4", roll.Value, roll.Value);
+                                    character.dieRollLog.push(roll);
+                                    character.dieRollLogSelect.length = 0;
+                                    character.dieRollLogSelect.push(character.dieRollLog.length - 1);
+                                    updateCharacter(character);
+                                }}
+                            >
+                                d4
+                            </button>
                             <button className="listorderedbuttonX"
                                 onClick={() => {
                                     character.dieRollLog = [];
