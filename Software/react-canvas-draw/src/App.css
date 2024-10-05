@@ -795,3 +795,10 @@
     border: 1px solid black;
     background: #ffeec1;
 }
+
+.spacer{
+    border-top: 3px solid black;
+    width: 78%;
+    height: 1px;
+    margin-top: 18px;
+}

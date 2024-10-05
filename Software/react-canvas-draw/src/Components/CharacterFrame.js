@@ -79,7 +79,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         <ListOrdered
                             arr={character.attributeList}
                             contentFunc={
-                                (attr, i) => (
+                                (attr, i) => (<>
+                                    {!attr.IsSpacer &&
                                     <AttributeFrame
                                         attribute={attr}
                                         character={character}
@@ -88,7 +89,11 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         attributeAdjusted={attributeAdjusted}
                                         key={`character_attribute_${i}`}
                                     ></AttributeFrame>
-                                )
+                                    }
+                                    {attr.IsSpacer &&
+                                        <div className="spacer"></div>
+                                    }
+                                </>)
                             }
                             updateFunc={(arr) => {
                                 character.attributeList = arr;
