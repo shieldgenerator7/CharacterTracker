@@ -213,6 +213,12 @@ export function arraySortOnFrequency(array) {
         .map(([key, value]) => key);
 }
 
+export function inflateArray(arr, inflateFunc) {
+    arr = arr?.filter(a => a) ?? [];
+    arr.forEach(a => inflateFunc(a));
+    return arr;
+}
+
 
 /**
  * Returns a random number between min and max, inclusive

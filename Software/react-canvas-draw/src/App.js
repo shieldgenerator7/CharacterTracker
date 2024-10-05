@@ -80,7 +80,7 @@ function App() {
         inflateGame(newgame);
         //
 
-        // setGame(newgame);
+        setGame(newgame);
         game = newgame;
         storage.game = game;
         window.game = game;

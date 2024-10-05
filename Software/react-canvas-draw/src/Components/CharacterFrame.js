@@ -14,6 +14,8 @@ import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
 import { isString } from "../Utility/Utility";
+import TempBonus from "../Data/TempBonus";
+import TempBonusFrame from "./TempBonusFrame";
 
 function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
     let showConsumableList = false;
@@ -77,7 +79,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         <ListOrdered
                             arr={character.attributeList}
                             contentFunc={
-                                (attr, i) => (
+                                (attr, i) => (<>
+                                    {!attr.IsSpacer &&
                                     <AttributeFrame
                                         attribute={attr}
                                         character={character}
@@ -86,7 +89,11 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         attributeAdjusted={attributeAdjusted}
                                         key={`character_attribute_${i}`}
                                     ></AttributeFrame>
-                                )
+                                    }
+                                    {attr.IsSpacer &&
+                                        <div className="spacer"></div>
+                                    }
+                                </>)
                             }
                             updateFunc={(arr) => {
                                 character.attributeList = arr;
@@ -241,19 +248,84 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     }
                 </div>
 
+                {!character.editAttributes &&
+                    <>
+                        <h2>
+                            Temporary Bonuses
+                            <button className="addButton"
+                                onClick={(e) => {
+                                    let tempBonus = new TempBonus(2, "");
+                                    tempBonus.editing = true;
+                                    character.tempBonusList.push(tempBonus);
+                                    updateCharacter(character);
+                                }}>+</button>
+                        </h2>
+                        {
+                            <ListOrdered
+                                arr={character.tempBonusList}
+                                contentFunc={(tempBonus, i) => (
+                                    <TempBonusFrame
+                                        tempBonus={tempBonus}
+                                        character={character}
+                                        updateCharacter={updateCharacter}
+                                        game={game}
+                                        updateFunc={() => {
+                                            updateCharacter(character);
+                                        }}
+                                        diceRolled={diceRolled}
+                                        attributeAdjusted={attributeAdjusted}
+                                        abilityModified={abilityModified}
+                                        key={`character_tempBonus_${i}`}
+                                    ></TempBonusFrame>
+                                )}
+                                updateFunc={(arr) => {
+                                    character.tempBonusList = arr;
+                                    updateCharacter(character);
+                                }}
+                            ></ListOrdered>
+                        }
+                    </>
+                }
+            </div>
 
 
                 {
-                    !character.editAttributes && character.dieRollLog?.length > 0 &&
-                    <>
+                    !character.editAttributes &&
+                    <div className="diceRollLogPanel">
                         <h2>Dice Rolls
-                            <button className="listorderedbuttonX"
+                            {
+                                [
+                                    "d4",
+                                    "d6",
+                                    "d8",
+                                    "d10",
+                                    "d12",
+                                    "d20",
+                                    "d100",
+                                ].map((d,i) => (                                    
+                            <button className="dieButton"
+                                key={`character_dieroll_${i}`}
+                                onClick={(e) => {
+                                    let roll = rollDice(d);
+                                    diceRolled(character, d, roll.Value, roll.Value);
+                                    character.dieRollLog.push(roll);
+                                    character.dieRollLogSelect.length = 0;
+                                    updateCharacter(character);
+                                }}
+                            >
+                                {d}
+                            </button>                                
+                                ))
+                            }
+                            {character.dieRollLog.length > 0 &&
+                            <button className="panelCloseButton"
                                 onClick={() => {
                                     character.dieRollLog = [];
                                     character.dieRollLogSelect = [];
                                     updateCharacter(character);
                                 }}>X
                             </button>
+                            }
                         </h2>
                         <span className="diceRollLog">
 
@@ -291,9 +363,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
 
                         </span>
 
-                    </>
+                    </div>
                 }
-            </div>
             <div className="buttonPanel">
                 <button onClick={(e) => {
                     let attr = new Attribute("attr");

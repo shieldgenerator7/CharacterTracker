@@ -88,5 +88,23 @@ class LogEntry {
         //"2024-09-22 22:18 - 2024-04-15 @Crownspire: Tak Redwind Attack: 15 -> 17"
         return `${this.Date} ${this.Time} - ${this.event} @${this.location}: ${this.characterName} ${this.rollName}: ${this.rollValue} -> ${this.rollResult}`;
     }
+
+    includes(text) {
+        // console.log("datetime str", this.dateTime + "");
+        return new Date(this.dateTime).toDateString().toLowerCase().includes(text)
+            || this.event.toLowerCase().includes(text)
+            || this.location.toLowerCase().includes(text)
+            || this.characterName.toLowerCase().includes(text)
+            || this.rollName.toLowerCase().includes(text)
+            || ("" + this.rollValue).toLowerCase().includes(text)
+            || ("" + this.rollResult).toLowerCase().includes(text)
+            // || Object.keys(this.variableChangeList).some(k => k.includes(text));
+            || Object.keys(this.variableChangeList).some(key =>
+                // console.log("keytype",typeof key) 
+                ("" + key).toLowerCase().includes(text)
+                || ("" + this.variableChangeList[key].oldVal).toLowerCase().includes(text)
+                || ("" + this.variableChangeList[key].newVal).toLowerCase().includes(text)
+            );
+    }
 }
 export default LogEntry;

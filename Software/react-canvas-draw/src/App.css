@@ -506,6 +506,59 @@
     line-height: 50px;
 }
 
+.diceRollLogPanel {
+    width: 100%;
+    /* height: 45px; */
+    z-index: 1;
+    background: #cebd90;
+    text-align: left;
+    justify-items: center;
+    border-top: 1px solid black;
+    border-radius: 5px 0px 0px 5px;
+    word-wrap: normal;
+    overflow-x:hidden;    
+    overflow-wrap:break-word;
+}
+
+.diceRollLogPanel h2 {
+    font-size: large;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.dieButton{
+    display: inline;
+    padding: px 25px 1px 25px;
+    margin-left: 5px;
+    /* margin-top: 3px; */
+    border: none;
+    background: none;
+    /* width: 30px; */
+    height: 30px;
+    border: 1px solid #a89b76;
+    border-radius: 5px;
+}
+.dieButton:hover {
+    background: #ffeec1;
+    border: none;
+}
+.panelCloseButton {
+    display: inline;
+    /* padding: 5px 10px 5px 10px; */
+    padding: 1px 10px 1px 10px;
+    /* margin-left: 5px; */
+    margin-right: 5px;
+    margin-top: 3px;
+    margin-left: 5px;
+    border: none;
+    background: none;
+    height: 40px;
+}
+.panelCloseButton:hover {
+    background: #ff9e9e;
+    border-radius: 5px;
+}
+
 .field {
     display: flex;
     flex-direction: column;
@@ -597,6 +650,7 @@
     margin-top: 10px;
     border: 1px solid #ffecb7;
     padding: 5px;
+    overflow-x: hidden;
 }
 
 .abilityFrameLine {
@@ -740,4 +794,21 @@
     height: 30px;
     border: 1px solid black;
     background: #ffeec1;
+}
+
+.spacer{
+    border-top: 3px solid black;
+    width: 78%;
+    height: 1px;
+    margin-top: 18px;
+}
+
+.logReport{
+    margin-top: 20px;
+    font-size: medium;
+    padding: 10px;
+}
+.logReportInfo{
+    width: 100%;
+    text-align: right;
 }
