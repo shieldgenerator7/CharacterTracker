@@ -1,9 +1,10 @@
 "use strict";
 
+import { inflateArray } from "../Utility/Utility";
 import Ability, { inflateAbility } from "./Ability";
 import { inflateAttribute } from "./Attribute";
 import { inflateConsumable } from "./Consumable";
-import ConsumableReference from "./ConsumableReference";
+import ConsumableReference, { inflateConsumableReference } from "./ConsumableReference";
 import { inflateRollGroup } from "./RollGroup";
 
 class Character {
@@ -93,27 +94,15 @@ window.Character = Character;
 //2024-09-20: copied from Creature.inflateCreature()
 export function inflateCharacter(character, updateCharacter = (c) => { }) {
     Object.setPrototypeOf(character, Character.prototype);
-    // character.biomeModifiers.forEach(bm => {
-    //     Object.setPrototypeOf(bm, BiomeModifier.prototype);
-    // });
-    character.attributeList = character.attributeList.filter(a => a);
-    character.attributeList.forEach(attribute => {
-        inflateAttribute(attribute);
-    });
-    character.abilityList = character.abilityList.filter(a => a);
-    character.abilityList.forEach(ability => {
-        inflateAbility(ability);
-    });
+    
+    character.attributeList = inflateArray(character.attributeList, inflateAttribute);
 
-    character.consumableList = character.consumableList.filter(a => a);
-    character.consumableList.forEach(consumable => {
-        // inflateConsumable(consumable); 
-    });
+    character.abilityList = inflateArray(character.abilityList, inflateAbility);
 
-    character.dieRollLog = character.dieRollLog.filter(a => a);
-    character.dieRollLog.forEach(rollGroup => {
-        inflateRollGroup(rollGroup);
-    });
+    character.consumableList = inflateArray(character.consumableList, inflateConsumableReference);
+
+    character.dieRollLog = inflateArray(character.dieRollLog, inflateRollGroup);
+    character.dieRollLogSelect = inflateArray(character.dieRollLogSelect, () => { });
 
     //Portrait
     // if (character.imageURL && !isImage(character.imgPortrait)) {
@@ -126,6 +115,4 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     // }
 }
 export function backwardsCompatifyCharacter(character) {
-    character.dieRollLog ??= [];
-    character.dieRollLogSelect ??= [];
 }

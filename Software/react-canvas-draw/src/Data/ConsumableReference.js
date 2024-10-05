@@ -8,3 +8,7 @@ class ConsumableReference {
     }
 }
 export default ConsumableReference;
+
+export function inflateConsumableReference(consumableReference) {
+    Object.setPrototypeOf(consumableReference, ConsumableReference.prototype);
+}
