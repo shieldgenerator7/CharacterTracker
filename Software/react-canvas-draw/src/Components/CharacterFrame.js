@@ -14,6 +14,8 @@ import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
 import { isString } from "../Utility/Utility";
+import TempBonus from "../Data/TempBonus";
+import TempBonusFrame from "./TempBonusFrame";
 
 function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
     let showConsumableList = false;
@@ -241,6 +243,31 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     }
                 </div>
 
+                <h2>
+                    Temporary Bonuses
+                    <button className="addButton"
+                        onClick={(e) => {
+                            character.tempBonusList.push(new TempBonus("+2", ""));
+                            updateCharacter(character);
+                    }}>+</button>
+                </h2>
+                {
+                    character.tempBonusList.map((tempBonus, i) => (
+                        <TempBonusFrame
+                            tempBonus={tempBonus}
+                            character={character}
+                            updateCharacter={updateCharacter}
+                            game={game}
+                            updateFunc={(tempBonus) => {
+                                updateCharacter(character);
+                            }}
+                            diceRolled={diceRolled}
+                            attributeAdjusted={attributeAdjusted}
+                            abilityModified={abilityModified}
+                            key={`character_tempBonus_${i}`}
+                        ></TempBonusFrame>
+                    ))
+                }
 
 
                 {
