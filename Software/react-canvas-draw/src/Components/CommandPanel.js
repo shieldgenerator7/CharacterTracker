@@ -53,6 +53,7 @@ function CommandPanel({ game, updateGame, characterList, setCharacterList, log }
             </div>
             <LogPanel
                 log={log}
+                game={game}
             ></LogPanel>
         </div>
     );

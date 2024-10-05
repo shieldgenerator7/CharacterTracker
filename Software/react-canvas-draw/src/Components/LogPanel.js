@@ -8,11 +8,22 @@ class LogPanel extends React.Component {
     constructor(props) {
         super(props);
         this.panel = React.createRef();
+        this.logList = [];
+        this.filterLog(this.props.game.event);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         let div = this.panel.current;
         div.scrollTop = div.scrollHeight;
+        this.filterLog(this.props.game.event);
+    }
+
+    filterLog(filter) {
+        this.logList = this.props.log.entryList;
+        if (filter) {
+            let filterList = filter.trim().toLowerCase().split(" ").map(f=>f.trim()).filter(f=>f);
+            this.logList = this.logList.filter(entry => filterList.every(f=> entry.includes(f)));
+        }
     }
 
     render() {
@@ -21,7 +32,7 @@ class LogPanel extends React.Component {
                 ref={this.panel}
             >
                 {
-                    this.props.log.entryList.slice(-100).map((entry, i) => (
+                    this.logList.slice(-100).map((entry, i) => (
                         <LogEntryFrame
                             entry={entry}
                             key={`log_entry_${i}`}
