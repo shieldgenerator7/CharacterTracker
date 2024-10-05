@@ -243,22 +243,28 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     }
                 </div>
 
+                {!character.editAttributes &&
+                    <>
                 <h2>
                     Temporary Bonuses
                     <button className="addButton"
                         onClick={(e) => {
-                            character.tempBonusList.push(new TempBonus("+2", ""));
+                            let tempBonus = new TempBonus(2, "");
+                            tempBonus.editing = true;
+                            character.tempBonusList.push(tempBonus);
                             updateCharacter(character);
                     }}>+</button>
                 </h2>
                 {
-                    character.tempBonusList.map((tempBonus, i) => (
+                        <ListOrdered
+                            arr={character.tempBonusList}
+                            contentFunc={(tempBonus,i)=>(
                         <TempBonusFrame
                             tempBonus={tempBonus}
                             character={character}
                             updateCharacter={updateCharacter}
                             game={game}
-                            updateFunc={(tempBonus) => {
+                            updateFunc={() => {
                                 updateCharacter(character);
                             }}
                             diceRolled={diceRolled}
@@ -266,7 +272,14 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             abilityModified={abilityModified}
                             key={`character_tempBonus_${i}`}
                         ></TempBonusFrame>
-                    ))
+                            )}                            
+                            updateFunc={(arr) => {
+                                character.tempBonusList = arr;
+                                updateCharacter(character);
+                            }}
+                        ></ListOrdered>
+                    }
+                    </>
                 }
 
 
