@@ -6,6 +6,7 @@ import { inflateAttribute } from "./Attribute";
 import { inflateConsumable } from "./Consumable";
 import ConsumableReference, { inflateConsumableReference } from "./ConsumableReference";
 import { inflateRollGroup } from "./RollGroup";
+import { inflateTempBonus } from "./TempBonus";
 
 class Character {
     constructor(name) {
@@ -14,6 +15,7 @@ class Character {
         this.attributeList = [];
         this.abilityList = [];
         this.consumableList = [];
+        this.tempBonusList = [];
 
         //TODO: implement equipment
         this.equipmentList = [];
@@ -100,6 +102,8 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
     character.abilityList = inflateArray(character.abilityList, inflateAbility);
 
     character.consumableList = inflateArray(character.consumableList, inflateConsumableReference);
+    
+    character.tempBonusList = inflateArray(character.tempBonusList, inflateTempBonus);
 
     character.dieRollLog = inflateArray(character.dieRollLog, inflateRollGroup);
     character.dieRollLogSelect = inflateArray(character.dieRollLogSelect, () => { });
