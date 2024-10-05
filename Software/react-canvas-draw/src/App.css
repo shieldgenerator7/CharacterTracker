@@ -802,3 +802,13 @@
     height: 1px;
     margin-top: 18px;
 }
+
+.logReport{
+    margin-top: 20px;
+    font-size: medium;
+    padding: 10px;
+}
+.logReportInfo{
+    width: 100%;
+    text-align: right;
+}
