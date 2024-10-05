@@ -49,7 +49,7 @@ function CommandPanel({ game, updateGame, characterList, setCharacterList, log }
                 >
                     Paste Character
                 </button>
-                Log Entries: { (log.entryList.length > 100)?"100/":""}{log.entryList.length}
+                Log Entries: {(log.entryList.length > 100) ? "100/" : ""}{log.entryList.length}
             </div>
             <LogPanel
                 log={log}

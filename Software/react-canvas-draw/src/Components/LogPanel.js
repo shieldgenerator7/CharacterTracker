@@ -21,8 +21,8 @@ class LogPanel extends React.Component {
     filterLog(filter) {
         this.logList = this.props.log.entryList;
         if (filter) {
-            let filterList = filter.trim().toLowerCase().split(" ").map(f=>f.trim()).filter(f=>f);
-            this.logList = this.logList.filter(entry => filterList.every(f=> entry.includes(f)));
+            let filterList = filter.trim().toLowerCase().split(" ").map(f => f.trim()).filter(f => f);
+            this.logList = this.logList.filter(entry => filterList.every(f => entry.includes(f)));
         }
     }
 

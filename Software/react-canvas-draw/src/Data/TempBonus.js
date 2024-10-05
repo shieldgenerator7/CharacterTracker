@@ -1,6 +1,6 @@
 "use strict";
 
-class TempBonus{
+class TempBonus {
     constructor(bonus, filter) {
         this.bonus = bonus;
         this.filter = filter;

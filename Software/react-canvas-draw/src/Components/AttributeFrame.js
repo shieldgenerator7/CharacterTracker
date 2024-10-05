@@ -153,7 +153,7 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                                     }
                                                 }
                                             });
-                                        
+
                                         //add bonuses, if applicable
                                         let tempBonusList = character.tempBonusList.filter(tempBonus => !tempBonus.filter || tempBonus.filter.trim() == attribute.name.trim());
                                         tempBonusList.forEach(tempBonus => {

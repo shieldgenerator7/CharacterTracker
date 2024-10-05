@@ -245,40 +245,40 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
 
                 {!character.editAttributes &&
                     <>
-                <h2>
-                    Temporary Bonuses
-                    <button className="addButton"
-                        onClick={(e) => {
-                            let tempBonus = new TempBonus(2, "");
-                            tempBonus.editing = true;
-                            character.tempBonusList.push(tempBonus);
-                            updateCharacter(character);
-                    }}>+</button>
-                </h2>
-                {
-                        <ListOrdered
-                            arr={character.tempBonusList}
-                            contentFunc={(tempBonus,i)=>(
-                        <TempBonusFrame
-                            tempBonus={tempBonus}
-                            character={character}
-                            updateCharacter={updateCharacter}
-                            game={game}
-                            updateFunc={() => {
-                                updateCharacter(character);
-                            }}
-                            diceRolled={diceRolled}
-                            attributeAdjusted={attributeAdjusted}
-                            abilityModified={abilityModified}
-                            key={`character_tempBonus_${i}`}
-                        ></TempBonusFrame>
-                            )}                            
-                            updateFunc={(arr) => {
-                                character.tempBonusList = arr;
-                                updateCharacter(character);
-                            }}
-                        ></ListOrdered>
-                    }
+                        <h2>
+                            Temporary Bonuses
+                            <button className="addButton"
+                                onClick={(e) => {
+                                    let tempBonus = new TempBonus(2, "");
+                                    tempBonus.editing = true;
+                                    character.tempBonusList.push(tempBonus);
+                                    updateCharacter(character);
+                                }}>+</button>
+                        </h2>
+                        {
+                            <ListOrdered
+                                arr={character.tempBonusList}
+                                contentFunc={(tempBonus, i) => (
+                                    <TempBonusFrame
+                                        tempBonus={tempBonus}
+                                        character={character}
+                                        updateCharacter={updateCharacter}
+                                        game={game}
+                                        updateFunc={() => {
+                                            updateCharacter(character);
+                                        }}
+                                        diceRolled={diceRolled}
+                                        attributeAdjusted={attributeAdjusted}
+                                        abilityModified={abilityModified}
+                                        key={`character_tempBonus_${i}`}
+                                    ></TempBonusFrame>
+                                )}
+                                updateFunc={(arr) => {
+                                    character.tempBonusList = arr;
+                                    updateCharacter(character);
+                                }}
+                            ></ListOrdered>
+                        }
                     </>
                 }
 

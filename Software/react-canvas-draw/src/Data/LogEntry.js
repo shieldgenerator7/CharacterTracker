@@ -101,9 +101,9 @@ class LogEntry {
             // || Object.keys(this.variableChangeList).some(k => k.includes(text));
             || Object.keys(this.variableChangeList).some(key =>
                 // console.log("keytype",typeof key) 
-                (""+key).toLowerCase().includes(text)
-                || (""+this.variableChangeList[key].oldVal).toLowerCase().includes(text)
-                || (""+this.variableChangeList[key].newVal).toLowerCase().includes(text)
+                ("" + key).toLowerCase().includes(text)
+                || ("" + this.variableChangeList[key].oldVal).toLowerCase().includes(text)
+                || ("" + this.variableChangeList[key].newVal).toLowerCase().includes(text)
             );
     }
 }

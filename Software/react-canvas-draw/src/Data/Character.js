@@ -96,13 +96,13 @@ window.Character = Character;
 //2024-09-20: copied from Creature.inflateCreature()
 export function inflateCharacter(character, updateCharacter = (c) => { }) {
     Object.setPrototypeOf(character, Character.prototype);
-    
+
     character.attributeList = inflateArray(character.attributeList, inflateAttribute);
 
     character.abilityList = inflateArray(character.abilityList, inflateAbility);
 
     character.consumableList = inflateArray(character.consumableList, inflateConsumableReference);
-    
+
     character.tempBonusList = inflateArray(character.tempBonusList, inflateTempBonus);
 
     character.dieRollLog = inflateArray(character.dieRollLog, inflateRollGroup);
