@@ -317,6 +317,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             </button>                                
                                 ))
                             }
+                            {character.dieRollLog.length > 0 &&
                             <button className="panelCloseButton"
                                 onClick={() => {
                                     character.dieRollLog = [];
@@ -324,6 +325,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     updateCharacter(character);
                                 }}>X
                             </button>
+                            }
                         </h2>
                         <span className="diceRollLog">
 
