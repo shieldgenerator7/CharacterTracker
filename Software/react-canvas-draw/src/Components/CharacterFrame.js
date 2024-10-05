@@ -281,11 +281,12 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         }
                     </>
                 }
+            </div>
 
 
                 {
                     !character.editAttributes && character.dieRollLog?.length > 0 &&
-                    <>
+                    <div className="diceRollLogPanel">
                         <h2>Dice Rolls
                             <button className="listorderedbuttonX"
                                 onClick={() => {
@@ -331,9 +332,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
 
                         </span>
 
-                    </>
+                    </div>
                 }
-            </div>
             <div className="buttonPanel">
                 <button onClick={(e) => {
                     let attr = new Attribute("attr");

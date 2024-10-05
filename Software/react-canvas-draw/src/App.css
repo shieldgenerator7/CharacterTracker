@@ -506,6 +506,25 @@
     line-height: 50px;
 }
 
+.diceRollLogPanel {
+    width: 100%;
+    /* height: 45px; */
+    z-index: 1;
+    background: #cebd90;
+    text-align: left;
+    justify-items: center;
+    border-top: 1px solid black;
+    border-radius: 5px 0px 0px 5px;
+    word-wrap: normal;
+    overflow-x:hidden;    
+    overflow-wrap:break-word;
+}
+
+.diceRollLogPanel h2 {
+    font-size: large;
+    margin-bottom: 5px;
+}
+
 .field {
     display: flex;
     flex-direction: column;
@@ -597,6 +616,7 @@
     margin-top: 10px;
     border: 1px solid #ffecb7;
     padding: 5px;
+    overflow-x: hidden;
 }
 
 .abilityFrameLine {
