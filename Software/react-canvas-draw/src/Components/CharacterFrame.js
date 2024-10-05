@@ -285,7 +285,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
 
 
                 {
-                    !character.editAttributes && character.dieRollLog?.length > 0 &&
+                    !character.editAttributes &&
                     <div className="diceRollLogPanel">
                         <h2>Dice Rolls
                             {
