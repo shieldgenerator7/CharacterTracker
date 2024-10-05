@@ -109,6 +109,7 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                         let originalResult = roll.Value;
                                         roll.addRoll(attribute.name, attribute.value * 1);
                                         diceRolled(character, attribute.name, originalResult, roll.Value);
+
                                         //roll ability dice, if applicable
                                         let abilityList = character.abilityList
                                             .filter(ability => ability.Active);
@@ -152,6 +153,13 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                                     }
                                                 }
                                             });
+                                        
+                                        //add bonuses, if applicable
+                                        let tempBonusList = character.tempBonusList.filter(tempBonus => !tempBonus.filter || tempBonus.filter.trim() == attribute.name.trim());
+                                        tempBonusList.forEach(tempBonus => {
+                                            roll.addRoll("Temp Bonus", tempBonus.bonus);
+                                            diceRolled(character, "Temp Bonus", tempBonus.bonus, roll.Value);
+                                        });
 
                                         //
                                         character.dieRollLog.push(roll);
