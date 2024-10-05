@@ -298,7 +298,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     "d20",
                                     "d100",
                                 ].map((d,i) => (                                    
-                            <button className="addButton"
+                            <button className="dieButton"
                                 key={`character_dieroll_${i}`}
                                 onClick={(e) => {
                                     let roll = rollDice(d);
@@ -312,7 +312,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             </button>                                
                                 ))
                             }
-                            <button className="listorderedbuttonX"
+                            <button className="panelCloseButton"
                                 onClick={() => {
                                     character.dieRollLog = [];
                                     character.dieRollLogSelect = [];

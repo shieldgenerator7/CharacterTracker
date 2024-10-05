@@ -522,7 +522,41 @@
 
 .diceRollLogPanel h2 {
     font-size: large;
+    margin-left: 5px;
     margin-bottom: 5px;
+}
+
+.dieButton{
+    display: inline;
+    padding: px 25px 1px 25px;
+    margin-left: 5px;
+    /* margin-top: 3px; */
+    border: none;
+    background: none;
+    /* width: 30px; */
+    height: 30px;
+    border: 1px solid #a89b76;
+    border-radius: 5px;
+}
+.dieButton:hover {
+    background: #ffeec1;
+    border: none;
+}
+.panelCloseButton {
+    display: inline;
+    /* padding: 5px 10px 5px 10px; */
+    padding: 1px 10px 1px 10px;
+    /* margin-left: 5px; */
+    margin-right: 5px;
+    margin-top: 3px;
+    margin-left: 5px;
+    border: none;
+    background: none;
+    height: 40px;
+}
+.panelCloseButton:hover {
+    background: #ff9e9e;
+    border-radius: 5px;
 }
 
 .field {
